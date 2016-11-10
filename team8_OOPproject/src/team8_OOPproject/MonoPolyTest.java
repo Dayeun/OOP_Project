@@ -6,6 +6,5 @@ public class MonoPolyTest {
 		n=3;
 		
 		
-		
 	}
 }
