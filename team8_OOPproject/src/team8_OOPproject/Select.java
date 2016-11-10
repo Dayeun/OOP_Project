@@ -2,13 +2,15 @@ package team8_OOPproject;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Select extends JPanel implements ActionListener{
+public class Select extends JPanel implements ActionListener, MouseListener{
 	
 	private JButton jButton_gotoGame;
 	private JButton jButton_gotoLearning;
@@ -45,6 +47,7 @@ public class Select extends JPanel implements ActionListener{
 		jButton_gotoLearning.setBounds(250, 320, 300, 80);
 		jButton_back.setBounds(20, 20, 80, 30);
 		
+		jButton_gotoGame.addMouseListener(this);
 		title = new ImageIcon("title.png");
 		jButton_title.setBorderPainted(false);
 		this.jButton_title.setBounds(200, 100, 400, 69);
@@ -101,6 +104,38 @@ public class Select extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		if(arg0.getSource().equals(jButton_gotoGame)){
+			new Game_SelectMenu();
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
 		
 	}
 	

@@ -58,8 +58,8 @@ public class Game_SelectMenu extends JFrame implements MouseListener{
 			
 		}
 		else if(e.getSource().equals(bPathFindingG)){
-			dispose();
 			new Game_Pathfinding();
+			dispose();
 		}
 		else if(e.getSource().equals(back)){
 			
