@@ -45,7 +45,7 @@ public class Game_PathfindingMap implements MouseMotionListener,MouseListener,Ac
 		Game_Character u_mg =new Game_Character(700,200,"umagnet.PNG");*/
 		
 		pathGame= new JFrame();
-		pathGame.setBounds(120,120,800,600);
+		pathGame.setBounds(555,235,800,600);
         back = new JLabel();
 		
 

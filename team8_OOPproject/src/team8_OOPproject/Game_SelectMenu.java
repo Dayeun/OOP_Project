@@ -1,6 +1,8 @@
 package team8_OOPproject;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
@@ -19,8 +21,8 @@ public class Game_SelectMenu extends JFrame implements MouseListener{
 	ImageIcon icon1 = new ImageIcon("homeIcon.PNG");
 	
 	public Game_SelectMenu() {
-			
-		setBounds(120,120,800,600);
+	
+		setBounds(555,235,800,600);
 		
 		jlabel_background = new JLabel();
 		
