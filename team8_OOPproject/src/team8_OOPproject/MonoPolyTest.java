@@ -4,5 +4,7 @@ public class MonoPolyTest {
 
 	public void init(int n){
 		n=3;
+		
+		
 	}
 }
