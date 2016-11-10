@@ -16,16 +16,15 @@ public class Account_Login extends JPanel {
 	// for background
 	private JLabel jlabel_background;
 	ImageIcon background;
-	
-	private JButton jButton_title;
-	ImageIcon title;
+
 	
 	private JButton jButton_box;
 
 	public Account_Login() {
+		
+		Game_Character title = new Game_Character(200,100,"title.PNG");
 
 		jlabel_background = new JLabel();
-		jButton_title = new JButton();
 		jButton_box = new JButton();
 
 		jLable_id = new JLabel("ID:");
@@ -38,6 +37,8 @@ public class Account_Login extends JPanel {
 		jButton_signup = new JButton("Sign up");
 		jButton_signup.setBackground(Color.white);
 		jButton_signup.setOpaque(false);
+		
+		
 
 		this.setSize(800, 600);
 		this.setLayout(null);
@@ -49,13 +50,7 @@ public class Account_Login extends JPanel {
 		this.add(jText_pw);
 		this.add(jButton_login);
 		this.add(jButton_signup);
-
-		
-		title = new ImageIcon("title.png");
-		jButton_title.setBorderPainted(false);
-		this.jButton_title.setBounds(200, 100, 400, 69);
-		this.jButton_title.setIcon(title);
-		this.add(jButton_title);
+		this.add(title);
 
 		jButton_box.setBackground(Color.white);
 		this.jButton_box.setBounds(250, 210, 300, 180);
@@ -132,14 +127,6 @@ public class Account_Login extends JPanel {
 
 	public void setJlabel_background(JLabel jlabel_background) {
 		this.jlabel_background = jlabel_background;
-	}
-
-	public JButton getJButton_title() {
-		return jButton_title;
-	}
-
-	public void setJButton_title(JButton jButton_title) {
-		this.jButton_title = jButton_title;
 	}
 	
 	public JButton getjButton_box() {
