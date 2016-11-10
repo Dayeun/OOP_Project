@@ -84,7 +84,6 @@ public class Select extends JPanel implements ActionListener{
 	public void setJlabel_background(JLabel jlabel_background) {
 		this.jlabel_background = jlabel_background;
 	}
-
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
