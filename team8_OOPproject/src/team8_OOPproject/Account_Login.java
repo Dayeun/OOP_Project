@@ -18,14 +18,14 @@ public class Account_Login extends JPanel {
 	ImageIcon background;
 
 	
-	private JButton jButton_box;
+	private JLabel jLabel_loginBox;
 
 	public Account_Login() {
 		
 		Game_Character title = new Game_Character(200,100,"title.PNG");
 
 		jlabel_background = new JLabel();
-		jButton_box = new JButton();
+		jLabel_loginBox = new JLabel();
 
 		jLable_id = new JLabel("ID:");
 		jLable_pw = new JLabel("PW:");
@@ -52,9 +52,9 @@ public class Account_Login extends JPanel {
 		this.add(jButton_signup);
 		this.add(title);
 
-		jButton_box.setBackground(Color.white);
-		this.jButton_box.setBounds(250, 210, 300, 180);
-		this.add(jButton_box);
+		jLabel_loginBox.setBackground(Color.white);
+		this.jLabel_loginBox.setBounds(250, 210, 300, 180);
+		this.add(jLabel_loginBox);
 		
 		background = new ImageIcon("main.png");
 		this.jlabel_background.setBounds(0, 0, this.getWidth(), this.getHeight());
@@ -129,12 +129,12 @@ public class Account_Login extends JPanel {
 		this.jlabel_background = jlabel_background;
 	}
 	
-	public JButton getjButton_box() {
-		return jButton_box;
+	public JLabel getjLabel_loginBox() {
+		return jLabel_loginBox;
 	}
 
-	public void setjButton_box(JButton jButton_box) {
-		this.jButton_box = jButton_box;
+	public void setjlabel_loginBox(JLabel jlabel_loginBox) {
+		this.jLabel_loginBox = jLabel_loginBox;
 	}
 
 	public boolean loginCheck() {
