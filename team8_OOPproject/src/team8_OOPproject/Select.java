@@ -19,14 +19,12 @@ public class Select extends JPanel implements ActionListener, MouseListener{
 	// for background
 	private JLabel jlabel_background;
 	ImageIcon background;
-	
-	private JButton jButton_title;
-	ImageIcon title;
+
 	
 	public Select(){
 		
+		Game_Character title = new Game_Character(200,100,"title.PNG");
 		jlabel_background = new JLabel();
-		jButton_title = new JButton();
 		jButton_gotoGame = new JButton("Mini Games");
 		jButton_gotoLearning = new JButton("Learning");
 		jButton_back = new JButton("back");
@@ -42,17 +40,11 @@ public class Select extends JPanel implements ActionListener, MouseListener{
 		this.add(jButton_gotoGame);
 		this.add(jButton_gotoLearning);
 		this.add(jButton_back);
+		this.add(title);
 		
 		jButton_gotoGame.setBounds(250, 200, 300, 80);
 		jButton_gotoLearning.setBounds(250, 320, 300, 80);
 		jButton_back.setBounds(20, 20, 80, 30);
-		
-		jButton_gotoGame.addMouseListener(this);
-		title = new ImageIcon("title.png");
-		jButton_title.setBorderPainted(false);
-		this.jButton_title.setBounds(200, 100, 400, 69);
-		this.jButton_title.setIcon(title);
-		this.add(jButton_title);
 		
 		background = new ImageIcon("main.png");
 		this.jlabel_background.setBounds(0, 0, this.getWidth(), this.getHeight());
@@ -93,15 +85,8 @@ public class Select extends JPanel implements ActionListener, MouseListener{
 	public void setJlabel_background(JLabel jlabel_background) {
 		this.jlabel_background = jlabel_background;
 	}
-
-	public JButton getjButton_title() {
-		return jButton_title;
-	}
-
-	public void setjButton_title(JButton jButton_title) {
-		this.jButton_title = jButton_title;
-	}
-
+	
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		

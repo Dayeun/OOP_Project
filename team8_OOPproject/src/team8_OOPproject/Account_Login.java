@@ -16,17 +16,16 @@ public class Account_Login extends JPanel {
 	// for background
 	private JLabel jlabel_background;
 	ImageIcon background;
+
 	
-	private JButton jButton_title;
-	ImageIcon title;
-	
-	private JButton jButton_box;
+	private JLabel jLabel_loginBox;
 
 	public Account_Login() {
+		
+		Game_Character title = new Game_Character(200,100,"title.PNG");
 
 		jlabel_background = new JLabel();
-		jButton_title = new JButton();
-		jButton_box = new JButton();
+		jLabel_loginBox = new JLabel();
 
 		jLable_id = new JLabel("ID:");
 		jLable_pw = new JLabel("PW:");
@@ -38,6 +37,8 @@ public class Account_Login extends JPanel {
 		jButton_signup = new JButton("Sign up");
 		jButton_signup.setBackground(Color.white);
 		jButton_signup.setOpaque(false);
+		
+		
 
 		this.setSize(800, 600);
 		this.setLayout(null);
@@ -49,17 +50,11 @@ public class Account_Login extends JPanel {
 		this.add(jText_pw);
 		this.add(jButton_login);
 		this.add(jButton_signup);
+		this.add(title);
 
-		
-		title = new ImageIcon("title.png");
-		jButton_title.setBorderPainted(false);
-		this.jButton_title.setBounds(200, 100, 400, 69);
-		this.jButton_title.setIcon(title);
-		this.add(jButton_title);
-
-		jButton_box.setBackground(Color.white);
-		this.jButton_box.setBounds(250, 210, 300, 180);
-		this.add(jButton_box);
+		jLabel_loginBox.setBackground(Color.white);
+		this.jLabel_loginBox.setBounds(250, 210, 300, 180);
+		this.add(jLabel_loginBox);
 		
 		background = new ImageIcon("main.png");
 		this.jlabel_background.setBounds(0, 0, this.getWidth(), this.getHeight());
@@ -133,21 +128,13 @@ public class Account_Login extends JPanel {
 	public void setJlabel_background(JLabel jlabel_background) {
 		this.jlabel_background = jlabel_background;
 	}
-
-	public JButton getJButton_title() {
-		return jButton_title;
-	}
-
-	public void setJButton_title(JButton jButton_title) {
-		this.jButton_title = jButton_title;
-	}
 	
-	public JButton getjButton_box() {
-		return jButton_box;
+	public JLabel getjLabel_loginBox() {
+		return jLabel_loginBox;
 	}
 
-	public void setjButton_box(JButton jButton_box) {
-		this.jButton_box = jButton_box;
+	public void setjlabel_loginBox(JLabel jlabel_loginBox) {
+		this.jLabel_loginBox = jLabel_loginBox;
 	}
 
 	public boolean loginCheck() {
