@@ -36,7 +36,6 @@ public class Select extends JPanel implements ActionListener, MouseListener{
 		
 		jButton_back.addActionListener(this);
 		
-		
 		this.add(jButton_gotoGame);
 		this.add(jButton_gotoLearning);
 		this.add(jButton_back);
