@@ -17,7 +17,6 @@ public class Account_Login extends JPanel {
 	private JLabel jlabel_background;
 	ImageIcon background;
 
-	
 	private JLabel jLabel_loginBox;
 
 	public Account_Login() {
@@ -44,6 +43,7 @@ public class Account_Login extends JPanel {
 		this.setLayout(null);
 
 		// add the component
+		
 		this.add(jLable_id);
 		this.add(jText_id);
 		this.add(jLable_pw);
@@ -51,14 +51,7 @@ public class Account_Login extends JPanel {
 		this.add(jButton_login);
 		this.add(jButton_signup);
 		this.add(title);
-
-		jLabel_loginBox.setBackground(Color.white);
-		this.jLabel_loginBox.setBounds(250, 210, 300, 180);
 		this.add(jLabel_loginBox);
-		
-		background = new ImageIcon("main.png");
-		this.jlabel_background.setBounds(0, 0, this.getWidth(), this.getHeight());
-		this.jlabel_background.setIcon(background);
 		this.add(jlabel_background);
 
 		// set the component location
@@ -68,6 +61,13 @@ public class Account_Login extends JPanel {
 		jText_pw.setBounds(320, 300, 100, 25);
 		jButton_login.setBounds(440, 250, 80, 80);
 		jButton_signup.setBounds(440, 340, 80, 25);
+		
+		jLabel_loginBox.setBackground(Color.white);
+		this.jLabel_loginBox.setBounds(250, 210, 300, 180);
+		
+		background = new ImageIcon("main.png");
+		this.jlabel_background.setBounds(0, 0, this.getWidth(), this.getHeight());
+		this.jlabel_background.setIcon(background);
 
 		this.setVisible(true);
 
@@ -133,7 +133,7 @@ public class Account_Login extends JPanel {
 		return jLabel_loginBox;
 	}
 
-	public void setjlabel_loginBox(JLabel jlabel_loginBox) {
+	public void setjlabel_loginBox(JLabel jLabel_loginBox) {
 		this.jLabel_loginBox = jLabel_loginBox;
 	}
 
