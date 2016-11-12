@@ -97,6 +97,9 @@ public class Select extends JPanel implements ActionListener, MouseListener{
 		// TODO Auto-generated method stub
 		if(arg0.getSource().equals(jButton_gotoGame)){
 			new Game_SelectMenu();
+			Main sc=new Main();
+			sc.dispose();
+			sc.removeAll();
 		}
 	}
 

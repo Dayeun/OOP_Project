@@ -115,4 +115,5 @@ public class Main extends JFrame implements ActionListener {
 		this.revalidate();
 		this.repaint();
 	}
+	
 }
