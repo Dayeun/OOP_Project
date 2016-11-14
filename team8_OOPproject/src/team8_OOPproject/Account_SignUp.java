@@ -45,7 +45,7 @@ public class Account_SignUp extends JPanel implements ActionListener {
 		jText_pw_check = new JPasswordField(20);
 		jButton_reset = new JButton("Reset");
 		jButton_signup = new JButton("Sign up");
-		jButton_back = new JButton("back");
+		jButton_back = new JButton("Back");
 		jButton_back.setBackground(Color.white);
 		jButton_back.setOpaque(false);
 

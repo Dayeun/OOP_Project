@@ -27,7 +27,7 @@ public class Select extends JPanel implements ActionListener{
 		jlabel_background = new JLabel();
 		jButton_gotoGame = new JButton("Mini Games");
 		jButton_gotoLearning = new JButton("Learning");
-		jButton_back = new JButton("back");
+		jButton_back = new JButton("Back");
 		jButton_back.setBackground(Color.white);
 		jButton_back.setOpaque(false);
 		
