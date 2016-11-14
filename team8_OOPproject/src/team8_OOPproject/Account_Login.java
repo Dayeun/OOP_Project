@@ -139,15 +139,15 @@ public class Account_Login extends JPanel {
 
 	public boolean loginCheck() {
 		// login validation
-		int flag = 0;
+		int checking = 0;
 		for (int i = 0; i < Main.user.size(); i++) {
 			if (Main.user.get(i).getId().equals(jText_id.getText())
 					&& Main.user.get(i).getPassword().equals(String.valueOf(jText_pw.getPassword()))) {
-				// exist in the ArrayList of user information
-				flag = 1;
+				// Check the user's ID and password
+				checking = 1;
 			}
 		}
-		if (flag == 1) {
+		if (checking == 1) {
 			return true;
 		} else {// unknown user
 			JOptionPane.showMessageDialog(null, "Your ID or PW might be wrong", "Message", JOptionPane.WARNING_MESSAGE); // show
