@@ -1,4 +1,5 @@
 package team8_OOPproject;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,12 +28,12 @@ public class Account_SignUp extends JPanel implements ActionListener {
 	private JLabel jlabel_background;
 	private ImageIcon background;
 	
-	private JButton jButton_box;
+	private JPanel jPanel_box;
 
 	public Account_SignUp() {
 
 		jlabel_background = new JLabel();
-		jButton_box = new JButton();
+		jPanel_box = new JPanel();
 
 		jLable_id = new JLabel("User ID:");
 		jLable_name = new JLabel("name:");
@@ -72,9 +73,9 @@ public class Account_SignUp extends JPanel implements ActionListener {
 		this.add(jButton_back);
 		this.add(jButton_signup);
 		
-		jButton_box.setBackground(Color.white);
-		this.jButton_box.setBounds(270, 170, 260, 220);
-		this.add(jButton_box);
+		jPanel_box.setBackground(Color.white);
+		this.jPanel_box.setBounds(270, 170, 260, 220);
+		this.add(jPanel_box);
 
 		// set background image
 		background = new ImageIcon("main.png");
@@ -141,6 +142,22 @@ public class Account_SignUp extends JPanel implements ActionListener {
 
 	public JButton getjButton_back() {
 		return jButton_back;
+	}
+	
+	public JLabel getJlabel_background() {
+		return jlabel_background;
+	}
+
+	public void setJlabel_background(JLabel jlabel_background) {
+		this.jlabel_background = jlabel_background;
+	}
+
+	public JPanel getjPanel_box() {
+		return jPanel_box;
+	}
+
+	public void setjPanel_box(JPanel jPanel_box) {
+		this.jPanel_box = jPanel_box;
 	}
 
 	@Override

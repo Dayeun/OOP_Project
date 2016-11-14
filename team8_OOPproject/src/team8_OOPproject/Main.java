@@ -14,10 +14,11 @@ public class Main extends JFrame implements ActionListener {
 	private Account_Login account_Login;
 	private Account_SignUp signup;
 	private Select select;
+	private Game_SelectMenu game_Select;
+	private Game_PathfindingMap pathfinding;
 	
 	static ArrayList<UserInformation> user = new ArrayList<UserInformation>();
-	
-	
+
 	public Main(){
 		// Variables for location of frame
 		Toolkit tk = Toolkit.getDefaultToolkit();
@@ -37,11 +38,17 @@ public class Main extends JFrame implements ActionListener {
 		account_Login = new Account_Login();
 		signup = new Account_SignUp();
 		select = new Select();
+		game_Select = new Game_SelectMenu();
+		pathfinding = new Game_PathfindingMap();
 		
 		account_Login.getjButton_login().addActionListener(this);
 		account_Login.getjButton_signup().addActionListener(this);
 		signup.getjButton_signup().addActionListener(this);
 		signup.getjButton_back().addActionListener(this);
+		select.getjButton_gotoGame().addActionListener(this);
+		select.getjButton_back().addActionListener(this);
+		game_Select.getjButton_back().addActionListener(this);
+		game_Select.getjButton_bPathFindingG().addActionListener(this);
 		
 		this.add(account_Login);// add JPanel to the JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -105,6 +112,12 @@ public class Main extends JFrame implements ActionListener {
 					changeState(account_Login);
 				} else if (button.getSource().equals(select.getjButton_back())){
 					changeState(account_Login);
+				} else if (button.getSource().equals(select.getjButton_gotoGame())){
+					changeState(game_Select);
+				} else if (button.getSource().equals(game_Select.getjButton_back())){
+					changeState(select);
+				} else if (button.getSource().equals(game_Select.getjButton_bPathFindingG())){
+					changeState(pathfinding);
 				}
 		
 	}
