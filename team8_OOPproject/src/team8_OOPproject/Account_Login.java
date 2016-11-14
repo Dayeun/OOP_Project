@@ -17,14 +17,14 @@ public class Account_Login extends JPanel {
 	private JLabel jlabel_background;
 	ImageIcon background;
 
-	private JLabel jLabel_loginBox;
+	private JPanel jPanel_loginBox;
 
 	public Account_Login() {
 		
 		Game_Character title = new Game_Character(200,100,"title.PNG");
 
 		jlabel_background = new JLabel();
-		jLabel_loginBox = new JLabel();
+		jPanel_loginBox = new JPanel();
 
 		jLable_id = new JLabel("ID:");
 		jLable_pw = new JLabel("PW:");
@@ -51,7 +51,7 @@ public class Account_Login extends JPanel {
 		this.add(jButton_login);
 		this.add(jButton_signup);
 		this.add(title);
-		this.add(jLabel_loginBox);
+		this.add(jPanel_loginBox);
 		this.add(jlabel_background);
 
 		// set the component location
@@ -62,8 +62,8 @@ public class Account_Login extends JPanel {
 		jButton_login.setBounds(440, 250, 80, 80);
 		jButton_signup.setBounds(440, 340, 80, 25);
 		
-		jLabel_loginBox.setBackground(Color.white);
-		this.jLabel_loginBox.setBounds(250, 210, 300, 180);
+		jPanel_loginBox.setBackground(Color.white);
+		this.jPanel_loginBox.setBounds(250, 210, 300, 180);
 		
 		background = new ImageIcon("main.png");
 		this.jlabel_background.setBounds(0, 0, this.getWidth(), this.getHeight());
@@ -129,12 +129,12 @@ public class Account_Login extends JPanel {
 		this.jlabel_background = jlabel_background;
 	}
 	
-	public JLabel getjLabel_loginBox() {
-		return jLabel_loginBox;
+	public JPanel getjPanel_loginBox() {
+		return jPanel_loginBox;
 	}
 
-	public void setjlabel_loginBox(JLabel jLabel_loginBox) {
-		this.jLabel_loginBox = jLabel_loginBox;
+	public void setjPanel_loginBox(JPanel jPanel_loginBox) {
+		this.jPanel_loginBox = jPanel_loginBox;
 	}
 
 	public boolean loginCheck() {
