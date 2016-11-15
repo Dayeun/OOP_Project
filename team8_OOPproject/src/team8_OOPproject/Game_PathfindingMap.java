@@ -75,6 +75,7 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		u_mg.addMouseListener(this);
 		u_mg.addMouseMotionListener(this);
 		
+		//return to previous panel
 		jButton_back = new JButton("Back");
 		jButton_back.addActionListener(this);
 		jButton_back.setBackground(Color.white);

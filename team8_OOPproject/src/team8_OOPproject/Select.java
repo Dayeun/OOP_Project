@@ -27,24 +27,25 @@ public class Select extends JPanel implements ActionListener{
 		jlabel_background = new JLabel();
 		jButton_gotoGame = new JButton("Mini Games");
 		jButton_gotoLearning = new JButton("Learning");
-		jButton_back = new JButton("Back");
-		jButton_back.setBackground(Color.white);
-		jButton_back.setOpaque(false);
 		
 		this.setSize(800, 600);
 		this.setLayout(null);
 		
-		jButton_back.addActionListener(this);
 		jButton_gotoGame.addActionListener(this);
 		
 		this.add(jButton_gotoGame);
 		this.add(jButton_gotoLearning);
-		this.add(jButton_back);
 		this.add(title);
 		
 		jButton_gotoGame.setBounds(250, 200, 300, 80);
 		jButton_gotoLearning.setBounds(250, 320, 300, 80);
+		
+		//return to previous panel
+		jButton_back = new JButton("Back");
+		jButton_back.addActionListener(this);
+		jButton_back.setBackground(Color.white);
 		jButton_back.setBounds(20, 20, 80, 30);
+		this.add(jButton_back);
 		
 		background = new ImageIcon("main.png");
 		this.jlabel_background.setBounds(0, 0, this.getWidth(), this.getHeight());

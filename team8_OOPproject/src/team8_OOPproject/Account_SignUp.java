@@ -45,16 +45,12 @@ public class Account_SignUp extends JPanel implements ActionListener {
 		jText_pw_check = new JPasswordField(20);
 		jButton_reset = new JButton("Reset");
 		jButton_signup = new JButton("Sign up");
-		jButton_back = new JButton("Back");
-		jButton_back.setBackground(Color.white);
-		jButton_back.setOpaque(false);
 
 		this.setSize(800, 600);
 
 		// button event
 		jButton_reset.addActionListener(this);
 		jButton_signup.addActionListener(this);
-		jButton_back.addActionListener(this);
 
 		this.setLayout(null);
 
@@ -70,12 +66,18 @@ public class Account_SignUp extends JPanel implements ActionListener {
 		this.add(jLable_name);
 		this.add(jText_name);
 		this.add(jButton_reset);
-		this.add(jButton_back);
 		this.add(jButton_signup);
 		
 		jPanel_box.setBackground(Color.white);
 		this.jPanel_box.setBounds(270, 170, 260, 220);
 		this.add(jPanel_box);
+		
+		//return to previous panel
+		jButton_back = new JButton("Back");
+		jButton_back.addActionListener(this);
+		jButton_back.setBackground(Color.white);
+		jButton_back.setBounds(20, 20, 80, 30);
+		this.add(jButton_back);
 
 		// set background image
 		background = new ImageIcon("main.png");

@@ -41,6 +41,7 @@ public class Game_SelectMenu extends JPanel implements ActionListener{
 		jButton_bMonopolyG.setBounds(230, 300, 350, 60);
 		jButton_bPathFindingG.setBounds(230, 400, 350, 60);
 
+		//return to previous panel
 		jButton_back = new JButton("Back");
 		jButton_back.addActionListener(this);
 		jButton_back.setBackground(Color.white);
