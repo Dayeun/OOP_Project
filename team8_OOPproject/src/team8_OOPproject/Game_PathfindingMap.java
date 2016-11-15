@@ -1,5 +1,6 @@
 package team8_OOPproject;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 	private JButton u_mg;
 	private JButton rotation1;
 	private JButton rotation2;
+	private JButton jButton_back;
 
 	private JLabel back;
 
@@ -72,6 +74,13 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		bar_mg.addMouseListener(this);
 		u_mg.addMouseListener(this);
 		u_mg.addMouseMotionListener(this);
+		
+		jButton_back = new JButton("Back");
+		jButton_back.addActionListener(this);
+		jButton_back.setBackground(Color.white);
+		jButton_back.setBounds(20, 20, 80, 30);
+		this.add(jButton_back);
+		
 		background = new ImageIcon("PathFinding.png");
 	    this.back.setBounds(0,0, this.getWidth(), this.getHeight());
 		this.back.setIcon(background);
@@ -196,6 +205,17 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	public JButton getjButton_back() {
+		return jButton_back;
+	}
+
+
+	public void setjButton_back(JButton jButton_back) {
+		this.jButton_back = jButton_back;
+	}
+	
 	
 }
 

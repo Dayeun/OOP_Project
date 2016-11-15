@@ -51,6 +51,8 @@ public class Main extends JFrame implements ActionListener {
 		select.getjButton_back().addActionListener(this);
 		game_Select.getjButton_back().addActionListener(this);
 		game_Select.getjButton_bPathFindingG().addActionListener(this);
+		game_Select.getjButton_bMonopolyG().addActionListener(this);
+		pathfinding.getjButton_back().addActionListener(this);
 		monopoly.getjButton_back().addActionListener(this);
 		
 		this.add(account_Login);// add JPanel to the JFrame
@@ -124,6 +126,8 @@ public class Main extends JFrame implements ActionListener {
 				} else if (button.getSource().equals(game_Select.getjButton_bMonopolyG())){
 					changeState(monopoly);
 				} else if (button.getSource().equals(monopoly.getjButton_back())){
+					changeState(game_Select);
+				} else if (button.getSource().equals(pathfinding.getjButton_back())){
 					changeState(game_Select);
 				}
 		
