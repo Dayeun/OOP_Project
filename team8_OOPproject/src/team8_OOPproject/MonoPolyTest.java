@@ -49,7 +49,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		jButton_back.setBounds(20, 20, 80, 30);
 		this.add(jButton_back);
 		
-		background = new ImageIcon();
+		background = new ImageIcon("MonopolyMap");
 		this.jlabel_background.setBounds(0,0, this.getWidth(), this.getHeight());
 		this.jlabel_background.setIcon(background);
 		this.add(jlabel_background);
