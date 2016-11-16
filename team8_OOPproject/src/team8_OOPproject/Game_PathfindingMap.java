@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Game_PathfindingMap extends JPanel implements MouseMotionListener,MouseListener,ActionListener{
@@ -81,7 +82,7 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		jButton_back.setBounds(20, 20, 80, 30);
 		this.add(jButton_back);
 		
-		background = new ImageIcon("PathFinding.png");
+		background = new ImageIcon("pathFinding2.png");
 	    this.back.setBounds(0,0, this.getWidth(), this.getHeight());
 		this.back.setIcon(background);
 		this.add(back);
@@ -164,13 +165,15 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if(bar_mg.contains(e.getX(), e.getY()) ){//´©¸¥ À§Ä¡°¡ Æ÷ÇÔµÈ´Ù¸é
+		if(bar_mg.contains(e.getX(), e.getY()) ){//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ÔµÈ´Ù¸ï¿½
 			isDragged1 = true;
+			isDragged2 = false;
 			//
-			offX = e.getX() - bar_mg.getX();   //´©¸¥°÷ - ÀÚ¼® À§Ä¡
+			offX = e.getX() - bar_mg.getX();   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½Ú¼ï¿½ ï¿½ï¿½Ä¡
 			offY = e.getY() - bar_mg.getY();
 		}
 		else if(u_mg.contains(e.getX(), e.getY() ) ){
+			isDragged1 = false;
 			isDragged2 = true;
 			offX = e.getX() - u_mg.getX();
 			offY = e.getY() - u_mg.getY();
@@ -223,6 +226,8 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 				sc.moving_R(sc.getX(),sc.getY());/*sc.setLocation(500,270);*/
 		}else if(ch == 6.0&&x==4 &&y==0){//6
 			sc.moving_D(sc.getX(),sc.getY());/*sc.setLocation(500,375);*/
+			JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE); // show
+
 		}
 	}
 
@@ -252,12 +257,12 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 
 
 	/*
-	* 1¹ø                                                                               6 u_inv//
-	* 2¹ø                        bar_inv 2-1// 1 u_
-	* 3¹ø bar°¡ 2-1//              3 u_
-	* 4¹øbar 1-2//                          8 u_inv//
-	* 5¹ø                       bar_inv 1-2//           10 u_inv//
-	* 6¹ø                                                     5 u_
+	* 1ï¿½ï¿½                                                                               6 u_inv//
+	* 2ï¿½ï¿½                        bar_inv 2-1// 1 u_
+	* 3ï¿½ï¿½ barï¿½ï¿½ 2-1//              3 u_
+	* 4ï¿½ï¿½bar 1-2//                          8 u_inv//
+	* 5ï¿½ï¿½                       bar_inv 1-2//           10 u_inv//
+	* 6ï¿½ï¿½                                                     5 u_
 	* */
 	
 	public double CheckPosition()
