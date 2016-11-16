@@ -215,32 +215,32 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		int m;
 		int r_l = 98;
 		int u_d = 103;
-		if(ch == 1.0 && x== 0&&y== 1){//1
-			sc.moving_U(sc.getX(),sc.getY(),u_d);/*sc.setLocation(105, 270);*/
-		}else if(ch == 2.0 && x == 0 && y == 0 ){//2
-			sc.moving_D(sc.getX(),sc.getY(),u_d);/*sc.setLocation(105, 375);*/
-		}else if(ch == 2.1 && x == 2 && y == 1 ){//2
+		if(ch == 1.0 && x== 0&&y== 1){
+			sc.moving_U(sc.getX(),sc.getY(),u_d);
+		}else if(ch == 2.0 && x == 0 && y == 0 ){
+			sc.moving_D(sc.getX(),sc.getY(),u_d);
+		}else if(ch == 2.1 && x == 2 && y == 1 ){
 			m = s.moveL_Magnet(y, x);
 			for(int i = 0; i <m-1 ;i++)
-				sc.moving_L(sc.getX(),sc.getY(),r_l);/*sc.setLocation(105, 375);*/
+				sc.moving_L(sc.getX(),sc.getY(),r_l);
 		}else if(ch == 3.0&&x==2&&y==0){//3
-			sc.moving_D(sc.getX(),sc.getY(),u_d);/*sc.setLocation(305, 375);*/
+			sc.moving_D(sc.getX(),sc.getY(),u_d);
 		}else if(ch == 3.1&&x==0&&y==1){//3
 			m = s.moveR_Magnet(y, x);
 			for(int i = 0; i <m-1 ;i++)
-				sc.moving_R(sc.getX(),sc.getY(),r_l);/*sc.setLocation(305, 375);*/
+				sc.moving_R(sc.getX(),sc.getY(),r_l);
 		}else if(ch == 4.0&& x== 2 && y== 1){//4
-			sc.moving_U(sc.getX(),sc.getY(),u_d);/*sc.setLocation(305, 270);*/
+			sc.moving_U(sc.getX(),sc.getY(),u_d);
 		}else if(ch == 4.1&& x== 4 && y==0){//4
 			m = s.moveL_Magnet(y, x);
 			for(int i = 0; i <m-1 ;i++)
-				sc.moving_L(sc.getX(),sc.getY(),r_l);/*sc.setLocation(305, 270);*/
+				sc.moving_L(sc.getX(),sc.getY(),r_l);
 		}else if(ch == 5.1&&x==2&&y==0){//5
 			m = s.moveR_Magnet(y, x);
 			for(int i = 0; i <m-1 ;i++)
-				sc.moving_R(sc.getX(),sc.getY(),r_l);/*sc.setLocation(500,270);*/
+				sc.moving_R(sc.getX(),sc.getY(),r_l);
 		}else if(ch == 6.0&&x==4 &&y==0){//6
-			sc.moving_D(sc.getX(),sc.getY(),u_d);/*sc.setLocation(500,375);*/
+			sc.moving_D(sc.getX(),sc.getY(),u_d);
 			JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE); // show
 
 		}
@@ -253,15 +253,6 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 	}
 
 
-
-/*	public JFrame getPathGame() {
-		return pathGame;
-	}
-
-
-	public void setPathGame(JFrame pathGame) {
-		this.pathGame = pathGame;
-	}*/
 
 
 	@Override
@@ -280,15 +271,6 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		
 	}
 
-
-	/*
-	* 1��                                                                               6 u_inv//
-	* 2��                        bar_inv 2-1// 1 u_
-	* 3�� bar�� 2-1//              3 u_
-	* 4��bar 1-2//                          8 u_inv//
-	* 5��                       bar_inv 1-2//           10 u_inv//
-	* 6��                                                     5 u_
-	* */
 	
 	public double CheckPosition()
 	{
