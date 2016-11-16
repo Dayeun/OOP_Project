@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Select extends JPanel implements ActionListener, MouseListener{
+public class Select extends JPanel implements ActionListener{
 	
 	private JButton jButton_gotoGame;
 	private JButton jButton_gotoLearning;
@@ -27,7 +27,7 @@ public class Select extends JPanel implements ActionListener, MouseListener{
 		jlabel_background = new JLabel();
 		jButton_gotoGame = new JButton("Mini Games");
 		jButton_gotoLearning = new JButton("Learning");
-		jButton_back = new JButton("back");
+		jButton_back = new JButton("Back");
 		jButton_back.setBackground(Color.white);
 		jButton_back.setOpaque(false);
 		
@@ -35,13 +35,13 @@ public class Select extends JPanel implements ActionListener, MouseListener{
 		this.setLayout(null);
 		
 		jButton_back.addActionListener(this);
+		jButton_gotoGame.addActionListener(this);
 		
 		this.add(jButton_gotoGame);
 		this.add(jButton_gotoLearning);
 		this.add(jButton_back);
 		this.add(title);
 		
-		jButton_gotoGame.addMouseListener(this);
 		jButton_gotoGame.setBounds(250, 200, 300, 80);
 		jButton_gotoLearning.setBounds(250, 320, 300, 80);
 		jButton_back.setBounds(20, 20, 80, 30);
@@ -91,8 +91,8 @@ public class Select extends JPanel implements ActionListener, MouseListener{
 	public void actionPerformed(ActionEvent e) {
 		
 	}
+/*<<<<<<< HEAD*/
 
-	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		if(arg0.getSource().equals(jButton_gotoGame)){
@@ -103,29 +103,31 @@ public class Select extends JPanel implements ActionListener, MouseListener{
 		}
 	}
 
-	@Override
+	
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-
+/*=======
+>>>>>>> branch 'master' of https://github.com/Dayeun/OOP_Project.git
+*/
 }

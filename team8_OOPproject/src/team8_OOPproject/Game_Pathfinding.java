@@ -29,7 +29,7 @@ public class Game_Pathfinding {
 	
 	public Game_Pathfinding()
 	{
-		pathGame =new Game_PathfindingMap().getPathGame();
+		//pathGame =new Game_PathfindingMap().getPathGame();
 		 
 	}
 	
