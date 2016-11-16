@@ -49,7 +49,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		jButton_back.setBounds(20, 20, 80, 30);
 		this.add(jButton_back);
 		
-		background = new ImageIcon("main.png");
+		background = new ImageIcon();
 		this.jlabel_background.setBounds(0,0, this.getWidth(), this.getHeight());
 		this.jlabel_background.setIcon(background);
 		this.add(jlabel_background);
@@ -98,7 +98,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 			}else if(ran== 6){
 				icon2 = new ImageIcon("barmagnet.PNG");
 			}
-			
+		
 			Character_move(ran);
 			
 			this.repaint();
@@ -140,17 +140,19 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 	
 	public void Character_move(int ran)
 	{
-		System.out.println(ran+"------");
 		for(int i = 0; i< ran ; i++){
 			System.out.println(moving);
-			if(moving == 0 &&moving == 4 && moving == 5 &&moving == 8 &&moving == 10 &&moving ==11 &&moving ==14){
+			if(moving == 0 || moving == 4 || moving == 5 || moving == 8 ||moving == 10 ||moving ==11 ||moving ==14){
 				character.moving_U(character.getX(),character.getY());
-			}else if( moving ==1 && moving == 2 && moving == 3 && moving == 12&&moving ==13  ){
+			}else if( moving ==1 || moving == 2 || moving == 3 || moving == 12 ||moving ==13  ){
 				character.moving_R(character.getX(),character.getY());
-			}else if(moving == 6 && moving == 7 && moving == 9){
+			}else if(moving == 6 || moving == 7 || moving == 9){
 				character.moving_L(character.getX(),character.getY());
 			}
+			
 			moving++;
+			if(moving ==15)
+				break;
 		}
 		if(moving == 9){
 			character.moving_U(character.getX(),character.getY());
