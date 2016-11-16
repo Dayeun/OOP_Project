@@ -21,6 +21,9 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 	private JButton rotation1;
 	private JButton rotation2;
 	private JButton jButton_back;
+	private JButton jButton_reset;
+	private JButton jButton_next;
+
 
 	private JLabel back;
 
@@ -56,17 +59,23 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
         u_mg= new JButton("",icon2);
 		rotation1 = new JButton("",icon);
 		rotation2= new JButton("",icon);
+		jButton_reset = new JButton("Reset");
+		jButton_next = new JButton("Next");
 
 		bar_mg.setBounds(620, 80, 60, 30);
 		u_mg.setBounds(620, 150, 50,50);
 		rotation1.setBounds(700, 50, 70, 70);
 		rotation2.setBounds(700, 150, 70, 70);
+		jButton_reset.setBounds(600,480,80,80);
+		jButton_next.setBounds(700, 480, 80, 80);
 		
 		this.add(rotation1);
 		this.add(rotation2);
 		this.add(bar_mg);
 		this.add(u_mg);
 		this.add(sc);
+		this.add(jButton_reset);
+		this.add(jButton_next);
 	    
 		rotation1.addMouseListener(this);
 		rotation2.addMouseListener(this);
@@ -74,6 +83,8 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		bar_mg.addMouseListener(this);
 		u_mg.addMouseListener(this);
 		u_mg.addMouseMotionListener(this);
+		jButton_reset.addActionListener(this);
+		jButton_next.addActionListener(this);
 		
 		//return to previous panel
 		jButton_back = new JButton("Back");
@@ -245,7 +256,11 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+		if (arg0.getSource() == jButton_reset) { // reset button
+			sc.setLocation(105,290);
+			bar_mg.setLocation(620,80);
+			u_mg.setLocation(620,150);
+		}
 		
 	}
 
@@ -308,6 +323,22 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 
 	public void setjButton_back(JButton jButton_back) {
 		this.jButton_back = jButton_back;
+	}
+	
+	public JButton getjButton_reset() {
+		return jButton_reset;
+	}
+
+	public void setjButton_reset(JButton jButton_reset) {
+		this.jButton_reset = jButton_reset;
+	}
+	
+	public JButton getjButton_next() {
+		return jButton_next;
+	}
+	
+	public void setjButton_next(JButton jButton_next) {
+		this.jButton_next = jButton_next;
 	}
 
 }
