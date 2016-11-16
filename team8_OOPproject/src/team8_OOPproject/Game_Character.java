@@ -27,24 +27,24 @@ public class Game_Character extends JLabel {
 
 	}
 	
-	public void moving_R(int x, int y)
+	public void moving_R(int x, int y,int k)
 	{
-		setLocation(x+98, y);
+		setLocation(x+k, y);
 	}
 
-	public void moving_L(int x, int y)
+	public void moving_L(int x, int y,int k)
 	{
-		setLocation(x-98, y);
+		setLocation(x-k, y);
 	}
 
 	
-	public void moving_U(int x, int y)
+	public void moving_U(int x, int y,int k)
 	{
-		setLocation(x, y-103);
+		setLocation(x, y-k);
 	}
 	
-	public void moving_D(int x, int y)
+	public void moving_D(int x, int y,int k)
 	{
-		setLocation(x, y+105);
+		setLocation(x, y+k);
 	}
 }

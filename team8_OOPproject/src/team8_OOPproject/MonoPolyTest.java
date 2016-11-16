@@ -23,7 +23,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 	
 	Game_Character character;
 	public MonoPolyTest(){		
-		character =new Game_Character(200,290,"character.PNG");
+		character =new Game_Character(80,430,"character.PNG");
 		jlabel_background = new JLabel();
 		
 		this.setSize(800, 600);
@@ -49,7 +49,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		jButton_back.setBounds(20, 20, 80, 30);
 		this.add(jButton_back);
 		
-		background = new ImageIcon("main.png");
+		background = new ImageIcon("MonopolyMap.png");
 		this.jlabel_background.setBounds(0,0, this.getWidth(), this.getHeight());
 		this.jlabel_background.setIcon(background);
 		this.add(jlabel_background);
@@ -83,6 +83,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		//dice 값에 따라 주사위 모양 변경 -- 그림 추후 변경
+		System.out.println(e.getY()+"=+="+e.getX());
 		if(e.getSource().equals(dice)){
 			int ran =rand.nextInt(6)+1;
 			if(ran== 1){
@@ -98,7 +99,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 			}else if(ran== 6){
 				icon2 = new ImageIcon("barmagnet.PNG");
 			}
-			
+		
 			Character_move(ran);
 			
 			this.repaint();
@@ -138,23 +139,28 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 	}
 	
 	
+	
 	public void Character_move(int ran)
 	{
-		System.out.println(ran+"------");
 		for(int i = 0; i< ran ; i++){
-			System.out.println(moving);
-			if(moving == 0 &&moving == 4 && moving == 5 &&moving == 8 &&moving == 10 &&moving ==11 &&moving ==14){
-				character.moving_U(character.getX(),character.getY());
-			}else if( moving ==1 && moving == 2 && moving == 3 && moving == 12&&moving ==13  ){
-				character.moving_R(character.getX(),character.getY());
-			}else if(moving == 6 && moving == 7 && moving == 9){
-				character.moving_L(character.getX(),character.getY());
+			System.out.println(ran);
+			if(moving == 0 || moving == 4 || moving == 5 || moving == 8 ||moving == 10 ||moving ==11 ||moving ==14){
+				character.moving_U(character.getX(),character.getY(),70);
+			}else if( moving ==1 || moving == 2 || moving == 3 || moving == 12 ||moving ==13  ){
+				character.moving_R(character.getX(),character.getY(),100);
+			}else if(moving == 6 || moving == 7 || moving == 9){
+				character.moving_L(character.getX(),character.getY(),100);
 			}
+			
 			moving++;
+			if(moving == 15){
+				character.setLocation(300, -50);
+				break;
+			}
 		}
 		if(moving == 9){
-			character.moving_U(character.getX(),character.getY());
-			character.moving_U(character.getX(),character.getY());
+			character.moving_U(character.getX(),character.getY(),70);
+			character.moving_U(character.getX(),character.getY(),70);
 		}
 		
 	}
