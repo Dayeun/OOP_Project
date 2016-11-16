@@ -140,7 +140,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 	
 	
 	
-	public void Character_move(int ran)
+	public void Character_move(int ran) 
 	{
 		for(int i = 0; i< ran ; i++){
 			System.out.println(ran);
@@ -150,6 +150,13 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 				character.moving_R(character.getX(),character.getY(),100);
 			}else if(moving == 6 || moving == 7 || moving == 9){
 				character.moving_L(character.getX(),character.getY(),100);
+			}
+
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			
 			moving++;

@@ -242,6 +242,12 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 			JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE); // show
 
 		}
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException l) {
+			// TODO Auto-generated catch block
+			l.printStackTrace();
+		}
 	}
 
 
