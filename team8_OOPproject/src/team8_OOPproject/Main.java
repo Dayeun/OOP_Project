@@ -17,6 +17,8 @@ public class Main extends JFrame implements ActionListener {
 	private Game_SelectMenu game_Select;
 	private Game_PathfindingMap pathfinding;
 	private MonoPolyTest monopoly;
+	private Learning_SelectMenu learning_Select;
+	private Chapter1 chap1;
 	
 	static ArrayList<UserInformation> user = new ArrayList<UserInformation>();
 
@@ -42,18 +44,24 @@ public class Main extends JFrame implements ActionListener {
 		game_Select = new Game_SelectMenu();
 		pathfinding = new Game_PathfindingMap();
 		monopoly = new MonoPolyTest();
+		learning_Select = new Learning_SelectMenu();
+		chap1 = new Chapter1();
 		
 		account_Login.getjButton_login().addActionListener(this);
 		account_Login.getjButton_signup().addActionListener(this);
 		signup.getjButton_signup().addActionListener(this);
 		signup.getjButton_back().addActionListener(this);
 		select.getjButton_gotoGame().addActionListener(this);
+		select.getjButton_gotoLearning().addActionListener(this);
 		select.getjButton_back().addActionListener(this);
 		game_Select.getjButton_back().addActionListener(this);
 		game_Select.getjButton_bPathFindingG().addActionListener(this);
 		game_Select.getjButton_bMonopolyG().addActionListener(this);
 		pathfinding.getjButton_back().addActionListener(this);
 		monopoly.getjButton_back().addActionListener(this);
+		learning_Select.getjButton_back().addActionListener(this);
+		learning_Select.getBtnChap1().addActionListener(this);
+		chap1.getjButton_back().addActionListener(this);
 		
 		this.add(account_Login);// add JPanel to the JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -129,6 +137,18 @@ public class Main extends JFrame implements ActionListener {
 					changeState(game_Select);
 				} else if (button.getSource().equals(pathfinding.getjButton_back())){
 					changeState(game_Select);
+				}
+				else if (button.getSource().equals(select.getjButton_gotoLearning())){
+					changeState(learning_Select);
+				}
+				else if (button.getSource().equals(learning_Select.getjButton_back())){
+					changeState(select);
+				}
+				else if (button.getSource().equals(learning_Select.getBtnChap1())){
+					changeState(chap1);
+				}
+				else if (button.getSource().equals(chap1.getjButton_back())){
+					changeState(learning_Select);
 				}
 		
 	}
