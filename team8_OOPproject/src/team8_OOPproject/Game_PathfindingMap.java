@@ -54,7 +54,6 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		this.setSize(800,600);
         back = new JLabel();
 		
-
         bar_mg = new JLabel(icon1);
         u_mg= new JLabel(icon2);
 		rotation1 = new JButton("",icon);
