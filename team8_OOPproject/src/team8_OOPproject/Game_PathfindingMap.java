@@ -11,15 +11,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-public class Game_PathfindingMap implements MouseMotionListener,MouseListener,ActionListener{
-	private JFrame pathGame;
+public class Game_PathfindingMap extends JPanel implements MouseMotionListener,MouseListener,ActionListener{
 	private JButton bar_mg;
 	private JButton u_mg;
 	private JButton rotation1;
 	private JButton rotation2;
-	private JLabel back;
 
+	private JLabel back;
 
 	private ImageIcon background;
 	
@@ -31,21 +31,21 @@ public class Game_PathfindingMap implements MouseMotionListener,MouseListener,Ac
 	ImageIcon icon2= new ImageIcon("umagnet.PNG");
 	ImageIcon icon2_1= new ImageIcon("umagnetInv.PNG");
 	ImageIcon icon = new ImageIcon("rotation.PNG");
-	Game_Character sc;
 	
 	boolean isDragged1 =false;
 	boolean isDragged2 =false;
 	int offX ,offY;
+	
+	private int xPos;
+	private int yPos;
 
+	Game_Character sc;
 
 	public Game_PathfindingMap()
 	{
-		sc =new Game_Character(105,270,"MainMagnet.PNG");
-		/*Game_Character bar_mg =new Game_Character(670,100,"barmagnet.PNG")
-		Game_Character u_mg =new Game_Character(700,200,"umagnet.PNG");*/
+		sc =new Game_Character(105,290,"MainMagnet.PNG");
 
-		pathGame= new JFrame();
-		pathGame.setBounds(120,120,800,600);
+		this.setSize(800,600);
         back = new JLabel();
 		
 
@@ -59,11 +59,11 @@ public class Game_PathfindingMap implements MouseMotionListener,MouseListener,Ac
 		rotation1.setBounds(700, 50, 70, 70);
 		rotation2.setBounds(700, 150, 70, 70);
 		
-		pathGame.add(rotation1);
-		pathGame.add(rotation2);
-		pathGame.add(bar_mg);
-	    pathGame.add(u_mg);
-		pathGame.add(sc);
+		this.add(rotation1);
+		this.add(rotation2);
+		this.add(bar_mg);
+		this.add(u_mg);
+		this.add(sc);
 	    
 		rotation1.addMouseListener(this);
 		rotation2.addMouseListener(this);
@@ -72,11 +72,12 @@ public class Game_PathfindingMap implements MouseMotionListener,MouseListener,Ac
 		u_mg.addMouseListener(this);
 		u_mg.addMouseMotionListener(this);
 		background = new ImageIcon("PathFinding.png");
-	    this.back.setBounds(0,0, pathGame.getWidth(), pathGame.getHeight());
+	    this.back.setBounds(0,0, this.getWidth(), this.getHeight());
 		this.back.setIcon(background);
-		pathGame.add(back);
+		this.add(back);
+		this.setLayout(null);
 		
-		pathGame.setVisible(true);	
+		this.setVisible(true);	
 	}
 	
 
@@ -84,52 +85,52 @@ public class Game_PathfindingMap implements MouseMotionListener,MouseListener,Ac
 	public void mouseClicked(MouseEvent e) {
 		if(e.getSource().equals(rotation1)){
 			if(bar_rotation%2 == 0){
-				pathGame.repaint();
-				pathGame.remove(bar_mg);
+				this.repaint();
+				this.remove(bar_mg);
 				bar_mg = new JButton("",icon1_1);
-				pathGame.add(bar_mg);
-				pathGame.repaint();
+				this.add(bar_mg);
+				this.repaint();
 				bar_mg.setVisible(true);
 				bar_mg.setBounds(620,80,60,30);
 				bar_rotation++;
 				bar_mg.addMouseMotionListener(this);
 				bar_mg.addMouseListener(this);
-				pathGame.add(back);
+				this.add(back);
 			}
 			else{
-				pathGame.repaint();
-				pathGame.remove(bar_mg);
+				this.repaint();
+				this.remove(bar_mg);
 				bar_mg = new JButton("",icon1);
-				pathGame.add(bar_mg);
+				this.add(bar_mg);
 				bar_mg.setBounds(620,80,60,30);
 				bar_rotation++;
 				bar_mg.addMouseListener(this);
 				bar_mg.addMouseMotionListener(this);
-				pathGame.add(back);
+				this.add(back);
 			}
 		}
 		else if(e.getSource().equals(rotation2)){
 			if(u_rotation %2 ==0){
-				pathGame.repaint();
-				pathGame.remove(u_mg);
+				this.repaint();
+				this.remove(u_mg);
 				u_mg = new JButton("",icon2_1);
-				pathGame.add(u_mg);
+				this.add(u_mg);
 				u_mg.setBounds(620, 150, 50,50);
 				u_rotation++;
 				u_mg.addMouseListener(this);
 				u_mg.addMouseMotionListener(this);
-				pathGame.add(back);
+				this.add(back);
 			}
 			else{
-				pathGame.repaint();
-				pathGame.remove(u_mg);
+				this.repaint();
+				this.remove(u_mg);
 				u_mg = new JButton("",icon2);
-				pathGame.add(u_mg);
+				this.add(u_mg);
 				u_mg.setBounds(620, 150, 50,50);
 				u_rotation++;
 				u_mg.addMouseListener(this);
 				u_mg.addMouseMotionListener(this);
-				pathGame.add(back);
+				this.add(back);
 			}
 		}
 	}
@@ -184,29 +185,31 @@ public class Game_PathfindingMap implements MouseMotionListener,MouseListener,Ac
 		int x, y;
 		x = sc.getX() /110;
 		y = sc.getY() /300;
-		System.out.println(x+"---"+y +"--"+ch);
 		map s = new map();
-		int r = s.moveR_Magnet(y, x);
-		int l = s.moveL_Magnet(y, x);
+		int m;
 		if(ch == 1.0 && x== 0&&y== 1){//1
 			sc.moving_U(sc.getX(),sc.getY());/*sc.setLocation(105, 270);*/
 		}else if(ch == 2.0 && x == 0 && y == 0 ){//2
 			sc.moving_D(sc.getX(),sc.getY());/*sc.setLocation(105, 375);*/
 		}else if(ch == 2.1 && x == 2 && y == 1 ){//2
-			for(int i = 0; i <l-1 ;i++)
+			m = s.moveL_Magnet(y, x);
+			for(int i = 0; i <m-1 ;i++)
 				sc.moving_L(sc.getX(),sc.getY());/*sc.setLocation(105, 375);*/
 		}else if(ch == 3.0&&x==2&&y==0){//3
 			sc.moving_D(sc.getX(),sc.getY());/*sc.setLocation(305, 375);*/
 		}else if(ch == 3.1&&x==0&&y==1){//3
-			for(int i = 0; i <r-1 ;i++)
+			m = s.moveR_Magnet(y, x);
+			for(int i = 0; i <m-1 ;i++)
 				sc.moving_R(sc.getX(),sc.getY());/*sc.setLocation(305, 375);*/
 		}else if(ch == 4.0&& x== 2 && y== 1){//4
 			sc.moving_U(sc.getX(),sc.getY());/*sc.setLocation(305, 270);*/
 		}else if(ch == 4.1&& x== 4 && y==0){//4
-			for(int i = 0; i <l-1 ;i++)
+			m = s.moveL_Magnet(y, x);
+			for(int i = 0; i <m-1 ;i++)
 				sc.moving_L(sc.getX(),sc.getY());/*sc.setLocation(305, 270);*/
 		}else if(ch == 5.1&&x==2&&y==0){//5
-			for(int i = 0; i <r-1 ;i++)
+			m = s.moveR_Magnet(y, x);
+			for(int i = 0; i <m-1 ;i++)
 				sc.moving_R(sc.getX(),sc.getY());/*sc.setLocation(500,270);*/
 		}else if(ch == 6.0&&x==4 &&y==0){//6
 			sc.moving_D(sc.getX(),sc.getY());/*sc.setLocation(500,375);*/
@@ -215,14 +218,14 @@ public class Game_PathfindingMap implements MouseMotionListener,MouseListener,Ac
 
 
 
-	public JFrame getPathGame() {
+/*	public JFrame getPathGame() {
 		return pathGame;
 	}
 
 
 	public void setPathGame(JFrame pathGame) {
 		this.pathGame = pathGame;
-	}
+	}*/
 
 
 	@Override
@@ -279,5 +282,7 @@ public class Game_PathfindingMap implements MouseMotionListener,MouseListener,Ac
 		}
 		return -1;
 	}
+
 	
 }
+
