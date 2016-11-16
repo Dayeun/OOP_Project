@@ -16,6 +16,7 @@ public class Main extends JFrame implements ActionListener {
 	private Select select;
 	private Game_SelectMenu game_Select;
 	private Game_PathfindingMap pathfinding;
+	private MonoPolyTest monopoly;
 	
 	static ArrayList<UserInformation> user = new ArrayList<UserInformation>();
 
@@ -40,6 +41,7 @@ public class Main extends JFrame implements ActionListener {
 		select = new Select();
 		game_Select = new Game_SelectMenu();
 		pathfinding = new Game_PathfindingMap();
+		monopoly = new MonoPolyTest();
 		
 		account_Login.getjButton_login().addActionListener(this);
 		account_Login.getjButton_signup().addActionListener(this);
@@ -49,6 +51,9 @@ public class Main extends JFrame implements ActionListener {
 		select.getjButton_back().addActionListener(this);
 		game_Select.getjButton_back().addActionListener(this);
 		game_Select.getjButton_bPathFindingG().addActionListener(this);
+		game_Select.getjButton_bMonopolyG().addActionListener(this);
+		pathfinding.getjButton_back().addActionListener(this);
+		monopoly.getjButton_back().addActionListener(this);
 		
 		this.add(account_Login);// add JPanel to the JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -118,6 +123,12 @@ public class Main extends JFrame implements ActionListener {
 					changeState(select);
 				} else if (button.getSource().equals(game_Select.getjButton_bPathFindingG())){
 					changeState(pathfinding);
+				} else if (button.getSource().equals(game_Select.getjButton_bMonopolyG())){
+					changeState(monopoly);
+				} else if (button.getSource().equals(monopoly.getjButton_back())){
+					changeState(game_Select);
+				} else if (button.getSource().equals(pathfinding.getjButton_back())){
+					changeState(game_Select);
 				}
 		
 	}

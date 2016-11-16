@@ -22,30 +22,31 @@ public class Game_SelectMenu extends JPanel implements ActionListener{
 		
 		jButton_bMonopolyG = new JButton("MonoPoly");
 		jButton_bPathFindingG = new JButton("Path Finding");
-		jButton_back = new JButton("Back");
 		
 		this.setSize(800, 600);
 		
 		// button event
 		jButton_bMonopolyG.addActionListener(this);
 		jButton_bPathFindingG.addActionListener(this);
-		jButton_back.addActionListener(this);
 		
 		this.setLayout(null);
 		
 		this.add(jButton_bMonopolyG);
 		this.add(jButton_bPathFindingG);
-		this.add(jButton_back);
 		this.add(title);
 		
 		jButton_bPathFindingG.setBackground(Color.ORANGE);
 		jButton_bMonopolyG.setBackground(Color.ORANGE);
-		jButton_back.setBackground(Color.white);
 	
 		jButton_bMonopolyG.setBounds(230, 300, 350, 60);
 		jButton_bPathFindingG.setBounds(230, 400, 350, 60);
-		jButton_back.setBounds(20, 20, 80, 30);
 
+		//return to previous panel
+		jButton_back = new JButton("Back");
+		jButton_back.addActionListener(this);
+		jButton_back.setBackground(Color.white);
+		jButton_back.setBounds(20, 20, 80, 30);
+		this.add(jButton_back);
 		
 		background = new ImageIcon("main.png");
 		this.jlabel_background.setBounds(0,0, this.getWidth(), this.getHeight());

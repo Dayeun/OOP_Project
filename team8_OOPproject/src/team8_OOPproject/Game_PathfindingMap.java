@@ -1,5 +1,6 @@
 package team8_OOPproject;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 	private JButton u_mg;
 	private JButton rotation1;
 	private JButton rotation2;
+	private JButton jButton_back;
 
 	private JLabel back;
 
@@ -71,6 +73,14 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		bar_mg.addMouseListener(this);
 		u_mg.addMouseListener(this);
 		u_mg.addMouseMotionListener(this);
+		
+		//return to previous panel
+		jButton_back = new JButton("Back");
+		jButton_back.addActionListener(this);
+		jButton_back.setBackground(Color.white);
+		jButton_back.setBounds(20, 20, 80, 30);
+		this.add(jButton_back);
+		
 		background = new ImageIcon("PathFinding.png");
 	    this.back.setBounds(0,0, this.getWidth(), this.getHeight());
 		this.back.setIcon(background);
@@ -240,6 +250,7 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		
 	}
 
+
 	/*
 	* 1¹ø                                                                               6 u_inv//
 	* 2¹ø                        bar_inv 2-1// 1 u_
@@ -270,8 +281,8 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 			else if(u_mg.getX() >= 270 && u_mg.getX()<= 370 && u_mg.getY() <= 560 &&u_mg.getY() >= 450)
 			    return 4.0; //ok
 			/*else if(u_mg.getX() >= 470 && u_mg.getX()<= 570 && u_mg.getY() <= 560 &&u_mg.getY() >= 450)
-			    return 5.0; //ok
-*/		}
+			    return 5.0; //ok*/		
+		    }
 		else if(u_rotation % 2 == 0){
 			if(u_mg.getX() >= 70 && u_mg.getX()<= 170 && u_mg.getY() <= 260 &&u_mg.getY() >= 140)
 			    return 2.0; //ok
@@ -283,6 +294,16 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		return -1;
 	}
 
-	
+
+
+	public JButton getjButton_back() {
+		return jButton_back;
+	}
+
+
+	public void setjButton_back(JButton jButton_back) {
+		this.jButton_back = jButton_back;
+	}
+
 }
 
