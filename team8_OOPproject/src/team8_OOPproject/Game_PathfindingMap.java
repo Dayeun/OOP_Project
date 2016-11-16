@@ -35,7 +35,6 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 	ImageIcon icon2_1= new ImageIcon("umagnetInv.PNG");
 	ImageIcon icon = new ImageIcon("rotation.PNG");
 	
-	
 	boolean isDragged1 =false;
 	boolean isDragged2 =false;
 	int offX ,offY;
