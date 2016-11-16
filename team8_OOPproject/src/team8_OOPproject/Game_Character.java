@@ -26,9 +26,28 @@ public class Game_Character extends JLabel {
 	}
 
 	public void setLocation(int x, int y) {
-
 		this.setBounds(x, y, Magnet.getIconWidth(), Magnet.getIconHeight());
 
 	}
+	
+	public void moving_R(int x, int y)
+	{
+		setLocation(x+98, y);
+	}
 
+	public void moving_L(int x, int y)
+	{
+		setLocation(x-98, y);
+	}
+
+	
+	public void moving_U(int x, int y)
+	{
+		setLocation(x, y-103);
+	}
+	
+	public void moving_D(int x, int y)
+	{
+		setLocation(x, y+105);
+	}
 }
