@@ -7,26 +7,23 @@ import javax.swing.JLabel;
 
 public class Game_Character extends JLabel {
 
-	private ImageIcon Magnet;
-
-	private int width = 150;
-	private int height = 150;
+	private ImageIcon MainCharacter;
 
 	public Game_Character(int x, int y, String a) {
 
-		Magnet = new ImageIcon(a);
-		this.setIcon(Magnet);
+		MainCharacter = new ImageIcon(a);
+		this.setIcon(MainCharacter);
 		setLocation(x, y);
 
 	}
 
 	public void setIconImage(String imageName) {
 
-		Magnet = new ImageIcon(imageName);
+		MainCharacter = new ImageIcon(imageName);
 	}
 
 	public void setLocation(int x, int y) {
-		this.setBounds(x, y, Magnet.getIconWidth(), Magnet.getIconHeight());
+		this.setBounds(x, y, MainCharacter.getIconWidth(), MainCharacter.getIconHeight());
 
 	}
 	
