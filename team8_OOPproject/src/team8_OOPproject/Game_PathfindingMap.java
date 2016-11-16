@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Game_PathfindingMap extends JPanel implements MouseMotionListener,MouseListener,ActionListener{
-	private JButton bar_mg;
-	private JButton u_mg;
+	private JLabel bar_mg;
+	private JLabel u_mg;
 	private JButton rotation1;
 	private JButton rotation2;
 	private JButton jButton_back;
@@ -54,9 +54,8 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		this.setSize(800,600);
         back = new JLabel();
 		
-
-        bar_mg = new JButton("",icon1);
-        u_mg= new JButton("",icon2);
+        bar_mg = new JLabel(icon1);
+        u_mg= new JLabel(icon2);
 		rotation1 = new JButton("",icon);
 		rotation2= new JButton("",icon);
 		jButton_reset = new JButton("Reset");
@@ -109,7 +108,7 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 			if(bar_rotation%2 == 0){
 				this.repaint();
 				this.remove(bar_mg);
-				bar_mg = new JButton("",icon1_1);
+				bar_mg = new JLabel(icon1_1);
 				this.add(bar_mg);
 				this.repaint();
 				bar_mg.setVisible(true);
@@ -122,7 +121,7 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 			else{
 				this.repaint();
 				this.remove(bar_mg);
-				bar_mg = new JButton("",icon1);
+				bar_mg = new JLabel(icon1);
 				this.add(bar_mg);
 				bar_mg.setBounds(620,80,60,30);
 				bar_rotation++;
@@ -135,7 +134,7 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 			if(u_rotation %2 ==0){
 				this.repaint();
 				this.remove(u_mg);
-				u_mg = new JButton("",icon2_1);
+				u_mg = new JLabel(icon2_1);
 				this.add(u_mg);
 				u_mg.setBounds(620, 150, 50,50);
 				u_rotation++;
@@ -146,7 +145,7 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 			else{
 				this.repaint();
 				this.remove(u_mg);
-				u_mg = new JButton("",icon2);
+				u_mg = new JLabel(icon2);
 				this.add(u_mg);
 				u_mg.setBounds(620, 150, 50,50);
 				u_rotation++;
@@ -182,22 +181,25 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 			//
 			offX = e.getX() - bar_mg.getX();   //������ - �ڼ� ��ġ
 			offY = e.getY() - bar_mg.getY();
+			bar_mg.setLocation(e.getX()-offX, e.getY()-offY);
 		}
 		else if(u_mg.contains(e.getX(), e.getY() ) ){
 			isDragged1 = false;
 			isDragged2 = true;
 			offX = e.getX() - u_mg.getX();
 			offY = e.getY() - u_mg.getY();
+			u_mg.setLocation(e.getX()-offX, e.getY()-offY);
 		}
 	}
 	
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if(isDragged1)
-			bar_mg.setBounds(e.getX() - offX, e.getY() - offY, 60, 30);
-		else if(isDragged2)
-			u_mg.setBounds(e.getX() - offX, e.getY() - offY, 50, 50);
+		if(isDragged1){
+			bar_mg.setLocation(e.getX()-offX, e.getY()-offY);
+		}else if(isDragged2){
+			u_mg.setLocation(e.getX()-offX, e.getY()-offY);
+		}
 	}
 
 	@Override
