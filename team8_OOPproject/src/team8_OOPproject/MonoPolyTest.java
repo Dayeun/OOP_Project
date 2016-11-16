@@ -137,6 +137,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		
 	}
 	
+	
 	public void Character_move(int ran)
 	{
 		System.out.println(ran+"------");
