@@ -18,8 +18,8 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 	private JLabel jlabel_background;
 	
 	private ImageIcon background;
-	ImageIcon icon1 = new ImageIcon("barmagnet.PNG");
-	ImageIcon icon2 = new ImageIcon("barmagnet.PNG");
+	ImageIcon icon1 = new ImageIcon("die.PNG");
+	ImageIcon icon2;
 	
 	Game_Character character;
 	public MonoPolyTest(){		
