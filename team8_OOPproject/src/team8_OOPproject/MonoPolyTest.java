@@ -83,7 +83,6 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		//dice 값에 따라 주사위 모양 변경 -- 그림 추후 변경
-		System.out.println(e.getY()+"=+="+e.getX());
 		if(e.getSource().equals(dice)){
 			int ran =rand.nextInt(6)+1;
 			if(ran== 1){
@@ -140,10 +139,9 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 	
 	
 	
-	public void Character_move(int ran)
+	public void Character_move(int ran) 
 	{
 		for(int i = 0; i< ran ; i++){
-			System.out.println(ran);
 			if(moving == 0 || moving == 4 || moving == 5 || moving == 8 ||moving == 10 ||moving ==11 ||moving ==14){
 				character.moving_U(character.getX(),character.getY(),70);
 			}else if( moving ==1 || moving == 2 || moving == 3 || moving == 12 ||moving ==13  ){
@@ -151,10 +149,18 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 			}else if(moving == 6 || moving == 7 || moving == 9){
 				character.moving_L(character.getX(),character.getY(),100);
 			}
+
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			moving++;
 			if(moving == 15){
 				character.setLocation(300, -50);
+				JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE);
 				break;
 			}
 		}
