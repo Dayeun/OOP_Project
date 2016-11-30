@@ -181,14 +181,12 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 			//
 			offX = e.getX() - bar_mg.getX();   
 			offY = e.getY() - bar_mg.getY();
-			bar_mg.setLocation(e.getX()-offX, e.getY()-offY);
 		}
 		else if(u_mg.contains(e.getX(), e.getY())){
 			isDragged1 = false;
 			isDragged2 = true;
 			offX = e.getX() - u_mg.getX();
 			offY = e.getY() - u_mg.getY();
-			u_mg.setLocation(e.getX()-offX, e.getY()-offY);
 		}
 	}
 	
