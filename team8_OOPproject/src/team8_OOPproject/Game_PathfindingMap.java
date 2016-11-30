@@ -175,15 +175,15 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if(bar_mg.contains(e.getX(), e.getY()) ){//���� ��ġ�� ���Եȴٸ�
+		if(bar_mg.contains(e.getX(), e.getY()) ){
 			isDragged1 = true;
 			isDragged2 = false;
 			//
-			offX = e.getX() - bar_mg.getX();   //������ - �ڼ� ��ġ
+			offX = e.getX() - bar_mg.getX();   
 			offY = e.getY() - bar_mg.getY();
 			bar_mg.setLocation(e.getX()-offX, e.getY()-offY);
 		}
-		else if(u_mg.contains(e.getX(), e.getY() ) ){
+		else if(u_mg.contains(e.getX(), e.getY())){
 			isDragged1 = false;
 			isDragged2 = true;
 			offX = e.getX() - u_mg.getX();
@@ -243,8 +243,10 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 			sc.moving_D(sc.getX(),sc.getY(),u_d);
 		}
 	
-		if(s.checkGoal(y, x) == 1)
+		if(s.checkGoal(y, x) == 1){
+			System.out.println(y +" "+ x );
 			JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE); // show
+		}
 	}
 
 

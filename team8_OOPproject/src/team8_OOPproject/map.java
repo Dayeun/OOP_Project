@@ -1,7 +1,7 @@
 package team8_OOPproject;
 
 public class map {
-	int arr[][] = new int[][]{{1, 0, 1, 1 ,1}, {1, 1, 1, 0, 1}};
+	int arr[][] = new int[][]{{1, 0, 1, 1 ,1}, {1, 1, 1, 0, 2}};
 	public int moveR_Magnet(int x, int y)
 	{
 		int k =0;
@@ -24,7 +24,7 @@ public class map {
 		return k;
 	}
 	
-	public int checkGoal(int y, int x){
+	public int checkGoal(int y, int x){		
 		if((arr[y][x]) == 2)
 			return 1;		
 		return 0;
