@@ -24,7 +24,6 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 	private JButton jButton_reset;
 	private JButton jButton_next;
 
-
 	private JLabel back;
 
 	private ImageIcon background;
@@ -101,7 +100,6 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		this.setVisible(true);	
 	}
 	
-
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(e.getSource().equals(rotation1)){
@@ -198,7 +196,8 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 			u_mg.setLocation(e.getX()-offX, e.getY()-offY);
 		}
 	}
-
+   //adsdsakjdnajkfjksafkjnbvakjsvbjk
+	
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
