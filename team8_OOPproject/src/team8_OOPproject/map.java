@@ -29,4 +29,13 @@ public class map {
 			return 1;		
 		return 0;
 	}
+	
+	public int black_box(int y){
+		int x = -1;
+		for(int i =0; i<arr[y].length;i++){
+			if(arr[y][i] == 0)
+				x = i;
+		}
+		return x;
+	}
 }
