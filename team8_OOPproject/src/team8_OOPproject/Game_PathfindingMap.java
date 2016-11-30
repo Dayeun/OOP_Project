@@ -175,14 +175,13 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if(bar_mg.contains(e.getX(), e.getY()) ){
+		if(bar_mg.contains(new Point(e.getX(),e.getY()))){
 			isDragged1 = true;
 			isDragged2 = false;
-			//
 			offX = e.getX() - bar_mg.getX();   
 			offY = e.getY() - bar_mg.getY();
 		}
-		else if(u_mg.contains(e.getX(), e.getY())){
+		else if(u_mg.contains(new Point(e.getX(),e.getY()))){
 			isDragged1 = false;
 			isDragged2 = true;
 			offX = e.getX() - u_mg.getX();
@@ -205,42 +204,58 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		// TODO Auto-generated method stub
 		isDragged1 = false;
 		isDragged2 = false;
-		double ch = CheckPosition();
+		int[] bar= CheckPosition();
+		int[] u =CheckPosition_();
+		
 		int x, y;
-		x = sc.getX() /110;
-		y = sc.getY() /300;
+		x = sc.getX() /110;   // Main magnet x position
+		y = sc.getY() /300;   // Main magnet y position
+		
 		map s = new map();
 		int m;
 		int r_l = 98;
 		int u_d = 103;
-		if(ch == 1.0 && x== 0&&y== 1){
-			sc.moving_U(sc.getX(),sc.getY(),u_d);
-		}else if(ch == 2.0 && x == 0 && y == 0 ){
-			sc.moving_D(sc.getX(),sc.getY(),u_d);
-		}else if(ch == 2.1 && x == 2 && y == 1 ){
-			m = s.moveL_Magnet(y, x);
-			for(int i = 0; i <m-1 ;i++)
-				sc.moving_L(sc.getX(),sc.getY(),r_l);
-		}else if(ch == 3.0&&x==2&&y==0){//3
-			sc.moving_D(sc.getX(),sc.getY(),u_d);
-		}else if(ch == 3.1&&x==0&&y==1){//3
-			m = s.moveR_Magnet(y, x);
-			for(int i = 0; i <m-1 ;i++)
-				sc.moving_R(sc.getX(),sc.getY(),r_l);
-		}else if(ch == 4.0&& x== 2 && y== 1){//4
-			sc.moving_U(sc.getX(),sc.getY(),u_d);
-		}else if(ch == 4.1&& x== 4 && y==0){//4
-			m = s.moveL_Magnet(y, x);
-			for(int i = 0; i <m-1 ;i++)
-				sc.moving_L(sc.getX(),sc.getY(),r_l);
-		}else if(ch == 5.1&&x==2&&y==0){//5
-			m = s.moveR_Magnet(y, x);
-			for(int i = 0; i <m-1 ;i++)
-				sc.moving_R(sc.getX(),sc.getY(),r_l);
-		}else if(ch == 6.0&&x==4 &&y==0){//6
-			sc.moving_D(sc.getX(),sc.getY(),u_d);
+		
+		if(u[2] == 1){ 
+			if((x == u[0] - 1)&& (y == u[1] - 1 )){
+			    sc.moving_U(sc.getX(),sc.getY(),u_d);
+			}		  
+		}else if(u[2] == 0){ //위에서 아래로
+			if((x == u[0] - 1)&& (y == u[1])){
+			    sc.moving_D(sc.getX(),sc.getY(),u_d);
+			}	
 		}
-	
+		
+		if(bar[2] == 1){  
+			if((bar[0] == 0) && (y == bar[1])){
+				if(s.black_box(y) > x&&s.black_box(y)!= -1){
+					m = s.moveL_Magnet(y, x);
+			        for(int i = 0; i <m-1 ;i++)
+		    	    	sc.moving_L(sc.getX(),sc.getY(),r_l);
+				}			
+			}
+			else if((bar[0] == 6) && (y == bar[1])){ 
+				if(s.black_box(y) < x &&s.black_box(y)!= -1);
+	    			m = s.moveR_Magnet(y, x);
+		        	for(int i = 0; i <m-1 ;i++)
+			        	sc.moving_R(sc.getX(),sc.getY(),r_l);
+			}
+		}else if(bar[2] ==0){ 
+			if((bar[0] == 0) && ( y == bar[1])){
+				if(s.black_box(y) > x&&s.black_box(y)!= -1){
+			    	m = s.moveR_Magnet(y, x);
+		        	for(int i = 0; i <m-1 ;i++)
+			        	sc.moving_R(sc.getX(),sc.getY(),r_l);
+				}
+			}else if((bar[0] == 6) && (y == bar[1])){  
+				if(s.black_box(y) < x&&s.black_box(y)!= -1){
+					m = s.moveL_Magnet(y, x);
+			        for(int i = 0; i <m-1 ;i++)
+			        	sc.moving_L(sc.getX(),sc.getY(),r_l);
+				}		
+			}
+		}
+		
 		if(s.checkGoal(y, x) == 1){
 			System.out.println(y +" "+ x );
 			JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE); // show
@@ -267,40 +282,29 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 	}
 
 	
-	public double CheckPosition()
+	public int[] CheckPosition()
 	{
-		if(bar_rotation %2 == 1){//inv	
-		    if(bar_mg.getX()>= 10 && bar_mg.getX()<= 70 && bar_mg.getY() <= 440 &&bar_mg.getY() >= 360)
-			    return 2.1; //ok
-		 	else if(bar_mg.getX()>= 590 && bar_mg.getX()<= 670 && bar_mg.getY() <= 340 &&bar_mg.getY() >= 260)
-				return 5.1; //ok
-		}
-		else if(bar_rotation %2 == 0){
-	        if(bar_mg.getX()>= 0 && bar_mg.getX()<= 70 && bar_mg.getY() <= 480 &&bar_mg.getY() >= 360)
-		        return 3.1; //ok
-		    else if(bar_mg.getX()>= 590 && bar_mg.getX()<= 670 && bar_mg.getY() <= 340 &&bar_mg.getY() >= 260)
-				return 4.1; //ok
-		}
+		int[] arr = new int[3];
+		arr[0] = (bar_mg.getX()) / 90;
+		arr[1] = (bar_mg.getY() -250)/ 100;
+		arr[2] = (bar_rotation %2);
 		
-		if(u_rotation % 2 == 1){ //inv
-		    if(u_mg.getX() >= 70 && u_mg.getX()<= 170 && u_mg.getY() <= 560 &&u_mg.getY() >= 450)
-		        return 1.0; //ok
-			else if(u_mg.getX() >= 270 && u_mg.getX()<= 370 && u_mg.getY() <= 560 &&u_mg.getY() >= 450)
-			    return 4.0; //ok
-			else if(u_mg.getX() >= 470 && u_mg.getX()<= 570 && u_mg.getY() <= 560 &&u_mg.getY() >= 450)
-			    return 5.0; //ok		
-		    }
-		else if(u_rotation % 2 == 0){
-			if(u_mg.getX() >= 70 && u_mg.getX()<= 170 && u_mg.getY() <= 260 &&u_mg.getY() >= 140)
-			    return 2.0; //ok
-			else if(u_mg.getX() >= 271 && u_mg.getX()<= 370 && u_mg.getY() <= 260 &&u_mg.getY() >= 140)
-			    return 3.0; //ok
-			else if(u_mg.getX() >= 471 && u_mg.getX()<= 570 && u_mg.getY() <= 260 &&u_mg.getY() >= 140)
-			    return 6.0; //ok
-		}
-		return -1;
+		return arr;
 	}
-
+	
+	public int[] CheckPosition_(){
+		int[] arr = new int[3];
+		arr[0] = (u_mg.getX()) / 90;
+		arr[1] = (u_mg.getY() -250)/ 100;
+		arr[2] = (u_rotation %2);
+		
+		return arr;
+	}
+	
+	public int CheckBlack(){
+		
+		return 1;
+	}
 
 
 	public JButton getjButton_back() {
