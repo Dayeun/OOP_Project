@@ -1,4 +1,4 @@
-package team8_OOPproject;
+package MonoPoly_team8_OOPproject;
 
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;

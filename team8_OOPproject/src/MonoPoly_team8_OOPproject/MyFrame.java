@@ -1,4 +1,4 @@
-package team8_OOPproject;
+package MonoPoly_team8_OOPproject;
 
 import javax.swing.*;
 
@@ -11,18 +11,20 @@ import java.awt.event.ActionEvent;
 
 
 public class MyFrame extends JFrame {
+	
 	private JTextField textField;
+	private Piece myCharacter;
 //	private JLabel background;
 	
 	public MyFrame() {
 		
 	//	JPanel myPanel= new JPanel();
 		//MyBackground ph = new MyBackground(this);
-		
+		add(new MyBackgroundPanel());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	/**
-				JPanel background= new JPanel();
+		JPanel background= new JPanel();
 		
 		ImageIcon bImage = new ImageIcon("background.png");
 		this.background.setBounds(0,0, 800, 600);
@@ -63,6 +65,7 @@ public class MyFrame extends JFrame {
 		
 		fredo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
 			}
 		});
 		
@@ -71,6 +74,8 @@ public class MyFrame extends JFrame {
 		
 		apeach.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				apeach.setEnabled(false);
+			//	myCharacter=
 			}
 		});
 		

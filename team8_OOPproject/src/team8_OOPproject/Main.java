@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import MonoPoly_team8_OOPproject.MonoPolyTest;
+
 public class Main extends JFrame implements ActionListener {
 	
 	private Account_Login account_Login;
@@ -32,6 +34,7 @@ public class Main extends JFrame implements ActionListener {
 		this.setSize(800, 600);
 		
 		this.setResizable(false);
+	
 		
 		// Set frame center
 		int x = (dim.width / 2) - (this.getWidth() / 2);
