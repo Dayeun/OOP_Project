@@ -177,15 +177,15 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if(bar_mg.contains(e.getX(), e.getY()) ){//���� ��ġ�� ���Եȴٸ�
+		if(bar_mg.contains(e.getX(), e.getY()) ){
 			isDragged1 = true;
 			isDragged2 = false;
 			//
-			offX = e.getX() - bar_mg.getX();   //������ - �ڼ� ��ġ
+			offX = e.getX() - bar_mg.getX();   
 			offY = e.getY() - bar_mg.getY();
 			bar_mg.setLocation(e.getX()-offX, e.getY()-offY);
 		}
-		else if(u_mg.contains(e.getX(), e.getY() ) ){
+		else if(u_mg.contains(e.getX(), e.getY())){
 			isDragged1 = false;
 			isDragged2 = true;
 			offX = e.getX() - u_mg.getX();
@@ -243,14 +243,11 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 				sc.moving_R(sc.getX(),sc.getY(),r_l);
 		}else if(ch == 6.0&&x==4 &&y==0){//6
 			sc.moving_D(sc.getX(),sc.getY(),u_d);
-			JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE); // show
-
 		}
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException l) {
-			// TODO Auto-generated catch block
-			l.printStackTrace();
+	
+		if(s.checkGoal(y, x) == 1){
+			System.out.println(y +" "+ x );
+			JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE); // show
 		}
 	}
 
@@ -294,8 +291,8 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		        return 1.0; //ok
 			else if(u_mg.getX() >= 270 && u_mg.getX()<= 370 && u_mg.getY() <= 560 &&u_mg.getY() >= 450)
 			    return 4.0; //ok
-			/*else if(u_mg.getX() >= 470 && u_mg.getX()<= 570 && u_mg.getY() <= 560 &&u_mg.getY() >= 450)
-			    return 5.0; //ok*/		
+			else if(u_mg.getX() >= 470 && u_mg.getX()<= 570 && u_mg.getY() <= 560 &&u_mg.getY() >= 450)
+			    return 5.0; //ok		
 		    }
 		else if(u_rotation % 2 == 0){
 			if(u_mg.getX() >= 70 && u_mg.getX()<= 170 && u_mg.getY() <= 260 &&u_mg.getY() >= 140)
