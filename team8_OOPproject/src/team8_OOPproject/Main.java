@@ -18,7 +18,7 @@ public class Main extends JFrame implements ActionListener {
 	private Game_PathfindingMap pathfinding;
 	private MonoPolyTest monopoly;
 	private Learning_SelectMenu learning_Select;
-	private Chapter1 chap1;
+	private Learning chapter1;
 	
 	static ArrayList<UserInformation> user = new ArrayList<UserInformation>();
 
@@ -45,7 +45,7 @@ public class Main extends JFrame implements ActionListener {
 		pathfinding = new Game_PathfindingMap();
 		monopoly = new MonoPolyTest();
 		learning_Select = new Learning_SelectMenu();
-		chap1 = new Chapter1();
+		chapter1=new LearningChapter1();
 		
 		account_Login.getjButton_login().addActionListener(this);
 		account_Login.getjButton_signup().addActionListener(this);
@@ -61,7 +61,7 @@ public class Main extends JFrame implements ActionListener {
 		monopoly.getjButton_back().addActionListener(this);
 		learning_Select.getjButton_back().addActionListener(this);
 		learning_Select.getBtnChap1().addActionListener(this);
-		chap1.getjButton_back().addActionListener(this);
+		chapter1.getjButton_back().addActionListener(this);
 		
 		this.add(account_Login);// add JPanel to the JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -145,9 +145,9 @@ public class Main extends JFrame implements ActionListener {
 					changeState(select);
 				}
 				else if (button.getSource().equals(learning_Select.getBtnChap1())){
-					changeState(chap1);
+					changeState(chapter1);
 				}
-				else if (button.getSource().equals(chap1.getjButton_back())){
+				else if (button.getSource().equals(chapter1.getjButton_back())){
 					changeState(learning_Select);
 				}
 		

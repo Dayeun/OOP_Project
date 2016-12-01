@@ -1,4 +1,5 @@
 package team8_OOPproject;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -18,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 public abstract class Learning extends JPanel implements ActionListener{
@@ -30,8 +32,8 @@ public abstract class Learning extends JPanel implements ActionListener{
 	
 	
 	public abstract void quiz();
-	public abstract void correct();
-	public abstract void incorrect();
+	public abstract void correct(int question_num);
+	public abstract void incorrect(int question_num);
 	
 	
 	public Learning(){
@@ -39,6 +41,7 @@ public abstract class Learning extends JPanel implements ActionListener{
 		choicePane = new JPanel();
 		next_pane = new JPanel();
 		
+		this.setLayout(new BorderLayout());
 		
 		this.add(question_pane);
 		TitledBorder border = BorderFactory.createTitledBorder("Question");
@@ -54,9 +57,10 @@ public abstract class Learning extends JPanel implements ActionListener{
 		jButton_back = new JButton("Home");
 		jButton_back.addActionListener(this);
 		jButton_back.setBackground(Color.white);
-		jButton_back.setBounds(20, 20, 80, 30);
+		jButton_back.setSize(80, 30);
+		//jButton_back.setBounds(20, 20, 80, 30);
 		
-		this.add(jButton_back);
+		this.add(jButton_back, BorderLayout.WEST);
 		this.add(question_pane, BorderLayout.NORTH);
 		this.add(choicePane, BorderLayout.CENTER);
 		this.add(next_pane, BorderLayout.SOUTH);
@@ -76,6 +80,13 @@ public abstract class Learning extends JPanel implements ActionListener{
 	}
 	public JPanel getNext() {
 		return next_pane;
+	}
+	
+	public void setjButton_back(JButton jButton_back) {
+		this.jButton_back = jButton_back;
+	}
+	public JButton getjButton_back() {
+		return jButton_back;
 	}
 	public Questions getCh1() {
 		return ch1;
