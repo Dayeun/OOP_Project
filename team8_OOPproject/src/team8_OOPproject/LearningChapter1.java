@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
@@ -29,12 +30,12 @@ public class LearningChapter1 extends Learning {
 	private ImageIcon q_image;
 	private JLabel q_imageLabel;
 	private String answer;
-	private Questions ch1 = new Questions();
-	private int question_num = 0;
+	//private Questions ch1 = new Questions();
+	//private int question_num = 0;
 	private int choice_num = 0;
-	JPanel correct_pane;
-	JPanel remember_pane;
-	JPanel solve_pane;
+	private JPanel correct_pane;
+	private JPanel remember_pane;
+	private JPanel solve_pane;
 
 	public LearningChapter1() {
 		//super();
@@ -75,7 +76,9 @@ public class LearningChapter1 extends Learning {
 			submit.setFont(new Font("Arial Black", Font.PLAIN, 30));
 			//next_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			submit.setFont(new Font(null, Font.BOLD, 18));
+			next_pane.add(jButton_back);
 			next_pane.add(submit);
+			
 			
 			submit.addActionListener(this);
 			
@@ -115,6 +118,7 @@ public class LearningChapter1 extends Learning {
 		correct_pane.add(solve_pane, BorderLayout.CENTER);
 		
 		next = new JButton("Next");
+		next_pane.add(jButton_back);
 		next_pane.add(next);
 		
 		next.addActionListener(this);
@@ -159,17 +163,24 @@ public class LearningChapter1 extends Learning {
 			if (answer == ch1.getChap1correct().get(question_num).getText()) {
 				System.out.println("You're Correct!");
 				System.out.println("Your answer: "+answer);
-				 correct(question_num); //If you correct.
+				correct(question_num); //If you correct.
 
 			} else {
 				System.out.println("You're Incorrect!");
 				System.out.println("Your answer: "+answer);
-				 incorrect(question_num); //If you incorrect.
+				incorrect(question_num); //If you incorrect.
 
 			}
 		}
 		
 		if(e.getSource().equals(next)){
+		
+			if(question_num >= ch1.getChap1question().size()-1){
+				JOptionPane.showMessageDialog(null,"Chapter 1 is END!");
+				jButton_back.doClick();
+				return;
+			}
+			
 			question_num++;
 			correct_pane.removeAll();
 			remember_pane.removeAll();
@@ -178,11 +189,12 @@ public class LearningChapter1 extends Learning {
 			solve_pane.setBorder(null);
 			next_pane.removeAll();
 			
+			
 			quiz(question_num);
 		}
 	}
 
-
+	
 	
 
 }

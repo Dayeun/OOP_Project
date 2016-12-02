@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.spi.CharsetProvider;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -62,6 +63,7 @@ public class Main extends JFrame implements ActionListener {
 		learning_Select.getjButton_back().addActionListener(this);
 		learning_Select.getBtnChap1().addActionListener(this);
 		chapter1.getjButton_back().addActionListener(this);
+		chapter1.getNext().addActionListener(this);
 		
 		this.add(account_Login);// add JPanel to the JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -150,6 +152,7 @@ public class Main extends JFrame implements ActionListener {
 				else if (button.getSource().equals(chapter1.getjButton_back())){
 					changeState(learning_Select);
 				}
+				
 		
 	}
 	

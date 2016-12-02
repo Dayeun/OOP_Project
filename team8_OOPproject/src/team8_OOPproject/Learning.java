@@ -28,8 +28,10 @@ public abstract class Learning extends JPanel implements ActionListener{
 	protected JPanel choicePane;
 	protected JPanel next_pane;
 	protected JPanel btnBack_pane;
-	private JButton jButton_back;
-	Questions ch1 = new Questions();
+	protected JButton jButton_back;
+	protected int question_num = 0;
+	private JButton next;
+	protected Questions ch1 = new Questions();
 	
 	
 	public abstract void quiz(int question_num);
@@ -42,6 +44,7 @@ public abstract class Learning extends JPanel implements ActionListener{
 		btnBack_pane = new JPanel();
 		choicePane = new JPanel();
 		next_pane = new JPanel();
+		next = new JButton("Next");
 		
 		this.setLayout(new BorderLayout());
 		
@@ -87,10 +90,16 @@ public abstract class Learning extends JPanel implements ActionListener{
 	public JPanel getChoicePane() {
 		return choicePane;
 	}
-	public JPanel getNext() {
+	public JPanel getNextPanel() {
 		return next_pane;
 	}
 	
+	public int getQuestion_num() {
+		return question_num;
+	}
+	public JButton getNext() {
+		return next;
+	}
 	public void setjButton_back(JButton jButton_back) {
 		this.jButton_back = jButton_back;
 	}
