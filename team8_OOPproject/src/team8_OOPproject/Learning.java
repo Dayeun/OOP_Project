@@ -27,17 +27,19 @@ public abstract class Learning extends JPanel implements ActionListener{
 	protected JPanel question_pane;
 	protected JPanel choicePane;
 	protected JPanel next_pane;
+	protected JPanel btnBack_pane;
 	private JButton jButton_back;
 	Questions ch1 = new Questions();
 	
 	
-	public abstract void quiz();
+	public abstract void quiz(int question_num);
 	public abstract void correct(int question_num);
 	public abstract void incorrect(int question_num);
 	
 	
 	public Learning(){
 		question_pane = new JPanel();
+		btnBack_pane = new JPanel();
 		choicePane = new JPanel();
 		next_pane = new JPanel();
 		
@@ -58,9 +60,16 @@ public abstract class Learning extends JPanel implements ActionListener{
 		jButton_back.addActionListener(this);
 		jButton_back.setBackground(Color.white);
 		jButton_back.setSize(80, 30);
+		next_pane.add(jButton_back);
+		//btnBack_pane.add(jButton_back);
 		//jButton_back.setBounds(20, 20, 80, 30);
 		
-		this.add(jButton_back, BorderLayout.WEST);
+		/*btnBack_pane.setBackground(Color.RED);
+		question_pane.setBackground(Color.WHITE);
+		choicePane.setBackground(Color.BLUE);
+		next_pane.setBackground(Color.DARK_GRAY);*/
+		
+		//this.add(btnBack_pane, BorderLayout.WEST);
 		this.add(question_pane, BorderLayout.NORTH);
 		this.add(choicePane, BorderLayout.CENTER);
 		this.add(next_pane, BorderLayout.SOUTH);

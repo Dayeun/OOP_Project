@@ -19,62 +19,59 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 public class LearningChapter1 extends Learning {
-	private JFrame frame;
+	//private JFrame frame;
 	//private JPanel question;
-	private TitledBorder border;
-	private JPanel remember;
-	private JPanel solve;
+	//private JPanel remember;
+	//private JPanel solve;
 	// private ArrayList<JButton> incorrect_choice;
 	private JButton submit;
-	private ImageIcon quiz;
-	private JLabel test;
+	private ImageIcon q_image;
+	private JLabel q_imageLabel;
 	private String answer;
 	private Questions ch1 = new Questions();
-	private int i = 0;
+	private int question_num = 0;
 	private int j = 0;
 
 	public LearningChapter1() {
 		//super();
 		//incorrect_choice = new ArrayList<JButton>();
 		submit = new JButton("Submit");
-		this.add(question_pane);
+		//this.add(next_pane);
 		
 		
 		
 		submit.setForeground(Color.WHITE);
 		submit.setBackground(new Color(127, 255, 0));
 		submit.setFont(new Font("Arial Black", Font.PLAIN, 30));
-		next_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		//next_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		submit.setFont(new Font(null, Font.BOLD, 18));
 		next_pane.add(submit);
 		
-		quiz();
+		quiz(question_num);
 		
 	}
 	
 	@Override
-	public void quiz() {
+	public void quiz(int question_num) {
 		//for (i = 0; i < ch1.getChap1question().size(); i++) {
-			
-
-			
-			border = BorderFactory.createTitledBorder("Question");
+		
+			TitledBorder border = BorderFactory.createTitledBorder("Question");
 			border.setTitleFont(new Font(null, Font.BOLD, 24));
 			question_pane.setBorder(border);
-			question_pane.setLayout(new BoxLayout(question_pane, BoxLayout.Y_AXIS));
-			question_pane.add(ch1.getChap1question().get(i));
-			quiz = new ImageIcon("chapter1q1.jpg");
-			test = new JLabel();
-			test.setIcon(quiz);
-			question_pane.add(test);
+			//question_pane.setLayout(new BoxLayout(question_pane, BoxLayout.Y_AXIS));
+			question_pane.add(ch1.getChap1question().get(question_num));
+			q_image = new ImageIcon("chapter1q1.jpg");
+			q_imageLabel = new JLabel();
+			q_imageLabel.setIcon(q_image);
+			question_pane.add(q_imageLabel);
 
-			choicePane.setLayout(new FlowLayout(FlowLayout.LEFT));
-			for (j = 0; j < ch1.getChap1choice()[i].length; j++) {
-				choicePane.add(ch1.getChap1choice()[i][j]);
-				ch1.getChap1choice()[i][j].addActionListener(this);
+			
+			//choicePane.setLayout(new FlowLayout(FlowLayout.LEFT));
+			for (j = 0; j < ch1.getChap1choice()[question_num].length; j++) {
+				choicePane.add(ch1.getChap1choice()[question_num][j]);
+				ch1.getChap1choice()[question_num][j].addActionListener(this);
 			}
 			
-
 			submit.addActionListener(this);
 			
 	//	}
@@ -114,17 +111,17 @@ public class LearningChapter1 extends Learning {
 		this.add(incorrect_pane, BorderLayout.CENTER);
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		LearningChapter1 lc1 = new LearningChapter1();
 		//lc1.quiz();
-	}
+	}*/
 
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource().equals(ch1.getChap1correct().get(i))) {
-			answer = ch1.getChap1correct().get(i).getText(); 		// save your answer(correct answer)
-		} else if (e.getSource()==ch1.getChap1choice()[i][0] && e.getSource()!=ch1.getChap1correct().get(i)) {
-			answer = ch1.getChap1choice()[i][0].getText(); 			// save your answer(incorrect answer)
+		if (e.getSource().equals(ch1.getChap1correct().get(question_num))) {
+			answer = ch1.getChap1correct().get(question_num).getText(); 		// save your answer(correct answer)
+		} else if (e.getSource()==ch1.getChap1choice()[question_num][0] && e.getSource()!=ch1.getChap1correct().get(question_num)) {
+			answer = ch1.getChap1choice()[question_num][0].getText(); 			// save your answer(incorrect answer)
 		}
 		if (e.getSource().equals(submit)) {
 			if(answer == null){
@@ -132,13 +129,13 @@ public class LearningChapter1 extends Learning {
 				return;
 			}
 			
-			if (answer == ch1.getChap1correct().get(i).getText()) {
+			if (answer == ch1.getChap1correct().get(question_num).getText()) {
 				System.out.println("You're Correct!");
-				 correct(i); //If you correct.
+				 correct(question_num); //If you correct.
 
 			} else {
 				System.out.println("You're Incorrect!");
-				 incorrect(i); //If you incorrect.
+				 incorrect(question_num); //If you incorrect.
 
 			}
 		}
