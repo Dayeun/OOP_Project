@@ -1,10 +1,12 @@
 package team8_OOPproject;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
@@ -13,6 +15,7 @@ import javax.swing.border.TitledBorder;
 
 public class Questions {
 	private ArrayList<JTextArea> chap1question;
+	private ArrayList<ImageIcon> chap1Image;
 	private ArrayList<JTextArea> chap1remember;
 	private ArrayList<JTextArea> chap1solve;
 	private ArrayList<JButton> chap1correct;
@@ -31,6 +34,7 @@ public class Questions {
 	
 	public Questions(){
 		chap1question = new ArrayList<JTextArea>();
+		chap1Image = new ArrayList<ImageIcon>();
 		chap1remember = new ArrayList<JTextArea>();
 		chap1solve = new ArrayList<JTextArea>();
 		chap1correct = new ArrayList<JButton>();
@@ -48,9 +52,15 @@ public class Questions {
 		{
 			chap1question.get(i).setLineWrap(true);
 			chap1question.get(i).setEditable(false);
-			chap1question.get(i).setBackground(Color.gray);
-			chap1question.get(i).setSize(chap1question.get(i).getText().length(), 10);
+			chap1question.get(i).setFont(new Font("Arial", Font.PLAIN, 18));
+			
 		}
+		
+		chap1Image.add(new ImageIcon("chapter1q1.jpg"));
+		chap1Image.add(new ImageIcon("chapter1q2.jpg"));
+		chap1Image.add(new ImageIcon("chapter1q3.jpg"));
+		chap1Image.add(new ImageIcon("chapter1q4.jpg"));
+		chap1Image.add(new ImageIcon("chapter1q5.jpg"));
 		
 		chap1correct.add(new JButton("bumpy"));
 		chap1correct.add(new JButton("bouncy"));
@@ -97,18 +107,18 @@ public class Questions {
 				+ "Different objects can have the same properties. You can use these properties to put objects into groups."));
 		chap1remember.add(new JTextArea("An object has different properties. "
 				+ "A property of an object can tell you how it looks, feels, tastes, or smells. "
-				+ "Properties can also tell you how an object will behave when something happens to it."
+				+ "Properties can also tell you how an object will behave when something happens to it.\n"
 				+ "Different objects can have properties in common. You can use these properties to put objects into groups. "
 				+ "Grouping objects by their properties is called classification."));
 		chap1remember.add(new JTextArea("Every object is made of one or more materials. "
-				+ "A material is a type of matter. Wood, glass, metal, and plastic are common materials."
+				+ "A material is a type of matter. Wood, glass, metal, and plastic are common materials.\n"
 				+ "A material has different properties. A material's properties tell you how it looks, feels, tastes, or smells. "
-				+ "Some examples of properties are shiny, hard, fragile, and stretchy."
+				+ "Some examples of properties are shiny, hard, fragile, and stretchy.\n"
 				+ "For example, a shiny material reflects a lot of light. "
 				+ "A fragile material breaks when you drop it."));
 		chap1remember.add(new JTextArea("An object has different properties. "
 				+ "A property of an object can tell you how it looks, feels, tastes, or smells. "
-				+ "Properties can also tell you how an object will behave when something happens to it."
+				+ "Properties can also tell you how an object will behave when something happens to it.\n"
 				+ "Different objects can have properties in common. "
 				+ "You can use these properties to put objects into groups. "
 				+ "Grouping objects by their properties is called classification."));
@@ -116,33 +126,36 @@ public class Questions {
 		{
 			chap1remember.get(i).setLineWrap(true);
 			chap1remember.get(i).setEditable(false);
+			chap1remember.get(i).setFont(new Font("Arial", Font.PLAIN, 18));
+			//chap1remember.get(i).setSize(new Dimension(800, chap1remember.get(i).getLineCount()));
 		}
 		
 		
-		chap1solve.add(new JTextArea("Thinks about each property."
-				+ "A soft object changes shape when pressed or squeezed. The tree bark is not soft."
-				+ "A bumpy object is covered in lumps and bumps. The tree bark is bumpy."));
-		chap1solve.add(new JTextArea("For each object, decide if it has that property."
-				+ "A bouncy object will bounce back from the floor if you drop it. Both objects are bouncy."
-				+ "Yellow is a color.  This color is yellow. The spring is not yellow."
+		chap1solve.add(new JTextArea("Thinks about each property.\n"
+				+ "A soft object changes shape when pressed or squeezed. The tree bark is not soft.\n"
+				+ "A bumpy object is covered in lumps and bumps. The tree bark is bumpy.\n"));
+		chap1solve.add(new JTextArea("For each object, decide if it has that property.\n"
+				+ "A bouncy object will bounce back from the floor if you drop it. Both objects are bouncy.\n"
+				+ "Yellow is a color.  This color is yellow. The spring is not yellow.\n"
 				+ "The property that both objects have in common is bouncy.\n"));
-		chap1solve.add(new JTextArea("For each object, decide if it has that property."
-				+ "A slippery object is hard to hold onto or stand on. None of the objects are slippery."
+		chap1solve.add(new JTextArea("For each object, decide if it has that property.\n"
+				+ "A slippery object is hard to hold onto or stand on. None of the objects are slippery.\n"
 				+ "A translucent object lets light through. But you cannot see clearly through a translucent object. "
-				+ "The fries and the cracker are not translucent."
-				+ "Potato chips have a salty taste. All three objects are salty."
+				+ "The fries and the cracker are not translucent.\n"
+				+ "Potato chips have a salty taste. All three objects are salty.\n"
 				+ "The property that all three objects have in common is salty."));
-		chap1solve.add(new JTextArea("Smooth is a property. A smooth material is not rough or bumpy."
-				+ "Look at each picture, one at a time. Imagine touching the material shown in each picture."
-				+ "Of the choices, the nylon track suit is smoother. If you touch nylon fabric, it will not feel rough."));
+		chap1solve.add(new JTextArea("Smooth is a property. A smooth material is not rough or bumpy.\n"
+				+ "Look at each picture, one at a time. Imagine touching the material shown in each picture.\n"
+				+ "Of the choices, the nylon track suit is smoother. If you touch nylon fabric, it will not feel rough.\n"));
 		chap1solve.add(new JTextArea("For each object, decide if it has that property."
-				+ "A sticky object can attach or stick to other things. The jello is sticky, but the marbles are not."
-				+ "A translucent object lets light through. But you cannot see clearly through a translucent object. All four objects are translucent."
-				+ "Sugar has a sweet taste. The jello is sweet, but the marbles and the icicle are not."
-				+ "The property that all four objects have in common is translucent."));
+				+ "A sticky object can attach or stick to other things. The jello is sticky, but the marbles are not.\n"
+				+ "A translucent object lets light through.\n But you cannot see clearly through a translucent object. All four objects are translucent.\n"
+				+ "Sugar has a sweet taste. The jello is sweet, but the marbles and the icicle are not.\n"
+				+ "The property that all four objects have in common is translucent.\n"));
 		for(int i=0; i<chap1solve.size(); i++){
 			chap1solve.get(i).setLineWrap(true);
 			chap1solve.get(i).setEditable(false);
+			chap1solve.get(i).setFont(new Font("Arial", Font.PLAIN, 18));
 		}
 		
 	
@@ -186,6 +199,10 @@ public class Questions {
 
 	public JButton[][] getChap1choice() {
 		return chap1choice;
+	}
+
+	public ArrayList<ImageIcon> getChap1Image() {
+		return chap1Image;
 	}
 	
 	

@@ -2,6 +2,7 @@ package team8_OOPproject;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
@@ -44,7 +45,7 @@ public abstract class Learning extends JPanel implements ActionListener{
 		btnBack_pane = new JPanel();
 		choicePane = new JPanel();
 		next_pane = new JPanel();
-		next = new JButton("Next");
+		next = new JButton("I GOT IT!");
 		
 		this.setLayout(new BorderLayout());
 		
@@ -54,6 +55,7 @@ public abstract class Learning extends JPanel implements ActionListener{
 		question_pane.setBorder(border);
 		
 		question_pane.setLayout(new BoxLayout(question_pane, BoxLayout.Y_AXIS));
+		
 		choicePane.setLayout(new FlowLayout(FlowLayout.LEFT));
 		next_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		
@@ -65,15 +67,11 @@ public abstract class Learning extends JPanel implements ActionListener{
 		jButton_back.setSize(80, 30);
 		next_pane.add(jButton_back);
 		
-		//btnBack_pane.add(jButton_back);
-		//jButton_back.setBounds(20, 20, 80, 30);
-		
 		/*btnBack_pane.setBackground(Color.RED);
 		question_pane.setBackground(Color.WHITE);
 		choicePane.setBackground(Color.BLUE);
 		next_pane.setBackground(Color.DARK_GRAY);*/
 		
-		//this.add(btnBack_pane, BorderLayout.WEST);
 		this.add(question_pane, BorderLayout.NORTH);
 		this.add(choicePane, BorderLayout.CENTER);
 		this.add(next_pane, BorderLayout.SOUTH);
@@ -95,6 +93,9 @@ public abstract class Learning extends JPanel implements ActionListener{
 		return next_pane;
 	}
 	
+	public void setQuestion_num(int question_num) {
+		this.question_num = question_num;
+	}
 	public int getQuestion_num() {
 		return question_num;
 	}
