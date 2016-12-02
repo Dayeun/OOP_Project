@@ -25,27 +25,21 @@ public class LearningChapter1 extends Learning {
 	//private JPanel solve;
 	// private ArrayList<JButton> incorrect_choice;
 	private JButton submit;
+	private JButton next;
 	private ImageIcon q_image;
 	private JLabel q_imageLabel;
 	private String answer;
 	private Questions ch1 = new Questions();
 	private int question_num = 0;
-	private int j = 0;
+	private int choice_num = 0;
+	JPanel correct_pane;
+	JPanel remember_pane;
+	JPanel solve_pane;
 
 	public LearningChapter1() {
 		//super();
 		//incorrect_choice = new ArrayList<JButton>();
-		submit = new JButton("Submit");
-		//this.add(next_pane);
 		
-		
-		
-		submit.setForeground(Color.WHITE);
-		submit.setBackground(new Color(127, 255, 0));
-		submit.setFont(new Font("Arial Black", Font.PLAIN, 30));
-		//next_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-		submit.setFont(new Font(null, Font.BOLD, 18));
-		next_pane.add(submit);
 		
 		quiz(question_num);
 		
@@ -67,10 +61,21 @@ public class LearningChapter1 extends Learning {
 
 			
 			//choicePane.setLayout(new FlowLayout(FlowLayout.LEFT));
-			for (j = 0; j < ch1.getChap1choice()[question_num].length; j++) {
-				choicePane.add(ch1.getChap1choice()[question_num][j]);
-				ch1.getChap1choice()[question_num][j].addActionListener(this);
+			for (choice_num = 0; choice_num < ch1.getChap1choice()[question_num].length; choice_num++) {
+				choicePane.add(ch1.getChap1choice()[question_num][choice_num]);
+				ch1.getChap1choice()[question_num][choice_num].addActionListener(this);
 			}
+			
+			submit = new JButton("Submit");
+			
+			
+			
+			submit.setForeground(Color.WHITE);
+			submit.setBackground(new Color(127, 255, 0));
+			submit.setFont(new Font("Arial Black", Font.PLAIN, 30));
+			//next_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			submit.setFont(new Font(null, Font.BOLD, 18));
+			next_pane.add(submit);
 			
 			submit.addActionListener(this);
 			
@@ -84,7 +89,7 @@ public class LearningChapter1 extends Learning {
 		//frame.removeAll();
 		//frame.revalidate();
 		
-		JPanel correct_pane = new JPanel();
+		correct_pane = new JPanel();
 		correct_pane.setSize(800, 600);
 		correct_pane.setBackground(Color.RED);
 		//this.removeAll();
@@ -92,7 +97,29 @@ public class LearningChapter1 extends Learning {
 		question_pane.setBorder(null);
 		choicePane.removeAll();
 		next_pane.removeAll();
-		//this.add(correct_pane);
+		
+		correct_pane.setLayout(new BorderLayout());
+		
+		remember_pane = new JPanel();
+		solve_pane = new JPanel();
+		
+		TitledBorder border1 = BorderFactory.createTitledBorder("Remember");
+		border1.setTitleFont(new Font(null, Font.BOLD, 24));
+		remember_pane.setBorder(border1);
+		correct_pane.add(remember_pane, BorderLayout.NORTH);
+		
+		
+		TitledBorder border2 = BorderFactory.createTitledBorder("Solve");
+		border2.setTitleFont(new Font(null, Font.BOLD, 24));
+		solve_pane.setBorder(border2);
+		correct_pane.add(solve_pane, BorderLayout.CENTER);
+		
+		next = new JButton("Next");
+		next_pane.add(next);
+		
+		next.addActionListener(this);
+		
+		this.add(correct_pane);
 	}
 
 	public void incorrect(int question_num) {
@@ -103,7 +130,7 @@ public class LearningChapter1 extends Learning {
 		JPanel incorrect_pane = new JPanel();
 		incorrect_pane.setSize(800, 600);
 		incorrect_pane.setBackground(Color.WHITE);
-		this.removeAll();
+		//this.removeAll();
 		question_pane.removeAll();
 		question_pane.setBorder(null);
 		choicePane.removeAll();
@@ -131,13 +158,27 @@ public class LearningChapter1 extends Learning {
 			
 			if (answer == ch1.getChap1correct().get(question_num).getText()) {
 				System.out.println("You're Correct!");
+				System.out.println("Your answer: "+answer);
 				 correct(question_num); //If you correct.
 
 			} else {
 				System.out.println("You're Incorrect!");
+				System.out.println("Your answer: "+answer);
 				 incorrect(question_num); //If you incorrect.
 
 			}
+		}
+		
+		if(e.getSource().equals(next)){
+			question_num++;
+			correct_pane.removeAll();
+			remember_pane.removeAll();
+			remember_pane.setBorder(null);
+			solve_pane.removeAll();
+			solve_pane.setBorder(null);
+			next_pane.removeAll();
+			
+			quiz(question_num);
 		}
 	}
 
