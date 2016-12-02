@@ -64,6 +64,7 @@ public abstract class Learning extends JPanel implements ActionListener{
 		jButton_back.setBackground(Color.white);
 		jButton_back.setSize(80, 30);
 		next_pane.add(jButton_back);
+		
 		//btnBack_pane.add(jButton_back);
 		//jButton_back.setBounds(20, 20, 80, 30);
 		

@@ -19,6 +19,7 @@ public class Main extends JFrame implements ActionListener {
 	private Game_PathfindingMap pathfinding;
 	private MonoPolyTest monopoly;
 	private Learning_SelectMenu learning_Select;
+	
 	private Learning chapter1;
 	
 	static ArrayList<UserInformation> user = new ArrayList<UserInformation>();

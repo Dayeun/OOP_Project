@@ -174,7 +174,6 @@ public class LearningChapter1 extends Learning {
 		}
 		
 		if(e.getSource().equals(next)){
-		
 			if(question_num >= ch1.getChap1question().size()-1){
 				JOptionPane.showMessageDialog(null,"Chapter 1 is END!");
 				jButton_back.doClick();
