@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
@@ -17,6 +18,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -38,6 +40,7 @@ public class LearningChapter1 extends Learning {
 	//private int question_num = 0;
 	private int choice_num = 0;
 	private JPanel correct_pane;
+	private JPanel incorrect_pane;
 	private JPanel answer_pane;
 	private JPanel explanation_pane;
 	private JPanel remember_pane;
@@ -49,7 +52,7 @@ public class LearningChapter1 extends Learning {
 		
 		
 		quiz(question_num);
-		question_num=0;
+		
 	}
 	
 	@Override
@@ -71,8 +74,13 @@ public class LearningChapter1 extends Learning {
 			
 			//choicePane.setLayout(new FlowLayout(FlowLayout.LEFT));
 			for (choice_num = 0; choice_num < ch1.getChap1choice()[question_num].length; choice_num++) {
-				choicePane.add(ch1.getChap1choice()[question_num][choice_num]);
-				ch1.getChap1choice()[question_num][choice_num].addActionListener(this);
+				Random random = new Random();
+				int randum_num=random.nextInt(ch1.getChap1choice()[question_num].length);
+				int[] randum_num_array = new int[ch1.getChap1choice()[question_num].length];
+				//randum_num_array;
+				
+				choicePane.add(ch1.getChap1choice()[question_num][(randum_num)]);
+				ch1.getChap1choice()[question_num][randum_num].addActionListener(this);
 			}
 			
 			submit = new JButton("Submit");
@@ -121,7 +129,7 @@ public class LearningChapter1 extends Learning {
 		correct.setForeground(new Color(127, 255, 0));
 		
 		answer_pane.setLayout(new FlowLayout(FlowLayout.LEFT));
-		JLabel correct_answer= new JLabel("<html>The correct answer is : <br>"+ch1.getChap1correct().get(question_num).getText()+"</html>");
+		JLabel correct_answer= new JLabel("<html>The correct answer is : <br>"+answer+"</html>");
 		JLabel your_answer= new JLabel("<html>Your answer is : <br>"+ answer+"</html>");
 		answer_pane.add(correct);
 		answer_pane.add(Box.createRigidArea(new Dimension(30,0)));		//I refer to tips on https://docs.oracle.com/javase/tutorial/uiswing/layout/box.html
@@ -172,15 +180,70 @@ public class LearningChapter1 extends Learning {
 		//frame.removeAll();
 		//this.revalidate();
 		//this.removeAll();
-		JPanel incorrect_pane = new JPanel();
-		incorrect_pane.setSize(800, 600);
-		incorrect_pane.setBackground(Color.WHITE);
-		//this.removeAll();
 		question_pane.removeAll();
 		question_pane.setBorder(null);
 		choicePane.removeAll();
 		next_pane.removeAll();
-		this.add(incorrect_pane, BorderLayout.CENTER);
+		JPanel incorrect_pane = new JPanel();
+		incorrect_pane.setSize(800, 600);
+		incorrect_pane.setBackground(Color.WHITE);
+		
+		answer_pane = new JPanel();
+		explanation_pane = new JPanel();
+		remember_pane = new JPanel();
+		solve_pane = new JPanel();
+		
+		incorrect_pane.setLayout(new BorderLayout());
+		
+		JLabel Incorrect = new JLabel("Sorry, Incorrect..");
+		Incorrect.setFont(new Font("Aharoni", Font.BOLD, 40));
+		Incorrect.setForeground(new Color(0, 176, 240));
+		
+		answer_pane.setLayout(new FlowLayout(FlowLayout.LEFT));
+		JLabel correct_answer= new JLabel("<html>The correct answer is : <br>"+ch1.getChap1correct().get(question_num).getText()+"</html>");
+		JLabel your_answer= new JLabel("<html>Your answer is : <br>"+ answer+"</html>");
+		answer_pane.add(Incorrect);
+		answer_pane.add(Box.createRigidArea(new Dimension(30,0)));		//Making space. I refer to tips on https://docs.oracle.com/javase/tutorial/uiswing/layout/box.html
+		answer_pane.add(correct_answer);
+		answer_pane.add(Box.createRigidArea(new Dimension(50,0)));
+		answer_pane.add(your_answer);
+		
+		incorrect_pane.add(answer_pane, BorderLayout.NORTH);
+		
+		
+		
+		
+		explanation_pane.setLayout(new BoxLayout(explanation_pane, BoxLayout.Y_AXIS));
+		
+		remember_pane.setLayout(new BoxLayout(remember_pane, BoxLayout.Y_AXIS));
+		TitledBorder border1 = BorderFactory.createTitledBorder("Remember");
+		border1.setTitleFont(new Font(null, Font.BOLD, 24));
+		remember_pane.setBorder(border1);
+		remember_pane.add(ch1.getChap1remember().get(question_num));
+		explanation_pane.add(remember_pane);
+
+		solve_pane.setLayout(new BoxLayout(solve_pane, BoxLayout.Y_AXIS));
+		TitledBorder border2 = BorderFactory.createTitledBorder("Solve");
+		border2.setTitleFont(new Font(null, Font.BOLD, 24));
+		solve_pane.setBorder(border2);
+		solve_pane.add(ch1.getChap1solve().get(question_num));
+		explanation_pane.add(solve_pane);
+		
+		incorrect_pane.add(explanation_pane, BorderLayout.CENTER);
+		
+		
+		
+		next = new JButton("I GOT IT!");
+		next.setForeground(Color.WHITE);
+		next.setBackground(new Color(127, 255, 0));
+		next.setFont(new Font("Arial Black", Font.PLAIN, 20));
+		next_pane.setLayout(new FlowLayout(FlowLayout.LEFT));
+		next_pane.add(next);
+		next_pane.add(jButton_back);
+		next.addActionListener(this);
+		
+		answer=null;			//clear previous answer.
+		this.add(incorrect_pane);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -193,14 +256,15 @@ public class LearningChapter1 extends Learning {
 			}
 			ch1.getChap1correct().get(question_num).setForeground(Color.RED);
 			ch1.getChap1correct().get(question_num).setBackground(new Color(126, 187, 0));
-		} else if (e.getSource()==ch1.getChap1choice()[question_num][0] && e.getSource()!=ch1.getChap1correct().get(question_num)) {
+		} else if(e.getSource().equals(ch1.getChap1choice()[question_num][0])){
+			answer = ch1.getChap1choice()[question_num][0].getText();		// save your answer(incorrect answer)
 			for(int i=0; i<ch1.getChap1choice()[question_num].length;i++){
 				ch1.getChap1choice()[question_num][i].setForeground(Color.WHITE);
 				ch1.getChap1choice()[question_num][i].setBackground(new Color(127, 255, 0));
 			}
-			ch1.getChap1choice()[question_num][0].setForeground(Color.RED);
-			ch1.getChap1choice()[question_num][0].setBackground(new Color(126, 187, 0));
-			answer = ch1.getChap1choice()[question_num][0].getText();			// save your answer(incorrect answer)
+			((JComponent) e.getSource()).setForeground(Color.RED);
+			((JComponent) e.getSource()).setBackground(new Color(126, 187, 0));
+			
 		}
 		if (e.getSource().equals(submit)) {
 			if(answer == null){
@@ -223,12 +287,13 @@ public class LearningChapter1 extends Learning {
 		}
 		
 		if(e.getSource().equals(jButton_back)){
+			//remove painting of your choices
 			for(int i=0; i<ch1.getChap1choice().length;i++){
 				for(int j=0; j<ch1.getChap1choice()[i].length;j++){
 					ch1.getChap1choice()[i][j].setForeground(Color.WHITE);
 					ch1.getChap1choice()[i][j].setBackground(new Color(127, 255, 0));
 				}
-				//question_num=0;
+				question_num=0;
 				answer=null;
 			}
 		}
@@ -242,7 +307,11 @@ public class LearningChapter1 extends Learning {
 			}
 			
 			question_num++;
-			correct_pane.removeAll();
+			
+			if(this.isAncestorOf(correct_pane))				//The case that you are Correct and click next button.
+				correct_pane.removeAll();
+			else if(this.isAncestorOf(correct_pane))		//The case that you are Incorrect and click next button.
+				incorrect_pane.removeAll();
 			remember_pane.removeAll();
 			remember_pane.setBorder(null);
 			solve_pane.removeAll();

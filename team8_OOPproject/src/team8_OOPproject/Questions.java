@@ -160,10 +160,7 @@ public class Questions {
 		
 	
 	}
-	
-	public static void main(String[] args) {
-		new Questions();
-	}
+
 
 	public ArrayList<JTextArea> getChap1question() {
 		return chap1question;
