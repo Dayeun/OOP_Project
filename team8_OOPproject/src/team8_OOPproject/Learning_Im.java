@@ -92,6 +92,7 @@ public class Learning_Im extends JPanel implements ActionListener {
 		try {
 			bufferdeReader = new BufferedReader(new FileReader("question1.txt"));
 			
+			
 			while (true) {
 				String line = bufferdeReader.readLine();
 				if (line == null)// if there is no data
