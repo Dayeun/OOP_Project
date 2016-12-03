@@ -19,6 +19,7 @@ public class Main extends JFrame implements ActionListener {
 	private MonoPolyTest monopoly;
 	private Learning_SelectMenu learning_Select;
 	private Chapter1 chap1;
+	private Learning_Im learning_Im;
 	
 	static ArrayList<UserInformation> user = new ArrayList<UserInformation>();
 
@@ -46,6 +47,7 @@ public class Main extends JFrame implements ActionListener {
 		monopoly = new MonoPolyTest();
 		learning_Select = new Learning_SelectMenu();
 		chap1 = new Chapter1();
+		learning_Im = new Learning_Im();
 		
 		account_Login.getjButton_login().addActionListener(this);
 		account_Login.getjButton_signup().addActionListener(this);
@@ -61,6 +63,7 @@ public class Main extends JFrame implements ActionListener {
 		monopoly.getjButton_back().addActionListener(this);
 		learning_Select.getjButton_back().addActionListener(this);
 		learning_Select.getBtnChap1().addActionListener(this);
+		learning_Select.getBtnChap2().addActionListener(this);
 		chap1.getjButton_back().addActionListener(this);
 		
 		this.add(account_Login);// add JPanel to the JFrame
@@ -149,6 +152,10 @@ public class Main extends JFrame implements ActionListener {
 				}
 				else if (button.getSource().equals(chap1.getjButton_back())){
 					changeState(learning_Select);
+				}
+				else if (button.getSource().equals(learning_Select.getBtnChap2())){
+					learning_Im.makeQuestions();
+					changeState(learning_Im);
 				}
 		
 	}
