@@ -73,17 +73,17 @@ public class Questions {
 		chap1choice[2]=new JButton[3];			//The choices are 3.
 		chap1choice[3]=new JButton[2];			//The choices are 2.
 		chap1choice[4]=new JButton[3];			//The choices are 3.
-		chap1choice[0][0]=new JButton("soft");
-		chap1choice[0][1]=chap1correct.get(0);
+		chap1choice[0][0]=chap1correct.get(0);
+		chap1choice[0][1]=new JButton("soft");
 		chap1choice[1][0]=chap1correct.get(1);
 		chap1choice[1][1]=new JButton("yellow");
-		chap1choice[2][0]=new JButton("slippery");
-		chap1choice[2][1]=new JButton("translucent");
-		chap1choice[2][2]=chap1correct.get(2);
+		chap1choice[2][0]=chap1correct.get(2);
+		chap1choice[2][1]=new JButton("slippery");
+		chap1choice[2][2]=new JButton("translucent");
 		chap1choice[3][0]=chap1correct.get(3);
 		chap1choice[3][1]=new JButton("bark");
-		chap1choice[4][0]=new JButton("sticky");
-		chap1choice[4][1]=chap1correct.get(4);
+		chap1choice[4][0]=chap1correct.get(4);
+		chap1choice[4][1]=new JButton("sticky");
 		chap1choice[4][2]=new JButton("sweet");
 		
 		for(int i=0; i<chap1choice.length; i++)

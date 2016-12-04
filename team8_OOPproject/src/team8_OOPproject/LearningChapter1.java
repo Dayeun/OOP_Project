@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 import javax.swing.AbstractButton;
@@ -46,6 +49,8 @@ public class LearningChapter1 extends Learning {
 	private JPanel remember_pane;
 	private JPanel solve_pane;
 
+	
+	
 	public LearningChapter1() {
 		//super();
 		//incorrect_choice = new ArrayList<JButton>();
@@ -57,49 +62,50 @@ public class LearningChapter1 extends Learning {
 	
 	@Override
 	public void quiz(int question_num) {
-		//for (i = 0; i < ch1.getChap1question().size(); i++) {
 		
-			TitledBorder border = BorderFactory.createTitledBorder("Question");
-			border.setTitleFont(new Font(null, Font.BOLD, 24));
-			question_pane.setBorder(border);
-			//question_pane.setLayout(new BoxLayout(question_pane, BoxLayout.Y_AXIS));
-			question_pane.add(ch1.getChap1question().get(question_num));
-			q_imageLabel = new JLabel();
-			q_imageLabel.setIcon(ch1.getChap1Image().get(question_num));
-			ch1.getChap1question().get(question_num).setAlignmentX(Component.LEFT_ALIGNMENT);
-			q_imageLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-			question_pane.add(q_imageLabel);
-			
+		TitledBorder border = BorderFactory.createTitledBorder("Question");
+		border.setTitleFont(new Font(null, Font.BOLD, 24));
+		question_pane.setBorder(border);
+		//question_pane.setLayout(new BoxLayout(question_pane, BoxLayout.Y_AXIS));
+		question_pane.add(ch1.getChap1question().get(question_num));
+		q_imageLabel = new JLabel();
+		q_imageLabel.setIcon(ch1.getChap1Image().get(question_num));
+		ch1.getChap1question().get(question_num).setAlignmentX(Component.LEFT_ALIGNMENT);
+		q_imageLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		question_pane.add(q_imageLabel);
+		
+		
+		
+		
+		//choicePane.setLayout(new FlowLayout(FlowLayout.LEFT));
+		//int random_num;
+		ArrayList<Integer> random_num_array = new ArrayList<Integer>();
+		//Random random = new Random();
+		for(int i=0 ; i<ch1.getChap1choice()[question_num].length; i++)
+		{
+			//random_num=random.nextInt(ch1.getChap1choice()[question_num].length);
+			random_num_array.add(i);
+		}
+		Collections.shuffle(random_num_array);
+		
 
-			
-			//choicePane.setLayout(new FlowLayout(FlowLayout.LEFT));
-			for (choice_num = 0; choice_num < ch1.getChap1choice()[question_num].length; choice_num++) {
-				Random random = new Random();
-				int randum_num=random.nextInt(ch1.getChap1choice()[question_num].length);
-				int[] randum_num_array = new int[ch1.getChap1choice()[question_num].length];
-				//randum_num_array;
-				
-				choicePane.add(ch1.getChap1choice()[question_num][(randum_num)]);
-				ch1.getChap1choice()[question_num][randum_num].addActionListener(this);
-			}
-			
-			submit = new JButton("Submit");
-			
-			
-			
-			submit.setForeground(Color.WHITE);
-			submit.setBackground(new Color(127, 255, 0));
-			submit.setFont(new Font("Arial Black", Font.PLAIN, 30));
-			next_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			submit.setFont(new Font(null, Font.BOLD, 18));
-			next_pane.add(jButton_back);
-			next_pane.add(submit);
-			
-			
-			submit.addActionListener(this);
-			
-	//	}
-
+		for (choice_num = 0; choice_num < ch1.getChap1choice()[question_num].length; choice_num++) {
+			choicePane.add(ch1.getChap1choice()[question_num][(random_num_array.get(choice_num))]);
+			ch1.getChap1choice()[question_num][(random_num_array.get(choice_num))].addActionListener(this);
+		}
+		
+		
+		//place the submit button
+		submit = new JButton("Submit");
+		submit.setForeground(Color.WHITE);
+		submit.setBackground(new Color(127, 255, 0));
+		submit.setFont(new Font("Arial Black", Font.PLAIN, 30));
+		next_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		submit.setFont(new Font(null, Font.BOLD, 18));
+		next_pane.add(jButton_back);
+		next_pane.add(submit);
+		
+		submit.addActionListener(this);
 	}
 
 	@Override
@@ -219,6 +225,7 @@ public class LearningChapter1 extends Learning {
 		TitledBorder border1 = BorderFactory.createTitledBorder("Remember");
 		border1.setTitleFont(new Font(null, Font.BOLD, 24));
 		remember_pane.setBorder(border1);
+		remember_pane.setSize(700, 200);
 		remember_pane.add(ch1.getChap1remember().get(question_num));
 		explanation_pane.add(remember_pane);
 
@@ -226,6 +233,7 @@ public class LearningChapter1 extends Learning {
 		TitledBorder border2 = BorderFactory.createTitledBorder("Solve");
 		border2.setTitleFont(new Font(null, Font.BOLD, 24));
 		solve_pane.setBorder(border2);
+		solve_pane.setSize(700, 200);
 		solve_pane.add(ch1.getChap1solve().get(question_num));
 		explanation_pane.add(solve_pane);
 		
@@ -256,8 +264,10 @@ public class LearningChapter1 extends Learning {
 			}
 			ch1.getChap1correct().get(question_num).setForeground(Color.RED);
 			ch1.getChap1correct().get(question_num).setBackground(new Color(126, 187, 0));
-		} else if(e.getSource().equals(ch1.getChap1choice()[question_num][0])){
-			answer = ch1.getChap1choice()[question_num][0].getText();		// save your answer(incorrect answer)
+		} else {
+			for(int i=0; i<ch1.getChap1choice()[question_num].length;i++)
+				if(e.getSource().equals(ch1.getChap1choice()[question_num][i]))
+					answer = ch1.getChap1choice()[question_num][1].getText();		// save your answer(incorrect answer)
 			for(int i=0; i<ch1.getChap1choice()[question_num].length;i++){
 				ch1.getChap1choice()[question_num][i].setForeground(Color.WHITE);
 				ch1.getChap1choice()[question_num][i].setBackground(new Color(127, 255, 0));
@@ -293,7 +303,7 @@ public class LearningChapter1 extends Learning {
 					ch1.getChap1choice()[i][j].setForeground(Color.WHITE);
 					ch1.getChap1choice()[i][j].setBackground(new Color(127, 255, 0));
 				}
-				question_num=0;
+				//question_num=0;
 				answer=null;
 			}
 		}
@@ -301,7 +311,7 @@ public class LearningChapter1 extends Learning {
 		if(e.getSource().equals(next)){
 			//if chapter is end, you automatically go back ChapterSelect screen.
 			if(question_num >= ch1.getChap1question().size()-1){
-				JOptionPane.showMessageDialog(null,"Chapter 1 is END!\nReturn to the SELECT MENU!");
+				JOptionPane.showMessageDialog(null,"Chapter 1 is END!");
 				jButton_back.doClick();
 				return;
 			}
