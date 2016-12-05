@@ -20,6 +20,7 @@ public class Chapter1 extends JPanel implements ActionListener {
 	public Chapter1() 
 	{
 		jlabel_background = new JLabel();
+		Learning_QuizStorage sc = new Learning_QuizStorage();
 
 		// return to previous panel
 		jButton_back = new JButton("Home");
@@ -33,7 +34,9 @@ public class Chapter1 extends JPanel implements ActionListener {
 		
 		
 		
-		background = new ImageIcon("ch1-1.png");
+		//background = new ImageIcon("ch1-1.png");
+		
+		background = sc.getQuiz()[0][0];
 		this.jlabel_background.setBounds(0, 0, this.getWidth(), this.getHeight());
 		this.jlabel_background.setIcon(background);
 		this.add(jlabel_background);

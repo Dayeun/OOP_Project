@@ -1,5 +1,9 @@
+
 package team8_OOPproject;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -8,116 +12,250 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 public class LearningChapter1 extends Learning {
-	private JFrame frame;
-	private JPanel background_pane;
-	private JPanel question;
-	private JPanel remember;
-	private JPanel solve;
-	private JPanel choicePane;
-	private JPanel next;
+	//private JFrame frame;
+	//private JPanel question;
+	//private JPanel remember;
+	//private JPanel solve;
 	// private ArrayList<JButton> incorrect_choice;
 	private JButton submit;
-	private ImageIcon quiz;
-	private JLabel test;
+	private JButton next;
+	private ImageIcon q_image;
+	private JLabel q_imageLabel;
 	private String answer;
-	private Questions ch1 = new Questions();
-	private int i = 0;
-	private int j = 0;
+	//private Questions ch1 = new Questions();
+	//private int question_num = 0;
+	private int choice_num = 0;
+	private JPanel correct_pane;
+	private JPanel answer_pane;
+	private JPanel explanation_pane;
+	private JPanel remember_pane;
+	private JPanel solve_pane;
 
+	public LearningChapter1() {
+		//super();
+		//incorrect_choice = new ArrayList<JButton>();
+		
+		
+		quiz(question_num);
+		question_num=0;
+	}
+	
 	@Override
-	public void quiz() {
+	public void quiz(int question_num) {
 		//for (i = 0; i < ch1.getChap1question().size(); i++) {
-			frame = new JFrame();
-			background_pane = new JPanel();
-			frame.setSize(800, 600);
-			//incorrect_choice = new ArrayList<JButton>();
-			question = new JPanel();
-			choicePane = new JPanel();
-			next = new JPanel();
-			submit = new JButton("Submit");
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-			frame.add(question);
+		
 			TitledBorder border = BorderFactory.createTitledBorder("Question");
 			border.setTitleFont(new Font(null, Font.BOLD, 24));
-			question.setBorder(border);
-			question.setLayout(new BoxLayout(question, BoxLayout.Y_AXIS));
-			question.add(ch1.getChap1question().get(0));
-			quiz = new ImageIcon("chapter1q1.jpg");
-			test = new JLabel();
-			test.setIcon(quiz);
-			question.add(test);
+			question_pane.setBorder(border);
+			//question_pane.setLayout(new BoxLayout(question_pane, BoxLayout.Y_AXIS));
+			question_pane.add(ch1.getChap1question().get(question_num));
+			q_imageLabel = new JLabel();
+			q_imageLabel.setIcon(ch1.getChap1Image().get(question_num));
+			ch1.getChap1question().get(question_num).setAlignmentX(Component.LEFT_ALIGNMENT);
+			q_imageLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+			question_pane.add(q_imageLabel);
+			
 
-			choicePane.setLayout(new FlowLayout(FlowLayout.LEFT));
-			// choicePane.add(ch1.getChap1correct().get(i));
-			// incorrect_choice.add(new JButton("soft"));
-			for (j = 0; j < ch1.getChap1choice()[i].length; j++) {
-				choicePane.add(ch1.getChap1choice()[i][j]);
-				ch1.getChap1choice()[i][j].addActionListener(this);
+			
+			//choicePane.setLayout(new FlowLayout(FlowLayout.LEFT));
+			for (choice_num = 0; choice_num < ch1.getChap1choice()[question_num].length; choice_num++) {
+				choicePane.add(ch1.getChap1choice()[question_num][choice_num]);
+				ch1.getChap1choice()[question_num][choice_num].addActionListener(this);
 			}
-			next.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			
+			submit = new JButton("Submit");
+			
+			
+			
+			submit.setForeground(Color.WHITE);
+			submit.setBackground(new Color(127, 255, 0));
+			submit.setFont(new Font("Arial Black", Font.PLAIN, 30));
+			next_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			submit.setFont(new Font(null, Font.BOLD, 18));
-			next.add(submit);
-
-			// ch1.getChap1correct().get(i).addActionListener(this);
-			// incorrect_choice.get(0).addActionListener(this);
-
+			next_pane.add(jButton_back);
+			next_pane.add(submit);
+			
+			
 			submit.addActionListener(this);
-
-			frame.add(question, BorderLayout.NORTH);
-			frame.add(choicePane, BorderLayout.CENTER);
-			frame.add(next, BorderLayout.SOUTH);
-
-			frame.setVisible(true);
+			
 	//	}
 
 	}
 
-	public void correct() {
+	@Override
+	public void correct(int question_num) {
 		// TODO Auto-generated method stub
+		//frame.removeAll();
+		//frame.revalidate();
+		
+		correct_pane = new JPanel();
+		correct_pane.setSize(800, 600);
+		//correct_pane.setBackground(Color.RED);
+		//this.removeAll();
+		question_pane.removeAll();
+		question_pane.setBorder(null);
+		choicePane.removeAll();
+		next_pane.removeAll();
+		
+		answer_pane = new JPanel();
+		explanation_pane = new JPanel();
+		remember_pane = new JPanel();
+		solve_pane = new JPanel();
+		
+		correct_pane.setLayout(new BorderLayout());
+		
+		JLabel correct = new JLabel("Correct!");
+		correct.setFont(new Font("Aharoni", Font.BOLD, 40));
+		correct.setForeground(new Color(127, 255, 0));
+		
+		answer_pane.setLayout(new FlowLayout(FlowLayout.LEFT));
+		JLabel correct_answer= new JLabel("<html>The correct answer is : <br>"+ch1.getChap1correct().get(question_num).getText()+"</html>");
+		JLabel your_answer= new JLabel("<html>Your answer is : <br>"+ answer+"</html>");
+		answer_pane.add(correct);
+		answer_pane.add(Box.createRigidArea(new Dimension(30,0)));		//I refer to tips on https://docs.oracle.com/javase/tutorial/uiswing/layout/box.html
+		answer_pane.add(correct_answer);
+		answer_pane.add(Box.createRigidArea(new Dimension(50,0)));
+		answer_pane.add(your_answer);
+		
+		correct_pane.add(answer_pane, BorderLayout.NORTH);
+		
+		
+		
+		
+		explanation_pane.setLayout(new BoxLayout(explanation_pane, BoxLayout.Y_AXIS));
+		
+		remember_pane.setLayout(new BoxLayout(remember_pane, BoxLayout.Y_AXIS));
+		TitledBorder border1 = BorderFactory.createTitledBorder("Remember");
+		border1.setTitleFont(new Font(null, Font.BOLD, 24));
+		remember_pane.setBorder(border1);
+		remember_pane.add(ch1.getChap1remember().get(question_num));
+		explanation_pane.add(remember_pane);
 
+		solve_pane.setLayout(new BoxLayout(solve_pane, BoxLayout.Y_AXIS));
+		TitledBorder border2 = BorderFactory.createTitledBorder("Solve");
+		border2.setTitleFont(new Font(null, Font.BOLD, 24));
+		solve_pane.setBorder(border2);
+		solve_pane.add(ch1.getChap1solve().get(question_num));
+		explanation_pane.add(solve_pane);
+		
+		correct_pane.add(explanation_pane, BorderLayout.CENTER);
+		
+		
+		
+		next = new JButton("I GOT IT!");
+		next.setForeground(Color.WHITE);
+		next.setBackground(new Color(127, 255, 0));
+		next.setFont(new Font("Arial Black", Font.PLAIN, 20));
+		next_pane.setLayout(new FlowLayout(FlowLayout.LEFT));
+		next_pane.add(next);
+		next_pane.add(jButton_back);
+		next.addActionListener(this);
+		
+		answer=null;			//clear previous answer.
+		this.add(correct_pane);
 	}
 
-	public void incorrect() {
+	public void incorrect(int question_num) {
 		// TODO Auto-generated method stub
-
+		//frame.removeAll();
+		//this.revalidate();
+		//this.removeAll();
+		JPanel incorrect_pane = new JPanel();
+		incorrect_pane.setSize(800, 600);
+		incorrect_pane.setBackground(Color.WHITE);
+		//this.removeAll();
+		question_pane.removeAll();
+		question_pane.setBorder(null);
+		choicePane.removeAll();
+		next_pane.removeAll();
+		this.add(incorrect_pane, BorderLayout.CENTER);
 	}
-
-	public static void main(String[] args) {
-		LearningChapter1 lc1 = new LearningChapter1();
-		lc1.quiz();
-	}
-
+	
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource().equals(ch1.getChap1correct().get(i))) {
-			answer = ch1.getChap1correct().get(i).getText(); 		// save your answer(correct answer)
-		} else if (e.getSource()==ch1.getChap1choice()[i][0] && e.getSource()!=ch1.getChap1correct().get(i)) {
-			answer = ch1.getChap1choice()[i][0].getText(); 			// save your answer(incorrect answer)
+		if (e.getSource().equals(ch1.getChap1correct().get(question_num))) {
+			answer = ch1.getChap1correct().get(question_num).getText(); 		// save your answer(correct answer)
+			for(int i=0; i<ch1.getChap1choice()[question_num].length;i++){
+				ch1.getChap1choice()[question_num][i].setForeground(Color.WHITE);
+				ch1.getChap1choice()[question_num][i].setBackground(new Color(127, 255, 0));
+			}
+			ch1.getChap1correct().get(question_num).setForeground(Color.RED);
+			ch1.getChap1correct().get(question_num).setBackground(new Color(126, 187, 0));
+		} else if (e.getSource()==ch1.getChap1choice()[question_num][0] && e.getSource()!=ch1.getChap1correct().get(question_num)) {
+			for(int i=0; i<ch1.getChap1choice()[question_num].length;i++){
+				ch1.getChap1choice()[question_num][i].setForeground(Color.WHITE);
+				ch1.getChap1choice()[question_num][i].setBackground(new Color(127, 255, 0));
+			}
+			ch1.getChap1choice()[question_num][0].setForeground(Color.RED);
+			ch1.getChap1choice()[question_num][0].setBackground(new Color(126, 187, 0));
+			answer = ch1.getChap1choice()[question_num][0].getText();			// save your answer(incorrect answer)
 		}
 		if (e.getSource().equals(submit)) {
-			if (answer == ch1.getChap1correct().get(i).getText()) {
+			if(answer == null){
+				JOptionPane.showMessageDialog(null,"Please choose your answer!","NO ANSWER", 2);
+				System.out.println("Please choose your answer!");
+				return;
+			}
+			
+			if (answer == ch1.getChap1correct().get(question_num).getText()) {
 				System.out.println("You're Correct!");
-				// correct(); //If you correct.
+				System.out.println("Your answer: "+answer);
+				correct(question_num); //If you correct.
 
 			} else {
 				System.out.println("You're Incorrect!");
-				// incorrect(); //If you incorrect.
+				System.out.println("Your answer: "+answer);
+				incorrect(question_num); //If you incorrect.
 
 			}
 		}
+		
+		if(e.getSource().equals(jButton_back)){
+			for(int i=0; i<ch1.getChap1choice().length;i++){
+				for(int j=0; j<ch1.getChap1choice()[i].length;j++){
+					ch1.getChap1choice()[i][j].setForeground(Color.WHITE);
+					ch1.getChap1choice()[i][j].setBackground(new Color(127, 255, 0));
+				}
+				//question_num=0;
+				answer=null;
+			}
+		}
+		
+		if(e.getSource().equals(next)){
+			//if chapter is end, you automatically go back ChapterSelect screen.
+			if(question_num >= ch1.getChap1question().size()-1){
+				JOptionPane.showMessageDialog(null,"Chapter 1 is END!\nReturn to the SELECT MENU!");
+				jButton_back.doClick();
+				return;
+			}
+			
+			question_num++;
+			correct_pane.removeAll();
+			remember_pane.removeAll();
+			remember_pane.setBorder(null);
+			solve_pane.removeAll();
+			solve_pane.setBorder(null);
+			next_pane.removeAll();
+			
+			
+			quiz(question_num);
+		}
 	}
 
+	
 	
 
 }
