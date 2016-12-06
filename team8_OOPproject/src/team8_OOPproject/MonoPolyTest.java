@@ -92,17 +92,17 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		if(e.getSource().equals(dice)){
 			int ran =rand.nextInt(6)+1;
 			if(ran== 1){
-				icon2 = new ImageIcon("barmagnet.PNG");
+				icon2 = new ImageIcon("df1.PNG");
 			}else if(ran== 2){
-				icon2 = new ImageIcon("barmagnet.PNG");
+				icon2 = new ImageIcon("df2.PNG");
 			}else if(ran== 3){
-				icon2 = new ImageIcon("barmagnet.PNG");
+				icon2 = new ImageIcon("df3.PNG");
 			}else if(ran== 4){
-				icon2 = new ImageIcon("barmagnet.PNG");
+				icon2 = new ImageIcon("df4.PNG");
 			}else if(ran== 5){
-				icon2 = new ImageIcon("barmagnet.PNG");
+				icon2 = new ImageIcon("df5.PNG");
 			}else if(ran== 6){
-				icon2 = new ImageIcon("barmagnet.PNG");
+				icon2 = new ImageIcon("df6.PNG");
 			}
 		
 			Character_move(ran);
@@ -155,8 +155,8 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 			}else if(moving == 6 || moving == 7 || moving == 9){
 				character.moving_L(character.getX(),character.getY(),100);
 			}
+			moving++;
 		}
-		moving++;
 		if(moving == 15){
 			character.setLocation(300, -50);
 			JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE);
