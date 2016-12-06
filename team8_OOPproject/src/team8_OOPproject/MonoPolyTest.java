@@ -181,7 +181,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		this.jButton_reset = jButton_reset;
 	}
 }
-class MonoPoly_Quiz extends JDialog{
+class MonoPoly_Quiz extends JFrame{
 	private JLabel question;
 	 
     public MonoPoly_Quiz(int ran){
@@ -192,15 +192,15 @@ class MonoPoly_Quiz extends JDialog{
 		this.setSize(600,400);
 		
 		int x = (dim.width / 2) - (this.getWidth() / 2);
-		int y = (dim.height / 2) - (this.getHeight() / 2);
+		int y = (dim.height / 2) - (this.getHeight() / 2) +90;
 		this.setLocation(x, y);
     	this.setTitle("Quiz");
     	
     	
     	question = new JLabel("Your dice number is : "+ran);
+    	this.add(question);
+    	
         
-        
-        this.setModal(true);
         this.setVisible(true);
            
     }
