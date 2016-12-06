@@ -23,9 +23,11 @@ public class Board extends JPanel{
 	Square[][] map;
 	int level=10;
 	
+	
+	
+	
 	public Board() {
-		setLayout(new GridLayout(level, level, 0, 0));
-		
+	
 	}
 	
 	
@@ -41,7 +43,8 @@ public class Board extends JPanel{
 		
 		}
 		*/	
-		public void display(){
+		
+	public void display(){
 			
 			for(int row=0 ; row < level; row++){	
 			for(int column= 0; column< level; column++){

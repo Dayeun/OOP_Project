@@ -17,15 +17,12 @@ public class Square extends JButton{
 	public Square(int x, int y){
 			this.x=x;
 			this.y=y;
+			
+			Square s= new Square(10, 10);
+			s.
 	}
 	
-
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		g.setColor(Color.YELLOW);
-		g.fillRect(x, y, size, size);
-	}
+	
 	
 	
 	//getters and setters
