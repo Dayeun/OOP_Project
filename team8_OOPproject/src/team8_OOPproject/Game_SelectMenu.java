@@ -86,13 +86,12 @@ public class Game_SelectMenu extends JPanel implements ActionListener{
 		this.jButton_back = jButton_back;
 	}
 
-	public JLabel getJlabel_background() {
+	/*public JLabel getJlabel_background() {
 		return jlabel_background;
 	}
 
 	public void setJlabel_background(JLabel jlabel_background) {
 		this.jlabel_background = jlabel_background;
 	}
-	
-	
+*/
 }

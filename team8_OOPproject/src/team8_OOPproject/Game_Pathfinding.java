@@ -283,8 +283,8 @@ public class Game_Pathfinding extends JPanel implements MouseMotionListener,Mous
 	public void setjButton_back(JButton jButton_back) {
 		this.jButton_back = jButton_back;
 	}
-	
-	public JButton getjButton_reset() {
+	//unuse
+	/*public JButton getjButton_reset() {
 		return jButton_reset;
 	}
 
@@ -298,7 +298,7 @@ public class Game_Pathfinding extends JPanel implements MouseMotionListener,Mous
 	
 	public void setjButton_next(JButton jButton_next) {
 		this.jButton_next = jButton_next;
-	}
+	}*/
 
 }
 
