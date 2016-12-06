@@ -12,7 +12,7 @@ import javax.swing.*;
 public class MonoPolyTest extends JPanel implements ActionListener{
 
 	Random rand = new Random();
-	private boolean finish=false;
+	private boolean finish = false;
 	int moving = 0;
 	private JButton jButton_back;
 	private JButton dice;
@@ -21,7 +21,6 @@ public class MonoPolyTest extends JPanel implements ActionListener{
 	
 	private ImageIcon background;
 	ImageIcon icon1 = new ImageIcon("die.PNG");
-	ImageIcon icon2 = new ImageIcon("die.PNG");
 	
 	Game_Character character;
 	public MonoPolyTest(){		
@@ -65,18 +64,6 @@ public class MonoPolyTest extends JPanel implements ActionListener{
 		return jButton_back;
 	}
 
-	public void setjButton_back(JButton jButton_back) {
-		this.jButton_back = jButton_back;
-	}
-
-	public JLabel getJlabel_background() {
-		return jlabel_background;
-	}
-
-	public void setJlabel_background(JLabel jlabel_background) {
-		this.jlabel_background = jlabel_background;
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==getjButton_reset()){
@@ -86,24 +73,24 @@ public class MonoPolyTest extends JPanel implements ActionListener{
 		}else if(e.getSource().equals(dice)){
 			int ran =rand.nextInt(6)+1;
 			if(ran== 1){
-				icon2 = new ImageIcon("df1.PNG");
+				icon1 = new ImageIcon("df1.PNG");
 			}else if(ran== 2){
-				icon2 = new ImageIcon("df2.PNG");
+				icon1 = new ImageIcon("df2.PNG");
 			}else if(ran== 3){
-				icon2 = new ImageIcon("df3.PNG");
+				icon1 = new ImageIcon("df3.PNG");
 			}else if(ran== 4){
-				icon2 = new ImageIcon("df4.PNG");
+				icon1 = new ImageIcon("df4.PNG");
 			}else if(ran== 5){
-				icon2 = new ImageIcon("df5.PNG");
+				icon1 = new ImageIcon("df5.PNG");
 			}else if(ran== 6){
-				icon2 = new ImageIcon("df6.PNG");
+				icon1 = new ImageIcon("df6.PNG");
 			}
 		
 			Character_move(ran);
 			
 			this.repaint();
 			this.remove(dice);
-			dice = new JButton("",icon2);
+			dice = new JButton("",icon1);
 			this.add(dice);
 			this.repaint();
 			dice.setVisible(true);
@@ -152,10 +139,6 @@ public class MonoPolyTest extends JPanel implements ActionListener{
 	
 	public JButton getjButton_reset() {
 		return jButton_reset;
-	}
-
-	public void setjButton_reset(JButton jButton_reset) {
-		this.jButton_reset = jButton_reset;
 	}
 }
 class MonoPoly_Quiz extends JDialog{
