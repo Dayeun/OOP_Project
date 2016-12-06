@@ -6,7 +6,7 @@ public class Character implements Movable{
 
 	private String name;
 	private Image character;
-	int[][] currentLocation;
+	int x, y;
 	
 	
 	
