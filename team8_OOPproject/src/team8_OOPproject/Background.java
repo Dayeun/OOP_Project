@@ -1,4 +1,4 @@
-package team8_OOPproject;
+/*package team8_OOPproject;
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
@@ -23,3 +23,4 @@ public class Background extends JFrame {
     }
     
 }
+*/
