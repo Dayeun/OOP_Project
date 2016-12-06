@@ -131,6 +131,7 @@ public class MonoPolyTest extends JPanel implements ActionListener{
 					//if user correct it, show success message. If not, go back to starting point
 					
 					JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE);
+					finish =true;
 					break;
 				}
 				moving++;
