@@ -15,8 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import MonoPoly_team8_OOPproject.Game_Character;
-
 public class Game_PathfindingMap extends JPanel implements MouseMotionListener,MouseListener,ActionListener{
 	private JLabel bar_mg;
 	private JLabel u_mg;

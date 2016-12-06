@@ -109,10 +109,10 @@ public class StartPage extends JFrame{
 				String name= tfName.getText();
 				
 				e.getSource().equals(btnFredo)
-				Image character=;
+		//		Image character=;
 				
 				
-				if(btnFredo.isc)
+		//		if(btnFredo.isc)
 				gameHandler.createCharacter(name, character);
 				gameHandler.createBoard(10);
 				new MymainFrame();

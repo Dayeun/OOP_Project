@@ -2,8 +2,6 @@ package team8_OOPproject;
 import java.awt.*;
 import javax.swing.*;
 
-import MonoPoly_team8_OOPproject.Game_Character;
-
 public class Account_Login extends JPanel {
 
 	private JLabel jLable_id;

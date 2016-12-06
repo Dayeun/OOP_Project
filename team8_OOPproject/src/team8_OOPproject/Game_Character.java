@@ -1,4 +1,4 @@
-package MonoPoly_team8_OOPproject;
+package team8_OOPproject;
 
 import java.awt.Graphics;
 
