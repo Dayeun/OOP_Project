@@ -15,6 +15,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 	int moving = 0;
 	private JButton jButton_back;
 	private JButton dice;
+	private JButton jButton_reset;
 	private JLabel jlabel_background;
 	
 	private ImageIcon background;
@@ -37,6 +38,10 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		this.add(dice);
 		dice.addMouseListener(this);
 		// button event
+		jButton_reset = new JButton("Reset");
+		jButton_reset.setBounds(700, 480, 80, 80);
+		jButton_reset.addActionListener(this);
+		this.add(jButton_reset);
 		
 		// add the component to JPanel
 		
@@ -75,14 +80,17 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource()==getjButton_reset()){
+			character.setLocation(80,430);
+			moving=0;
+		}
 		
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		//dice °ª¿¡ µû¶ó ÁÖ»çÀ§ ¸ð¾ç º¯°æ -- ±×¸² ÃßÈÄ º¯°æ
+		//dice ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -- ï¿½×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		if(e.getSource().equals(dice)){
 			int ran =rand.nextInt(6)+1;
 			if(ran== 1){
@@ -151,7 +159,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 			}
 
 			try {
-				Thread.sleep(500);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -168,7 +176,18 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 			character.moving_U(character.getX(),character.getY(),70);
 			character.moving_U(character.getX(),character.getY(),70);
 		}
+		JOptionPane.showMessageDialog(null, "test"+ran, "Quiz", JOptionPane.INFORMATION_MESSAGE);
 		
 	}
+
+	public JButton getjButton_reset() {
+		return jButton_reset;
+	}
+
+	public void setjButton_reset(JButton jButton_reset) {
+		this.jButton_reset = jButton_reset;
+	}
+	
+	
 	
 }
