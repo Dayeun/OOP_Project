@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class Game_PathfindingMap extends JPanel implements MouseMotionListener,MouseListener,ActionListener{
+public class Game_Pathfinding extends JPanel implements MouseMotionListener,MouseListener,ActionListener{
 	private JLabel bar_mg;
 	private JLabel u_mg;
 	private JButton rotation1;
@@ -43,7 +43,7 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 
 	Game_Character sc;
 
-	public Game_PathfindingMap()
+	public Game_Pathfinding()
 	{
 		sc =new Game_Character(105,290,"MainMagnet.PNG");
 
@@ -205,7 +205,7 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		x = sc.getX() /110;   // Main magnet x position
 		y = sc.getY() /300;   // Main magnet y position
 		
-		map s = new map();
+		Pathfinding_map s = new Pathfinding_map();
 		int m;
 		int r_l = 98;
 		int u_d = 103;

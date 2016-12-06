@@ -15,7 +15,7 @@ public class Main extends JFrame implements ActionListener {
 	private Account_SignUp signup;
 	private Select select;
 	private Game_SelectMenu game_Select;
-	private Game_PathfindingMap pathfinding;
+	private Game_Pathfinding pathfinding;
 	private MonoPolyTest monopoly;
 	private Learning_SelectMenu learning_Select;
 	private Learning chapter1;
@@ -44,7 +44,7 @@ public class Main extends JFrame implements ActionListener {
 		signup = new Account_SignUp();
 		select = new Select();
 		game_Select = new Game_SelectMenu();
-		pathfinding = new Game_PathfindingMap();
+		pathfinding = new Game_Pathfinding();
 		monopoly = new MonoPolyTest();
 		learning_Select = new Learning_SelectMenu();
 		chapter1=new LearningChapter1();
