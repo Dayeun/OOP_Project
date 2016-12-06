@@ -1,6 +1,7 @@
 package team8_OOPproject;
 
 public class map {
+	//Path finding map  1 - 'able' 0 -'not able'  2-'goal'
 	int arr[][] = new int[][]{{1, 0, 1, 1 ,1}, {1, 1, 1, 0, 2}};
 	public int moveR_Magnet(int x, int y)
 	{
@@ -10,7 +11,7 @@ public class map {
 				break;
 			k++;
 		}
-		return k;
+		return k;  // k = able to move
 	}
 	
 	public int moveL_Magnet(int x, int y)
@@ -21,12 +22,13 @@ public class map {
 				break;
 			k++;
 		}
-		return k;
+		return k; // k = able to move
 	}
+	
 	
 	public int checkGoal(int y, int x){		
 		if((arr[y][x]) == 2)
-			return 1;		
+			return 1;	// magnet on goal position
 		return 0;
 	}
 	
