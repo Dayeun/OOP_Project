@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+
 import javax.swing.*;
 
 public class MonoPolyTest extends JPanel implements ActionListener{
@@ -139,7 +140,9 @@ public class MonoPolyTest extends JPanel implements ActionListener{
 	public JButton getjButton_reset() {
 		return jButton_reset;
 	}
+
 }
+
 class MonoPoly_Quiz extends JDialog{
 	private JLabel question;
 	 
