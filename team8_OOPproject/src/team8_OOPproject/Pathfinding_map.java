@@ -1,6 +1,6 @@
 package team8_OOPproject;
 
-public class map {
+public class Pathfinding_map {
 	//Path finding map  1 - 'able' 0 -'not able'  2-'goal'
 	int arr[][] = new int[][]{{1, 0, 1, 1 ,1}, {1, 1, 1, 0, 2}};
 	public int moveR_Magnet(int x, int y)
