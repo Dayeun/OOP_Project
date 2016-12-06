@@ -16,16 +16,6 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 	private JButton jButton_back;
 	private JButton dice;
 	private JButton jButton_reset;
-	public JButton getjButton_reset() {
-		return jButton_reset;
-	}
-
-	public void setjButton_reset(JButton jButton_reset) {
-		this.jButton_reset = jButton_reset;
-	}
-
-
-
 	private JLabel jlabel_background;
 	
 	private ImageIcon background;
@@ -170,13 +160,23 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		if(moving == 15){
 			character.setLocation(300, -50);
 			JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE);
+			moving=0;
 		}
 	
     	if(moving == 9){
 	    	character.moving_U(character.getX(),character.getY(),70);
 		    character.moving_U(character.getX(),character.getY(),70);
     	}
-    	JOptionPane.showMessageDialog(null, "test"+ran, "Quiz", JOptionPane.INFORMATION_MESSAGE);
+    	JOptionPane.showMessageDialog(null, "test "+ran, "Quiz", JOptionPane.INFORMATION_MESSAGE);
+    	
 	
 	}	
+	
+	public JButton getjButton_reset() {
+		return jButton_reset;
+	}
+
+	public void setjButton_reset(JButton jButton_reset) {
+		this.jButton_reset = jButton_reset;
+	}
 }
