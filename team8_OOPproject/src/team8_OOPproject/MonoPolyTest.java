@@ -82,6 +82,7 @@ public class MonoPolyTest extends JPanel implements ActionListener{
 		if(e.getSource()==getjButton_reset()){
 			character.setLocation(80,430);
 			moving=0;
+			finish=false;
 		}else if(e.getSource().equals(dice)){
 			int ran =rand.nextInt(6)+1;
 			if(ran== 1){
@@ -143,7 +144,7 @@ public class MonoPolyTest extends JPanel implements ActionListener{
 	    	}
 	    	MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(ran);
 		}else{
-			
+			JOptionPane.showMessageDialog(null, "Finished! put a reset button", "Message", JOptionPane.INFORMATION_MESSAGE);
 		}
 		
 	
