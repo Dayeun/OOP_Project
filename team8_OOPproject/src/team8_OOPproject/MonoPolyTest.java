@@ -1,6 +1,8 @@
 package team8_OOPproject;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -167,7 +169,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 	    	character.moving_U(character.getX(),character.getY(),70);
 		    character.moving_U(character.getX(),character.getY(),70);
     	}
-    	JOptionPane.showMessageDialog(null, "test "+ran, "Quiz", JOptionPane.INFORMATION_MESSAGE);
+    	MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(ran);
 	
 	}	
 	
@@ -178,4 +180,28 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 	public void setjButton_reset(JButton jButton_reset) {
 		this.jButton_reset = jButton_reset;
 	}
+}
+class MonoPoly_Quiz extends JDialog{
+	private JLabel question;
+	 
+    public MonoPoly_Quiz(int ran){
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		Dimension dim = tk.getScreenSize();
+		
+		this.setResizable(false);
+		this.setSize(600,400);
+		
+		int x = (dim.width / 2) - (this.getWidth() / 2);
+		int y = (dim.height / 2) - (this.getHeight() / 2);
+		this.setLocation(x, y);
+    	this.setTitle("Quiz");
+    	
+    	
+    	question = new JLabel("Your dice number is : "+ran);
+        
+        
+        this.setModal(true);
+        this.setVisible(true);
+           
+    }
 }
