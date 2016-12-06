@@ -16,12 +16,21 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 	private JButton jButton_back;
 	private JButton dice;
 	private JButton jButton_reset;
+	public JButton getjButton_reset() {
+		return jButton_reset;
+	}
+
+	public void setjButton_reset(JButton jButton_reset) {
+		this.jButton_reset = jButton_reset;
+	}
+
+
+
 	private JLabel jlabel_background;
 	
 	private ImageIcon background;
-
-	ImageIcon icon1 = new ImageIcon("barmagnet.PNG");
-	ImageIcon icon2 = new ImageIcon("barmagnet.PNG");
+	ImageIcon icon1 = new ImageIcon("die.PNG");
+	ImageIcon icon2 = new ImageIcon("die.PNG");
 	
 	Game_Character character;
 	public MonoPolyTest(){		
@@ -39,7 +48,10 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		this.add(dice);
 		dice.addMouseListener(this);
 		// button event
-		
+		jButton_reset = new JButton("Reset");
+		jButton_reset.setBounds(700, 480, 80, 80);
+		jButton_reset.addActionListener(this);
+		this.add(jButton_reset);		
 		// add the component to JPanel
 		
 		// set the component location
@@ -77,7 +89,10 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource()==getjButton_reset()){
+			character.setLocation(80,430);
+			moving=0;
+		}
 		
 	}
 
