@@ -157,20 +157,19 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 			}else if(moving == 6 || moving == 7 || moving == 9){
 				character.moving_L(character.getX(),character.getY(),100);
 			}
-			moving++;
 			if(moving == 15){
 				character.setLocation(300, -50);
 				JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE);
-				moving=0;
 				break;
 			}
+			moving++;
 		}
     	if(moving == 9){
 	    	character.moving_U(character.getX(),character.getY(),70);
 		    character.moving_U(character.getX(),character.getY(),70);
     	}
-    	if(moving != 15){
-    		MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(ran);
+    	if(moving < 15){
+    		MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(moving);
     	}
 	
 	}	
