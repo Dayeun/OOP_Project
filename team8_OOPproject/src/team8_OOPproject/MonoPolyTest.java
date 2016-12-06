@@ -167,6 +167,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 			moving++;
 		}
 	
+		
     	if(moving == 9){
 	    	character.moving_U(character.getX(),character.getY(),70);
 		    character.moving_U(character.getX(),character.getY(),70);
