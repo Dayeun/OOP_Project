@@ -10,7 +10,6 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -283,22 +282,6 @@ public class Game_Pathfinding extends JPanel implements MouseMotionListener,Mous
 	public void setjButton_back(JButton jButton_back) {
 		this.jButton_back = jButton_back;
 	}
-	//unuse
-	/*public JButton getjButton_reset() {
-		return jButton_reset;
-	}
-
-	public void setjButton_reset(JButton jButton_reset) {
-		this.jButton_reset = jButton_reset;
-	}
-	
-	public JButton getjButton_next() {
-		return jButton_next;
-	}
-	
-	public void setjButton_next(JButton jButton_next) {
-		this.jButton_next = jButton_next;
-	}*/
 
 }
 
