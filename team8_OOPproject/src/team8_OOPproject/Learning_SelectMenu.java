@@ -17,12 +17,12 @@ public class Learning_SelectMenu extends JPanel implements ActionListener{
 	private JButton jButton_back;
 	private JLabel jlabel_background;
 	private ImageIcon background;
+	private JLabel jlabel_title;
+	private ImageIcon title;
 	
 	public Learning_SelectMenu()
-	{
-		Game_Character title = new Game_Character(210, 10, "learning_title.png");
-		//GridBagConstraints c = new GridBagConstraints();
-		
+	{	
+		jlabel_title = new JLabel();
 		jlabel_background = new JLabel();
 		btnChap1 = new JButton("Chapter 1");
 		btnChap2 = new JButton("Chapter 2");
@@ -36,7 +36,6 @@ public class Learning_SelectMenu extends JPanel implements ActionListener{
 		btnChap2.addActionListener(this);
 		btnChap3.addActionListener(this);
 		
-		this.add(title);
 		this.add(btnChap1);
 		this.add(btnChap2);
 		this.add(btnChap3);
@@ -63,6 +62,11 @@ public class Learning_SelectMenu extends JPanel implements ActionListener{
 		this.jlabel_background.setIcon(background);
 		this.add(jlabel_background);
 		
+		this.repaint();
+		title = new ImageIcon("learning_title.png");
+		this.jlabel_title.setLocation(210,10);
+		this.jlabel_title.setIcon(title);
+		this.add(jlabel_title);
 		
 		setVisible(true);
 				
