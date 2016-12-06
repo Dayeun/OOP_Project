@@ -10,12 +10,11 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class Game_PathfindingMap extends JPanel implements MouseMotionListener,MouseListener,ActionListener{
+public class Game_Pathfinding extends JPanel implements MouseMotionListener,MouseListener,ActionListener{
 	private JLabel bar_mg;
 	private JLabel u_mg;
 	private JButton rotation1;
@@ -40,13 +39,10 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 	boolean isDragged1 =false;
 	boolean isDragged2 =false;
 	int offX ,offY;
-	
-	private int xPos;
-	private int yPos;
 
 	Game_Character sc;
 
-	public Game_PathfindingMap()
+	public Game_Pathfinding()
 	{
 		sc =new Game_Character(105,290,"MainMagnet.PNG");
 
@@ -175,12 +171,10 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		// TODO Auto-generated method stub
 		if(bar_mg.contains(new Point(e.getX(),e.getY()))){
 			isDragged1 = true;
-			isDragged2 = false;
 			offX = e.getX() - bar_mg.getX();   
 			offY = e.getY() - bar_mg.getY();
 		}
 		else if(u_mg.contains(new Point(e.getX(),e.getY()))){
-			isDragged1 = false;
 			isDragged2 = true;
 			offX = e.getX() - u_mg.getX();
 			offY = e.getY() - u_mg.getY();
@@ -191,26 +185,26 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
 		if(isDragged1){
-			bar_mg.setLocation(e.getX()-offX, e.getY()-offY);
+	    	bar_mg.setLocation(e.getX()-offX, e.getY()-offY);
 		}else if(isDragged2){
 			u_mg.setLocation(e.getX()-offX, e.getY()-offY);
 		}
+		repaint();
 	}
-   //adsdsakjdnajkfjksafkjnbvakjsvbjk
 	
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		isDragged1 = false;
 		isDragged2 = false;
-		int[] bar= CheckPosition();
-		int[] u =CheckPosition_();
+		int[] bar = new Game_PathfindingPosition().CheckPosition(bar_mg.getX(),bar_mg.getY(),bar_rotation);
+		int[] u = new Game_PathfindingPosition().CheckPosition_(u_mg.getX(),u_mg.getY(),u_rotation);
 		
 		int x, y;
 		x = sc.getX() /110;   // Main magnet x position
 		y = sc.getY() /300;   // Main magnet y position
 		
-		map s = new map();
+		Pathfinding_map s = new Pathfinding_map();
 		int m;
 		int r_l = 98;
 		int u_d = 103;
@@ -280,32 +274,6 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 		
 	}
 
-	
-	public int[] CheckPosition()
-	{
-		int[] arr = new int[3];
-		arr[0] = (bar_mg.getX()) / 90;
-		arr[1] = (bar_mg.getY() -250)/ 100;
-		arr[2] = (bar_rotation %2);
-		
-		return arr;
-	}
-	
-	public int[] CheckPosition_(){
-		int[] arr = new int[3];
-		arr[0] = (u_mg.getX()) / 90;
-		arr[1] = (u_mg.getY() -250)/ 100;
-		arr[2] = (u_rotation %2);
-		
-		return arr;
-	}
-	
-	public int CheckBlack(){
-		
-		return 1;
-	}
-
-
 	public JButton getjButton_back() {
 		return jButton_back;
 	}
@@ -313,22 +281,6 @@ public class Game_PathfindingMap extends JPanel implements MouseMotionListener,M
 
 	public void setjButton_back(JButton jButton_back) {
 		this.jButton_back = jButton_back;
-	}
-	
-	public JButton getjButton_reset() {
-		return jButton_reset;
-	}
-
-	public void setjButton_reset(JButton jButton_reset) {
-		this.jButton_reset = jButton_reset;
-	}
-	
-	public JButton getjButton_next() {
-		return jButton_next;
-	}
-	
-	public void setjButton_next(JButton jButton_next) {
-		this.jButton_next = jButton_next;
 	}
 
 }

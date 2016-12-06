@@ -1,25 +1,25 @@
 package team8_OOPproject;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Random;
-
 import javax.swing.*;
 
-public class MonoPolyTest extends JPanel implements ActionListener, MouseListener {
+public class MonoPolyTest extends JPanel implements ActionListener{
 
 	Random rand = new Random();
+	private boolean finish = false;
 	int moving = 0;
 	private JButton jButton_back;
 	private JButton dice;
+	private JButton jButton_reset;
 	private JLabel jlabel_background;
 	
 	private ImageIcon background;
-	ImageIcon icon1 = new ImageIcon("barmagnet.PNG");
-	ImageIcon icon2 = new ImageIcon("barmagnet.PNG");
+	ImageIcon icon1 = new ImageIcon("die.PNG");
 	
 	Game_Character character;
 	public MonoPolyTest(){		
@@ -28,16 +28,18 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		
 		this.setSize(800, 600);
 		this.setLayout(null);
-		
-		
+
 		dice = new JButton("",icon1);
 		dice.setBounds(650, 100, 50, 50);
 		
 		this.add(character);
 		this.add(dice);
-		dice.addMouseListener(this);
+		dice.addActionListener(this);
 		// button event
-		
+		jButton_reset = new JButton("Reset");
+		jButton_reset.setBounds(700, 480, 80, 80);
+		jButton_reset.addActionListener(this);
+		this.add(jButton_reset);		
 		// add the component to JPanel
 		
 		// set the component location
@@ -61,114 +63,81 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		return jButton_back;
 	}
 
-	public void setjButton_back(JButton jButton_back) {
-		this.jButton_back = jButton_back;
-	}
-
-	public JLabel getJlabel_background() {
-		return jlabel_background;
-	}
-
-	public void setJlabel_background(JLabel jlabel_background) {
-		this.jlabel_background = jlabel_background;
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		//dice 값에 따라 주사위 모양 변경 -- 그림 추후 변경
-		if(e.getSource().equals(dice)){
+		if(e.getSource()==getjButton_reset()){
+			character.setLocation(80,430);
+			moving=0;
+			finish=false;
+		}else if(e.getSource().equals(dice)){
 			int ran =rand.nextInt(6)+1;
 			if(ran== 1){
-				icon2 = new ImageIcon("barmagnet.PNG");
+				icon1 = new ImageIcon("df1.PNG");
 			}else if(ran== 2){
-				icon2 = new ImageIcon("barmagnet.PNG");
+				icon1 = new ImageIcon("df2.PNG");
 			}else if(ran== 3){
-				icon2 = new ImageIcon("barmagnet.PNG");
+				icon1 = new ImageIcon("df3.PNG");
 			}else if(ran== 4){
-				icon2 = new ImageIcon("barmagnet.PNG");
+				icon1 = new ImageIcon("df4.PNG");
 			}else if(ran== 5){
-				icon2 = new ImageIcon("barmagnet.PNG");
+				icon1 = new ImageIcon("df5.PNG");
 			}else if(ran== 6){
-				icon2 = new ImageIcon("barmagnet.PNG");
+				icon1 = new ImageIcon("df6.PNG");
 			}
 		
 			Character_move(ran);
 			
 			this.repaint();
 			this.remove(dice);
-			dice = new JButton("",icon2);
+			dice = new JButton("",icon1);
 			this.add(dice);
 			this.repaint();
 			dice.setVisible(true);
 			dice.setBounds(650, 100, 50, 50);
-			dice.addMouseListener(this);
+			dice.addActionListener(this);
 			this.add(jlabel_background);
 		}
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	
 	public void Character_move(int ran) 
 	{
-		for(int i = 0; i< ran ; i++){
-			if(moving == 0 || moving == 4 || moving == 5 || moving == 8 ||moving == 10 ||moving ==11 ||moving ==14){
-				character.moving_U(character.getX(),character.getY(),70);
-			}else if( moving ==1 || moving == 2 || moving == 3 || moving == 12 ||moving ==13  ){
-				character.moving_R(character.getX(),character.getY(),100);
-			}else if(moving == 6 || moving == 7 || moving == 9){
-				character.moving_L(character.getX(),character.getY(),100);
-			}
-
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			moving++;
-			if(moving == 15){
-				character.setLocation(300, -50);
-				JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE);
-				break;
-			}
-		}
-		if(moving == 9){
-			character.moving_U(character.getX(),character.getY(),70);
-			character.moving_U(character.getX(),character.getY(),70);
+		if(finish ==false){
+			for(int i = 0; i< ran ; i++){
+				if(moving == 0 || moving == 4 || moving == 5 || moving == 8 ||moving == 10 ||moving ==11 ||moving ==14){
+					character.moving_U(character.getX(),character.getY(),70);
+				}else if( moving ==1 || moving == 2 || moving == 3 || moving == 12 ||moving ==13  ){
+					character.moving_R(character.getX(),character.getY(),100);
+				}else if(moving == 6 || moving == 7 || moving == 9){
+					character.moving_L(character.getX(),character.getY(),100);
+				}
+				if(moving == 15){
+					character.setLocation(300, -50);
+					MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(ran);
+					
+					//if user correct it, show success message. If not, go back to starting point
+					
+					JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE);
+					finish =true;
+					break;
+				}
+				moving++;
+			}	
+	    	if(moving == 9){
+		    	character.moving_U(character.getX(),character.getY(),70);
+			    character.moving_U(character.getX(),character.getY(),70);
+			    moving = 13;
+	    	}
+	    	MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(ran);
+		}else{
+			JOptionPane.showMessageDialog(null, "Finished! put a reset button", "Message", JOptionPane.INFORMATION_MESSAGE);
 		}
 		
-	}
 	
+	}	
+	
+	public JButton getjButton_reset() {
+		return jButton_reset;
+	}
 }
+

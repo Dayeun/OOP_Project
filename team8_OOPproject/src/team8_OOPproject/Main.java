@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.spi.CharsetProvider;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -16,10 +15,12 @@ public class Main extends JFrame implements ActionListener {
 	private Account_SignUp signup;
 	private Select select;
 	private Game_SelectMenu game_Select;
-	private Game_PathfindingMap pathfinding;
+	private Game_Pathfinding pathfinding;
 	private MonoPolyTest monopoly;
 	private Learning_SelectMenu learning_Select;
 	private Learning chapter1;
+	private Learning_Im learning_Im;
+	
 	
 	static ArrayList<UserInformation> user = new ArrayList<UserInformation>();
 
@@ -33,6 +34,7 @@ public class Main extends JFrame implements ActionListener {
 		this.setSize(800, 600);
 		
 		this.setResizable(false);
+	
 		
 		// Set frame center
 		int x = (dim.width / 2) - (this.getWidth() / 2);
@@ -43,10 +45,11 @@ public class Main extends JFrame implements ActionListener {
 		signup = new Account_SignUp();
 		select = new Select();
 		game_Select = new Game_SelectMenu();
-		pathfinding = new Game_PathfindingMap();
+		pathfinding = new Game_Pathfinding();
 		monopoly = new MonoPolyTest();
 		learning_Select = new Learning_SelectMenu();
 		chapter1=new LearningChapter1();
+		learning_Im = new Learning_Im();
 		
 		account_Login.getjButton_login().addActionListener(this);
 		account_Login.getjButton_signup().addActionListener(this);
@@ -62,6 +65,7 @@ public class Main extends JFrame implements ActionListener {
 		monopoly.getjButton_back().addActionListener(this);
 		learning_Select.getjButton_back().addActionListener(this);
 		learning_Select.getBtnChap1().addActionListener(this);
+		learning_Select.getBtnChap2().addActionListener(this);
 		chapter1.getjButton_back().addActionListener(this);
 		chapter1.getNext().addActionListener(this);
 		
@@ -160,6 +164,10 @@ public class Main extends JFrame implements ActionListener {
 						//chapter1.setQuestion_num(0);
 					//	chapter1.answer=null;
 					}
+				}
+				else if (button.getSource().equals(learning_Select.getBtnChap2())){
+					learning_Im.makeQuestions();
+					changeState(learning_Im);
 				}
 				
 		
