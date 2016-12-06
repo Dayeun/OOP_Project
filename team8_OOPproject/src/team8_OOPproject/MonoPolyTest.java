@@ -15,6 +15,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 
 	Random rand = new Random();
 	int moving = 0;
+	private boolean finish = false;
 	private JButton jButton_back;
 	private JButton dice;
 	private JButton jButton_reset;
@@ -149,28 +150,36 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 	
 	public void Character_move(int ran) 
 	{
-		for(int i = 0; i< ran ; i++){
-			if(moving == 0 || moving == 4 || moving == 5 || moving == 8 ||moving == 10 ||moving ==11 ||moving ==14){
-				character.moving_U(character.getX(),character.getY(),70);
-			}else if( moving ==1 || moving == 2 || moving == 3 || moving == 12 ||moving ==13  ){
-				character.moving_R(character.getX(),character.getY(),100);
-			}else if(moving == 6 || moving == 7 || moving == 9){
-				character.moving_L(character.getX(),character.getY(),100);
+		if(finish == false){
+			for(int i = 0; i< ran ; i++){
+				if(moving == 0 || moving == 4 || moving == 5 || moving == 8 ||moving == 10 ||moving ==11 ||moving ==14){
+					character.moving_U(character.getX(),character.getY(),70);
+				}else if( moving ==1 || moving == 2 || moving == 3 || moving == 12 ||moving ==13  ){
+					character.moving_R(character.getX(),character.getY(),100);
+				}else if(moving == 6 || moving == 7 || moving == 9){
+					character.moving_L(character.getX(),character.getY(),100);
+				}
+				if(moving == 15){
+					MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(moving);
+					
+					character.setLocation(300, -50);
+					JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE);
+					finish=true;
+					break;
+				}
+				moving++;
 			}
-			if(moving == 15){
-				character.setLocation(300, -50);
-				JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE);
-				break;
-			}
-			moving++;
+	    	if(moving == 9){
+		    	character.moving_U(character.getX(),character.getY(),70);
+			    character.moving_U(character.getX(),character.getY(),70);
+	    	}
+	    	if(moving < 15){
+	    		MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(moving);
+	    	}
+		}else{
+			JOptionPane.showMessageDialog(null, "This game is already finished!", "Message", JOptionPane.INFORMATION_MESSAGE);
 		}
-    	if(moving == 9){
-	    	character.moving_U(character.getX(),character.getY(),70);
-		    character.moving_U(character.getX(),character.getY(),70);
-    	}
-    	if(moving < 15){
-    		MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(moving);
-    	}
+
 	
 	}	
 	
