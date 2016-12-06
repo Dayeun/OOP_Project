@@ -99,7 +99,6 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		//dice 값에 따라 주사위 모양 변경 -- 그림 추후 변경
 		if(e.getSource().equals(dice)){
 			int ran =rand.nextInt(6)+1;
 			if(ran== 1){
