@@ -168,7 +168,6 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		    character.moving_U(character.getX(),character.getY(),70);
     	}
     	JOptionPane.showMessageDialog(null, "test "+ran, "Quiz", JOptionPane.INFORMATION_MESSAGE);
-    	
 	
 	}	
 	
