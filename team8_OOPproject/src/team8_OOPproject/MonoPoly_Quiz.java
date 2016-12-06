@@ -26,6 +26,5 @@ class MonoPoly_Quiz extends JDialog{
              
         this.setModal(true);
         this.setVisible(true);
-           
     }
 }
