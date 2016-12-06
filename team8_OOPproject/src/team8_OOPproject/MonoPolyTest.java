@@ -9,9 +9,10 @@ import java.util.Random;
 
 import javax.swing.*;
 
-public class MonoPolyTest extends JPanel implements ActionListener, MouseListener {
+public class MonoPolyTest extends JPanel implements ActionListener{
 
 	Random rand = new Random();
+	private boolean finish=false;
 	int moving = 0;
 	private JButton jButton_back;
 	private JButton dice;
@@ -29,14 +30,13 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		
 		this.setSize(800, 600);
 		this.setLayout(null);
-		
-		
+
 		dice = new JButton("",icon1);
 		dice.setBounds(650, 100, 50, 50);
 		
 		this.add(character);
 		this.add(dice);
-		dice.addMouseListener(this);
+		dice.addActionListener(this);
 		// button event
 		jButton_reset = new JButton("Reset");
 		jButton_reset.setBounds(700, 480, 80, 80);
@@ -82,14 +82,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		if(e.getSource()==getjButton_reset()){
 			character.setLocation(80,430);
 			moving=0;
-		}
-		
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		if(e.getSource().equals(dice)){
+		}else if(e.getSource().equals(dice)){
 			int ran =rand.nextInt(6)+1;
 			if(ran== 1){
 				icon2 = new ImageIcon("df1.PNG");
@@ -114,63 +107,44 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 			this.repaint();
 			dice.setVisible(true);
 			dice.setBounds(650, 100, 50, 50);
-			dice.addMouseListener(this);
+			dice.addActionListener(this);
 			this.add(jlabel_background);
 		}
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	
 	public void Character_move(int ran) 
 	{
-		for(int i = 0; i< ran ; i++){
-			if(moving == 0 || moving == 4 || moving == 5 || moving == 8 ||moving == 10 ||moving ==11 ||moving ==14){
-				character.moving_U(character.getX(),character.getY(),70);
-			}else if( moving ==1 || moving == 2 || moving == 3 || moving == 12 ||moving ==13  ){
-				character.moving_R(character.getX(),character.getY(),100);
-			}else if(moving == 6 || moving == 7 || moving == 9){
-				character.moving_L(character.getX(),character.getY(),100);
-			}
+		if(finish ==false){
+			for(int i = 0; i< ran ; i++){
+				if(moving == 0 || moving == 4 || moving == 5 || moving == 8 ||moving == 10 ||moving ==11 ||moving ==14){
+					character.moving_U(character.getX(),character.getY(),70);
+				}else if( moving ==1 || moving == 2 || moving == 3 || moving == 12 ||moving ==13  ){
+					character.moving_R(character.getX(),character.getY(),100);
+				}else if(moving == 6 || moving == 7 || moving == 9){
+					character.moving_L(character.getX(),character.getY(),100);
+				}
+				if(moving == 15){
+					character.setLocation(300, -50);
+					MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(ran);
+					
+					//if user correct it, show success message. If not, go back to starting point
+					
+					JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE);
+					break;
+				}
+				moving++;
+			}	
+	    	if(moving == 9){
+		    	character.moving_U(character.getX(),character.getY(),70);
+			    character.moving_U(character.getX(),character.getY(),70);
+			    moving = 13;
+	    	}
+	    	MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(ran);
+		}else{
 			
-			
-			if(moving == 15){
-				character.setLocation(300, -50);
-				JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE);
-				break;
-			}
-			moving++;
 		}
-	
 		
-    	if(moving == 9){
-	    	character.moving_U(character.getX(),character.getY(),70);
-		    character.moving_U(character.getX(),character.getY(),70);
-    	}
-    	MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(ran);
 	
 	}	
 	
@@ -197,10 +171,9 @@ class MonoPoly_Quiz extends JDialog{
 		this.setLocation(x, y);
     	this.setTitle("Quiz");
     	
-    	
     	question = new JLabel("Your dice number is : "+ran);
-        
-        
+    	this.add(question);
+             
         this.setModal(true);
         this.setVisible(true);
            
