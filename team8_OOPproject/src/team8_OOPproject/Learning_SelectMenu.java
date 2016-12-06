@@ -55,8 +55,6 @@ public class Learning_SelectMenu extends JPanel implements ActionListener{
 		jButton_back.setBounds(20, 20, 80, 30);
 		this.add(jButton_back);
 		
-		//this.setLayout(new GridLayout(3,3,50,50));
-		
 		background = new ImageIcon("main.png");
 		this.jlabel_background.setBounds(0,0, this.getWidth(), this.getHeight());
 		this.jlabel_background.setIcon(background);
