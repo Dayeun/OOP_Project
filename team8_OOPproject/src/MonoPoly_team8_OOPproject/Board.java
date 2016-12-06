@@ -20,24 +20,28 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class Board extends JPanel{
 	
 	
-	Square[][] map;
-	int level=10;
+	Square[] map;
+	int level=100;
 	
 	
 	
 	
 	public Board() {
+		map= new Square[level];
+		
+		for(int i = 0; i< level; i++){
+			map[i]= new Square();
+		}
+	
 	
 	}
-	
-	
 	
 	/**
 	public Board(int level){
 	
 		map= new Square[level][];
 		Square s= new Square();
-		for(int i = 0; i< level; i++){
+		
 			for(int j=0; j<level; j++){
 		//		add(s);
 		
