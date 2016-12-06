@@ -6,26 +6,19 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
-import java.util.Random;
 
-import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.TitledBorder;
 
 public class LearningChapter1 extends Learning {
@@ -35,10 +28,9 @@ public class LearningChapter1 extends Learning {
 	//private JPanel solve;
 	// private ArrayList<JButton> incorrect_choice;
 	private JButton submit;
-	private JButton next;
-	private ImageIcon q_image;
+	//private JButton next;
 	private JLabel q_imageLabel;
-	private String answer;
+	
 	//private Questions ch1 = new Questions();
 	//private int question_num = 0;
 	private int choice_num = 0;
@@ -48,6 +40,10 @@ public class LearningChapter1 extends Learning {
 	private JPanel explanation_pane;
 	private JPanel remember_pane;
 	private JPanel solve_pane;
+	
+	JScrollPane remember;
+	JScrollPane solve;
+	private JPanel next_pane;
 
 	
 	
@@ -62,11 +58,11 @@ public class LearningChapter1 extends Learning {
 	
 	@Override
 	public void quiz(int question_num) {
-		
+		// TODO Auto-generated method stub
+		//Put a question on the screen
 		TitledBorder border = BorderFactory.createTitledBorder("Question");
 		border.setTitleFont(new Font(null, Font.BOLD, 24));
 		question_pane.setBorder(border);
-		//question_pane.setLayout(new BoxLayout(question_pane, BoxLayout.Y_AXIS));
 		question_pane.add(ch1.getChap1question().get(question_num));
 		q_imageLabel = new JLabel();
 		q_imageLabel.setIcon(ch1.getChap1Image().get(question_num));
@@ -76,19 +72,11 @@ public class LearningChapter1 extends Learning {
 		
 		
 		
-		
-		//choicePane.setLayout(new FlowLayout(FlowLayout.LEFT));
-		//int random_num;
+		//place the choice button 'randomly'
 		ArrayList<Integer> random_num_array = new ArrayList<Integer>();
-		//Random random = new Random();
 		for(int i=0 ; i<ch1.getChap1choice()[question_num].length; i++)
-		{
-			//random_num=random.nextInt(ch1.getChap1choice()[question_num].length);
 			random_num_array.add(i);
-		}
 		Collections.shuffle(random_num_array);
-		
-
 		for (choice_num = 0; choice_num < ch1.getChap1choice()[question_num].length; choice_num++) {
 			choicePane.add(ch1.getChap1choice()[question_num][(random_num_array.get(choice_num))]);
 			ch1.getChap1choice()[question_num][(random_num_array.get(choice_num))].addActionListener(this);
@@ -100,10 +88,10 @@ public class LearningChapter1 extends Learning {
 		submit.setForeground(Color.WHITE);
 		submit.setBackground(new Color(127, 255, 0));
 		submit.setFont(new Font("Arial Black", Font.PLAIN, 30));
-		next_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		submit_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		submit.setFont(new Font(null, Font.BOLD, 18));
-		next_pane.add(jButton_back);
-		next_pane.add(submit);
+		submit_pane.add(jButton_back);
+		submit_pane.add(submit);
 		
 		submit.addActionListener(this);
 	}
@@ -111,17 +99,13 @@ public class LearningChapter1 extends Learning {
 	@Override
 	public void correct(int question_num) {
 		// TODO Auto-generated method stub
-		//frame.removeAll();
-		//frame.revalidate();
-		
 		correct_pane = new JPanel();
 		correct_pane.setSize(800, 600);
 		//correct_pane.setBackground(Color.RED);
-		//this.removeAll();
 		question_pane.removeAll();
 		question_pane.setBorder(null);
 		choicePane.removeAll();
-		next_pane.removeAll();
+		submit_pane.removeAll();
 		
 		answer_pane = new JPanel();
 		explanation_pane = new JPanel();
@@ -147,7 +131,6 @@ public class LearningChapter1 extends Learning {
 		
 		
 		
-		
 		explanation_pane.setLayout(new BoxLayout(explanation_pane, BoxLayout.Y_AXIS));
 		
 		remember_pane.setLayout(new BoxLayout(remember_pane, BoxLayout.Y_AXIS));
@@ -164,6 +147,11 @@ public class LearningChapter1 extends Learning {
 		solve_pane.add(ch1.getChap1solve().get(question_num));
 		explanation_pane.add(solve_pane);
 		
+		/*JScrollPane solve = new JScrollPane(solve_pane);
+		solve.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		solve.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		explanation_pane.add(solve);*/
+		
 		correct_pane.add(explanation_pane, BorderLayout.CENTER);
 		
 		
@@ -172,9 +160,9 @@ public class LearningChapter1 extends Learning {
 		next.setForeground(Color.WHITE);
 		next.setBackground(new Color(127, 255, 0));
 		next.setFont(new Font("Arial Black", Font.PLAIN, 20));
-		next_pane.setLayout(new FlowLayout(FlowLayout.LEFT));
-		next_pane.add(next);
-		next_pane.add(jButton_back);
+		submit_pane.setLayout(new FlowLayout(FlowLayout.LEFT));
+		submit_pane.add(next);
+		submit_pane.add(jButton_back);
 		next.addActionListener(this);
 		
 		answer=null;			//clear previous answer.
@@ -183,13 +171,13 @@ public class LearningChapter1 extends Learning {
 
 	public void incorrect(int question_num) {
 		// TODO Auto-generated method stub
-		//frame.removeAll();
-		//this.revalidate();
-		//this.removeAll();
 		question_pane.removeAll();
 		question_pane.setBorder(null);
 		choicePane.removeAll();
-		next_pane.removeAll();
+		//submit_pane.removeAll();
+		/*this.removeAll();
+		this.revalidate();
+		this.repaint();*/
 		JPanel incorrect_pane = new JPanel();
 		incorrect_pane.setSize(800, 600);
 		incorrect_pane.setBackground(Color.WHITE);
@@ -198,6 +186,7 @@ public class LearningChapter1 extends Learning {
 		explanation_pane = new JPanel();
 		remember_pane = new JPanel();
 		solve_pane = new JPanel();
+		next_pane = new JPanel();
 		
 		incorrect_pane.setLayout(new BorderLayout());
 		
@@ -225,17 +214,28 @@ public class LearningChapter1 extends Learning {
 		TitledBorder border1 = BorderFactory.createTitledBorder("Remember");
 		border1.setTitleFont(new Font(null, Font.BOLD, 24));
 		remember_pane.setBorder(border1);
-		remember_pane.setSize(700, 200);
 		remember_pane.add(ch1.getChap1remember().get(question_num));
 		explanation_pane.add(remember_pane);
-
+		
+		/*remember = new JScrollPane(remember_pane);
+		remember.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		remember.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		explanation_pane.add(remember);*/
+		
 		solve_pane.setLayout(new BoxLayout(solve_pane, BoxLayout.Y_AXIS));
 		TitledBorder border2 = BorderFactory.createTitledBorder("Solve");
 		border2.setTitleFont(new Font(null, Font.BOLD, 24));
 		solve_pane.setBorder(border2);
-		solve_pane.setSize(700, 200);
+		solve_pane.add(q_imageLabel);
 		solve_pane.add(ch1.getChap1solve().get(question_num));
+		q_imageLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		ch1.getChap1solve().get(question_num).setAlignmentX(Component.LEFT_ALIGNMENT);
 		explanation_pane.add(solve_pane);
+		
+		/*solve = new JScrollPane(solve_pane);
+		solve.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		solve.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		explanation_pane.add(solve);*/
 		
 		incorrect_pane.add(explanation_pane, BorderLayout.CENTER);
 		
@@ -245,9 +245,11 @@ public class LearningChapter1 extends Learning {
 		next.setForeground(Color.WHITE);
 		next.setBackground(new Color(127, 255, 0));
 		next.setFont(new Font("Arial Black", Font.PLAIN, 20));
-		next_pane.setLayout(new FlowLayout(FlowLayout.LEFT));
-		next_pane.add(next);
-		next_pane.add(jButton_back);
+		submit_pane.setLayout(new FlowLayout(FlowLayout.LEFT));
+		//explanation_pane.setBackground(Color.CYAN);
+		submit_pane.add(next);
+		submit_pane.add(jButton_back);
+		//incorrect_pane.add(submit_pane, BorderLayout.SOUTH);
 		next.addActionListener(this);
 		
 		answer=null;			//clear previous answer.
@@ -265,17 +267,18 @@ public class LearningChapter1 extends Learning {
 			ch1.getChap1correct().get(question_num).setForeground(Color.RED);
 			ch1.getChap1correct().get(question_num).setBackground(new Color(126, 187, 0));
 		} else {
-			for(int i=0; i<ch1.getChap1choice()[question_num].length;i++)
-				if(e.getSource().equals(ch1.getChap1choice()[question_num][i]))
-					answer = ch1.getChap1choice()[question_num][1].getText();		// save your answer(incorrect answer)
-			for(int i=0; i<ch1.getChap1choice()[question_num].length;i++){
-				ch1.getChap1choice()[question_num][i].setForeground(Color.WHITE);
-				ch1.getChap1choice()[question_num][i].setBackground(new Color(127, 255, 0));
-			}
-			((JComponent) e.getSource()).setForeground(Color.RED);
-			((JComponent) e.getSource()).setBackground(new Color(126, 187, 0));
-			
+			for(int r=1; r<ch1.getChap1choice()[question_num].length; r++)
+				if(e.getSource().equals(ch1.getChap1choice()[question_num][r])){
+					answer = ch1.getChap1choice()[question_num][r].getText();		// save your answer(incorrect answer)
+					for(int w=0; w<ch1.getChap1choice()[question_num].length;w++){
+						ch1.getChap1choice()[question_num][w].setForeground(Color.WHITE);
+						ch1.getChap1choice()[question_num][w].setBackground(new Color(127, 255, 0));
+					}
+					ch1.getChap1choice()[question_num][r].setForeground(Color.RED);
+					ch1.getChap1choice()[question_num][r].setBackground(new Color(126, 187, 0));
+				}
 		}
+		
 		if (e.getSource().equals(submit)) {
 			if(answer == null){
 				JOptionPane.showMessageDialog(null,"Please choose your answer!","NO ANSWER", 2);
@@ -303,8 +306,6 @@ public class LearningChapter1 extends Learning {
 					ch1.getChap1choice()[i][j].setForeground(Color.WHITE);
 					ch1.getChap1choice()[i][j].setBackground(new Color(127, 255, 0));
 				}
-				//question_num=0;
-				answer=null;
 			}
 		}
 		
@@ -320,13 +321,19 @@ public class LearningChapter1 extends Learning {
 			
 			if(this.isAncestorOf(correct_pane))				//The case that you are Correct and click next button.
 				correct_pane.removeAll();
-			else if(this.isAncestorOf(correct_pane))		//The case that you are Incorrect and click next button.
+			else if(this.isAncestorOf(incorrect_pane))		//The case that you are Incorrect and click next button.
 				incorrect_pane.removeAll();
 			remember_pane.removeAll();
 			remember_pane.setBorder(null);
 			solve_pane.removeAll();
 			solve_pane.setBorder(null);
-			next_pane.removeAll();
+			explanation_pane.removeAll();
+			submit_pane.removeAll();
+			if(this.isAncestorOf(remember))	
+				remember.removeAll();
+			if(this.isAncestorOf(solve))	
+				solve.removeAll();
+			//next_pane.removeAll();
 			
 			
 			quiz(question_num);
