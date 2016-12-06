@@ -157,20 +157,20 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 			}else if(moving == 6 || moving == 7 || moving == 9){
 				character.moving_L(character.getX(),character.getY(),100);
 			}
+			moving++;
+			
 			if(moving == 15){
 				character.setLocation(300, -50);
 				JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE);
 				break;
 			}
-			moving++;
 		}
+	
     	if(moving == 9){
 	    	character.moving_U(character.getX(),character.getY(),70);
 		    character.moving_U(character.getX(),character.getY(),70);
     	}
-    	if(moving < 15){
-    		MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(moving);
-    	}
+    	MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(ran);
 	
 	}	
 	
@@ -182,7 +182,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		this.jButton_reset = jButton_reset;
 	}
 }
-class MonoPoly_Quiz extends JFrame{
+class MonoPoly_Quiz extends JDialog{
 	private JLabel question;
 	 
     public MonoPoly_Quiz(int ran){
@@ -193,15 +193,15 @@ class MonoPoly_Quiz extends JFrame{
 		this.setSize(600,400);
 		
 		int x = (dim.width / 2) - (this.getWidth() / 2);
-		int y = (dim.height / 2) - (this.getHeight() / 2) +90;
+		int y = (dim.height / 2) - (this.getHeight() / 2);
 		this.setLocation(x, y);
     	this.setTitle("Quiz");
     	
     	
     	question = new JLabel("Your dice number is : "+ran);
-    	this.add(question);
-    	
         
+        
+        this.setModal(true);
         this.setVisible(true);
            
     }
