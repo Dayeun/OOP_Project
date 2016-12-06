@@ -11,21 +11,20 @@ import java.util.Random;
 
 import javax.swing.*;
 
-public class MonoPolyTest extends JPanel implements ActionListener, MouseListener {
+public class MonoPolyTest extends JPanel implements ActionListener {
 
-	Random rand = new Random();
-	int moving = 0;
-	private boolean finish = false;
-	private JButton jButton_back;
-	private JButton dice;
-	private JButton jButton_reset;
-	private JLabel jlabel_background;
+	Random rand = new Random(); //dice: 1~6 
+	int moving = 0; //0 is starting point, 15 is goal point
+	private boolean finish = false; //If game finish, it changes to true
+	private JButton jButton_back; // going back to game_SelectMenu
+	private JButton dice; //dice button
+	private JButton jButton_reset; //reset character's location
+	private JLabel jlabel_background; //background
 	
-	private ImageIcon background;
-	ImageIcon icon1 = new ImageIcon("die.PNG");
-	ImageIcon icon2 = new ImageIcon("die.PNG");
+	private ImageIcon background; //background
+	ImageIcon icon = new ImageIcon("die.PNG"); //dice image
 	
-	Game_Character character;
+	Game_Character character; //user's character
 	public MonoPolyTest(){		
 		character =new Game_Character(80,430,"character.PNG");
 		jlabel_background = new JLabel();
@@ -34,12 +33,12 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		this.setLayout(null);
 		
 		
-		dice = new JButton("",icon1);
+		dice = new JButton("",icon);
 		dice.setBounds(650, 100, 50, 50);
 		
 		this.add(character);
 		this.add(dice);
-		dice.addMouseListener(this);
+		dice.addActionListener(this);
 		// button event
 		jButton_reset = new JButton("Reset");
 		jButton_reset.setBounds(700, 480, 80, 80);
@@ -85,68 +84,36 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 		if(e.getSource()==getjButton_reset()){
 			character.setLocation(80,430);
 			moving=0;
-		}
-		
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		if(e.getSource().equals(dice)){
-			int ran =rand.nextInt(6)+1;
+		}else if(e.getSource().equals(dice)){
+			int ran =rand.nextInt(6)+1; //choose dice number 1~6
 			if(ran== 1){
-				icon2 = new ImageIcon("df1.PNG");
+				icon = new ImageIcon("df1.PNG");
 			}else if(ran== 2){
-				icon2 = new ImageIcon("df2.PNG");
+				icon = new ImageIcon("df2.PNG");
 			}else if(ran== 3){
-				icon2 = new ImageIcon("df3.PNG");
+				icon = new ImageIcon("df3.PNG");
 			}else if(ran== 4){
-				icon2 = new ImageIcon("df4.PNG");
+				icon = new ImageIcon("df4.PNG");
 			}else if(ran== 5){
-				icon2 = new ImageIcon("df5.PNG");
+				icon = new ImageIcon("df5.PNG");
 			}else if(ran== 6){
-				icon2 = new ImageIcon("df6.PNG");
+				icon = new ImageIcon("df6.PNG");
 			}
 		
-			Character_move(ran);
+			Character_move(ran); //moving character by dice number
 			
 			this.repaint();
 			this.remove(dice);
-			dice = new JButton("",icon2);
+			dice = new JButton("",icon); // change dice's image
 			this.add(dice);
 			this.repaint();
 			dice.setVisible(true);
 			dice.setBounds(650, 100, 50, 50);
-			dice.addMouseListener(this);
+			dice.addActionListener(this);
 			this.add(jlabel_background);
 		}
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
 	
 	public void Character_move(int ran) 
 	{
@@ -172,6 +139,7 @@ public class MonoPolyTest extends JPanel implements ActionListener, MouseListene
 	    	if(moving == 9){
 		    	character.moving_U(character.getX(),character.getY(),70);
 			    character.moving_U(character.getX(),character.getY(),70);
+			    moving = 13;
 	    	}
 	    	if(moving < 15){
 	    		MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(moving);
