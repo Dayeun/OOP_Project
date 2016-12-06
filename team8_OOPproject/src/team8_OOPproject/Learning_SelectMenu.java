@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import MonoPoly_team8_OOPproject.Game_Character;
+
 public class Learning_SelectMenu extends JPanel implements ActionListener{
 	
 	private JButton btnChap1;

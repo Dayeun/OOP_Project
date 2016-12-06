@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import MonoPoly_team8_OOPproject.Game_Character;
+
 public class Game_SelectMenu extends JPanel implements ActionListener{
 
 	private JButton jButton_bMonopolyG;
