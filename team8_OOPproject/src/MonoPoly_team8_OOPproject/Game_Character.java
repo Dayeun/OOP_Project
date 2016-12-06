@@ -1,5 +1,4 @@
-package team8_OOPproject;
-
+package MonoPoly_team8_OOPproject;
 
 import java.awt.Graphics;
 
@@ -15,7 +14,7 @@ public class Game_Character extends JLabel {
 		MainCharacter = new ImageIcon(a);
 		this.setIcon(MainCharacter);
 		setLocation(x, y);
-
+		System.out.println();
 	}
 
 	public void setIconImage(String imageName) {
