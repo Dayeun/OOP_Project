@@ -143,6 +143,7 @@ public class MonoPolyTest extends JPanel implements ActionListener{
 
 }
 
+
 class MonoPoly_Quiz extends JDialog{
 	private JLabel question;
 	 

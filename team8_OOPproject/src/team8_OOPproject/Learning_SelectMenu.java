@@ -1,15 +1,9 @@
 package team8_OOPproject;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridLayout;
-import java.awt.Insets;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -64,7 +58,6 @@ public class Learning_SelectMenu extends JPanel implements ActionListener{
 		
 		//this.setLayout(new GridLayout(3,3,50,50));
 		
-		
 		background = new ImageIcon("main.png");
 		this.jlabel_background.setBounds(0,0, this.getWidth(), this.getHeight());
 		this.jlabel_background.setIcon(background);
@@ -76,7 +69,6 @@ public class Learning_SelectMenu extends JPanel implements ActionListener{
 		
 		
 	}
-
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
@@ -98,7 +90,5 @@ public class Learning_SelectMenu extends JPanel implements ActionListener{
 	public JButton getjButton_back() {
 		return jButton_back;
 	}
-	
-	
 
 }
