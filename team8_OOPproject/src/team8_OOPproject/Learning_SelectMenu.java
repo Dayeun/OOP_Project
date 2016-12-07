@@ -60,12 +60,12 @@ public class Learning_SelectMenu extends JPanel implements ActionListener{
 		this.jlabel_background.setIcon(background);
 		this.add(jlabel_background);
 		
-		this.repaint();
+		
 		title = new ImageIcon("learning_title.png");
 		this.jlabel_title.setLocation(210,10);
 		this.jlabel_title.setIcon(title);
 		this.add(jlabel_title);
-		
+		this.repaint();
 		setVisible(true);
 				
 		
