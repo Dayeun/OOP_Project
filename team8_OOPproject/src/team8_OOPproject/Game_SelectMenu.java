@@ -65,24 +65,12 @@ public class Game_SelectMenu extends JPanel implements ActionListener{
 		return jButton_bMonopolyG;
 	}
 
-	public void setjButton_bMonopolyG(JButton jButton_bMonopolyG) {
-		this.jButton_bMonopolyG = jButton_bMonopolyG;
-	}
-
 	public JButton getjButton_bPathFindingG() {
 		return jButton_bPathFindingG;
 	}
 
-	public void setjButton_bPathFindingG(JButton jButton_bPathFindingG) {
-		this.jButton_bPathFindingG = jButton_bPathFindingG;
-	}
-
 	public JButton getjButton_back() {
 		return jButton_back;
-	}
-
-	public void setjButton_back(JButton jButton_back) {
-		this.jButton_back = jButton_back;
 	}
 
 }
