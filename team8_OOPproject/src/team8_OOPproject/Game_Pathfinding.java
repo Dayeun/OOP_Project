@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -58,14 +57,12 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 		rotation1 = new JButton("",icon);
 		rotation2= new JButton("",icon);
 		jButton_reset = new JButton("Reset");
-		jButton_next = new JButton("Next");
 
 		bar_mg.setBounds(620, 80, 60, 30);
 		u_mg.setBounds(620, 150, 50,50);
 		rotation1.setBounds(700, 50, 70, 70);
 		rotation2.setBounds(700, 150, 70, 70);
 		jButton_reset.setBounds(600,480,80,80);
-		jButton_next.setBounds(700, 480, 80, 80);
 		
 		this.add(rotation1);
 		this.add(rotation2);
@@ -73,13 +70,12 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 		this.add(u_mg);
 		this.add(sc);
 		this.add(jButton_reset);
-		this.add(jButton_next);
 		
 		bar_mg.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				offX = e.getX() - bar_mg.getX();   
-				offY = e.getY() - bar_mg.getY();
+				offX = e.getX()- bar_mg.getX() +1180;   
+				offY = e.getY() - bar_mg.getY() + 350;
 			}
 			
 			public void mouseReleased(MouseEvent e){
@@ -126,7 +122,7 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 		
 		bar_mg.addMouseMotionListener(new MouseMotionAdapter() {
 			public void mouseDragged(MouseEvent e) {
-				bar_mg.setLocation(e.getX()-offX, e.getY()-offY);
+				bar_mg.setLocation(e.getLocationOnScreen().x-offX, e.getLocationOnScreen().y-offY);
 			}
 		});
 		
@@ -135,8 +131,8 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 		u_mg.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-		    	offX = e.getX() - u_mg.getX();   
-		    	offY = e.getY() - u_mg.getY();
+		    	offX = e.getX() - u_mg.getX() +80;   
+		    	offY = e.getY() - u_mg.getY() +20;
 		    }	
 			
 			public void mouseReleased(MouseEvent e){
@@ -162,7 +158,7 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 		
 		u_mg.addMouseMotionListener(new MouseMotionAdapter() {
 			public void mouseDragged(MouseEvent e) {
-				u_mg.setLocation(e.getX()-offX, e.getY()-offY);
+				u_mg.setLocation(e.getLocationOnScreen().x-offX-1100, e.getLocationOnScreen().y-offY-400);
 			}
 		});
 		
@@ -189,7 +185,6 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 		});
 		
 		jButton_reset.addActionListener(this);
-		jButton_next.addActionListener(this);
 		
 		//return to previous panel
 		jButton_back = new JButton("Back");
@@ -227,6 +222,7 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 	public void setjButton_back(JButton jButton_back) {
 		this.jButton_back = jButton_back;
 	}
+
 
 }
 
