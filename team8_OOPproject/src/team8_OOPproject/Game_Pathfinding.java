@@ -39,12 +39,12 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 	int offX ,offY;
 
 	Game_Character sc;
-	Pathfinding_map s;
+	Game_PathfindingMap s;
 	
 	public Game_Pathfinding()
 	{
 		
-		s = new Pathfinding_map();
+		s = new Game_PathfindingMap();
 		int r_l = 98;
 		int u_d = 103;
 		sc =new Game_Character(105,290,"MainMagnet.PNG");
