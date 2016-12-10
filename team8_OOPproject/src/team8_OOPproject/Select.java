@@ -54,81 +54,17 @@ public class Select extends JPanel implements ActionListener{
 		
 
 	}
-
 	public JButton getjButton_gotoGame() {
 		return jButton_gotoGame;
 	}
-
-	public void setjButton_gotoGame(JButton jButton_gotoGame) {
-		this.jButton_gotoGame = jButton_gotoGame;
-	}
-
 	public JButton getjButton_gotoLearning() {
 		return jButton_gotoLearning;
 	}
-
-	public void setjButton_gotoLearning(JButton jButton_gotoLearning) {
-		this.jButton_gotoLearning = jButton_gotoLearning;
-	}
-
 	public JButton getjButton_back() {
 		return jButton_back;
 	}
-
-	public void setjButton_back(JButton jButton_back) {
-		this.jButton_back = jButton_back;
-	}
-
-	public JLabel getJlabel_background() {
-		return jlabel_background;
-	}
-
-	public void setJlabel_background(JLabel jlabel_background) {
-		this.jlabel_background = jlabel_background;
-	}
-	
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 	}
-/*<<<<<<< HEAD*/
-
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		if(arg0.getSource().equals(jButton_gotoGame)){
-			new Game_SelectMenu();
-			Main sc=new Main();
-			sc.dispose();
-			sc.removeAll();
-		}
-	}
-
-	
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-/*=======
->>>>>>> branch 'master' of https://github.com/Dayeun/OOP_Project.git
-*/
 }

@@ -73,70 +73,18 @@ public class Account_Login extends JPanel {
 
 	}
 
-	public JLabel getjLable_id() {
-		return jLable_id;
-	}
-
-	public void setjLable_id(JLabel jLable_id) {
-		this.jLable_id = jLable_id;
-	}
-
-	public JLabel getjLable_pw() {
-		return jLable_pw;
-	}
-
-	public void setjLable_pw(JLabel jLable_pw) {
-		this.jLable_pw = jLable_pw;
-	}
-
-	public JTextField getjText_id() {
-		return jText_id;
-	}
-
-	public void setjText_id(JTextField jText_id) {
-		this.jText_id = jText_id;
-	}
-
-	public JPasswordField getjText_pw() {
-		return jText_pw;
-	}
-
-	public void setjText_pw(JPasswordField jText_pw) {
-		this.jText_pw = jText_pw;
-	}
-
 	public JButton getjButton_login() {
 		return jButton_login;
-	}
-
-	public void setjButton_login(JButton jButton_login) {
-		this.jButton_login = jButton_login;
 	}
 
 	public JButton getjButton_signup() {
 		return jButton_signup;
 	}
 
-	public void setjButton_signup(JButton jButton_signup) {
-		this.jButton_signup = jButton_signup;
-	}
-
 	public JLabel getJlabel_background() {
 		return jlabel_background;
 	}
-
-	public void setJlabel_background(JLabel jlabel_background) {
-		this.jlabel_background = jlabel_background;
-	}
 	
-	public JPanel getjPanel_loginBox() {
-		return jPanel_loginBox;
-	}
-
-	public void setjPanel_loginBox(JPanel jPanel_loginBox) {
-		this.jPanel_loginBox = jPanel_loginBox;
-	}
-
 	public boolean loginCheck() {
 		// login validation
 		int checking = 0;

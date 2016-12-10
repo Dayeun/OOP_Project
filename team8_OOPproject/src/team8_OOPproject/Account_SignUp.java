@@ -101,39 +101,6 @@ public class Account_SignUp extends JPanel implements ActionListener {
 		this.setVisible(true);
 
 	}
-
-	public JLabel getjLable_id() {
-		return jLable_id;
-	}
-
-	public JLabel getjLable_name() {
-		return jLable_name;
-	}
-
-	public JLabel getjLable_pw() {
-		return jLable_pw;
-	}
-
-	public JLabel getjLable_pw_check() {
-		return jLable_pw_check;
-	}
-
-	public JTextField getjText_id() {
-		return jText_id;
-	}
-
-	public JTextField getjText_name() {
-		return jText_name;
-	}
-
-	public JPasswordField getjText_pw() {
-		return jText_pw;
-	}
-
-	public JPasswordField getjText_pw_check() {
-		return jText_pw_check;
-	}
-
 	public JButton getjButton_reset() {
 		return jButton_reset;
 	}
@@ -144,22 +111,6 @@ public class Account_SignUp extends JPanel implements ActionListener {
 
 	public JButton getjButton_back() {
 		return jButton_back;
-	}
-	
-	public JLabel getJlabel_background() {
-		return jlabel_background;
-	}
-
-	public void setJlabel_background(JLabel jlabel_background) {
-		this.jlabel_background = jlabel_background;
-	}
-
-	public JPanel getjPanel_box() {
-		return jPanel_box;
-	}
-
-	public void setjPanel_box(JPanel jPanel_box) {
-		this.jPanel_box = jPanel_box;
 	}
 
 	@Override
@@ -209,7 +160,7 @@ public class Account_SignUp extends JPanel implements ActionListener {
 																													// the
 																													// password
 																													// check
-			JOptionPane.showMessageDialog(null, "password incorrect ", "Message", JOptionPane.WARNING_MESSAGE); // show
+			JOptionPane.showMessageDialog(null, "passaword incorrect ", "Message", JOptionPane.WARNING_MESSAGE); // show
 																												// dialog
 			return false;// sign up fail
 		} else { // sign up success
