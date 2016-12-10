@@ -67,7 +67,6 @@ public class Main extends JFrame implements ActionListener {
 		learning_Select.getBtnChap1().addActionListener(this);
 		learning_Select.getBtnChap2().addActionListener(this);
 		chapter1.getjButton_back().addActionListener(this);
-		chapter1.getNext().addActionListener(this);
 		
 		this.add(account_Login);// add JPanel to the JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -161,8 +160,8 @@ public class Main extends JFrame implements ActionListener {
 					if(result_gohome == 0)
 					{
 						changeState(learning_Select);
-						//chapter1.setQuestion_num(0);
-					//	chapter1.answer=null;
+						chapter1.setQuestion_num(0);
+						chapter1.next.doClick();
 					}
 				}
 				else if (button.getSource().equals(learning_Select.getBtnChap2())){

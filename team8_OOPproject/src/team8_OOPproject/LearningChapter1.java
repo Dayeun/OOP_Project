@@ -23,18 +23,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.border.TitledBorder;
 
 public class LearningChapter1 extends Learning {
-	//private JFrame frame;
-	//private JPanel question;
-	//private JPanel remember;
-	//private JPanel solve;
-	// private ArrayList<JButton> incorrect_choice;
 	private JButton submit;
-	//private JButton next;
-	private JLabel q_imageLabel;
-	
-	//private Questions ch1 = new Questions();
-	//private int question_num = 0;
-	private int choice_num = 0;
 	private JPanel correct_pane;
 	private JPanel incorrect_pane;
 	private JPanel answer_pane;
@@ -42,14 +31,11 @@ public class LearningChapter1 extends Learning {
 	private JPanel remember_pane;
 	private JPanel solve_pane;
 	
-	JScrollPane remember;
-	JScrollPane solve;
 
 	
 	
 	public LearningChapter1() {
 		//super();
-		//incorrect_choice = new ArrayList<JButton>();
 		
 		
 		quiz(question_num);
@@ -64,14 +50,14 @@ public class LearningChapter1 extends Learning {
 		border.setTitleFont(new Font(null, Font.BOLD, 24));
 		question_pane.setBorder(border);
 		question_pane.add(ch1.getChap1question().get(question_num));
-		q_imageLabel = new JLabel();
+		JLabel q_imageLabel = new JLabel();
 		q_imageLabel.setIcon(ch1.getChap1Image().get(question_num));
 		ch1.getChap1question().get(question_num).setAlignmentX(Component.LEFT_ALIGNMENT);
 		q_imageLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		question_pane.add(q_imageLabel);
 		
 		
-		
+		int choice_num = 0;
 		//place the choice button 'randomly'
 		ArrayList<Integer> random_num_array = new ArrayList<Integer>();
 		for(int i=0 ; i<ch1.getChap1choice()[question_num].length; i++)
@@ -102,6 +88,7 @@ public class LearningChapter1 extends Learning {
 		// TODO Auto-generated method stub
 		correct_pane = new JPanel();
 		correct_pane.setSize(800, 600);
+		correct_pane.setBackground(Color.WHITE);
 		initialization();
 		//next_pane=new JPanel();
 		correct_pane.setLayout(new BorderLayout());
@@ -115,7 +102,7 @@ public class LearningChapter1 extends Learning {
 		
 		showExplanation(correct_pane);
 		
-		showNextBTN();
+		settingNextBtn();
 		
 		
 		answer=null;			//clear previous answer.
@@ -139,7 +126,7 @@ public class LearningChapter1 extends Learning {
 		
 		showExplanation(incorrect_pane);
 		
-		showNextBTN();
+		settingNextBtn();
 		
 		answer=null;			//clear previous answer.
 		this.add(incorrect_pane);
@@ -208,10 +195,10 @@ public class LearningChapter1 extends Learning {
 			
 			question_num++;
 			
-			if(correct_pane.isDisplayable())
+			/*if(correct_pane.isDisplayable())
 				correct_pane.removeAll();
 			else if(incorrect_pane.isDisplayable())
-				incorrect_pane.removeAll();
+				incorrect_pane.removeAll();*/
 			remember_pane.removeAll();
 			solve_pane.removeAll();
 			next_pane.removeAll();
@@ -272,7 +259,7 @@ public void showExplanation(JPanel pane){
 	pane.add(explanation_pane, BorderLayout.CENTER);
 }
 
-public void showNextBTN(){
+public void settingNextBtn(){
 	
 	//set next button
 	next = new JButton("I GOT IT!");

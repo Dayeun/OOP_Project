@@ -2,6 +2,7 @@ package team8_OOPproject;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.awt.Insets;
@@ -30,9 +31,12 @@ public class Learning_SelectMenu extends JPanel implements ActionListener{
 	{	
 		jlabel_title = new JLabel();
 		jlabel_background = new JLabel();
-		btnChap1 = new JButton("Chapter 1");
-		btnChap2 = new JButton("Chapter 2");
-		btnChap3 = new JButton("Chapter 3");
+		btnChap1 = new JButton("Chapter 1 : Material");
+		btnChap1.setFont(new Font("Aharoni", Font.BOLD, 20));
+		btnChap2 = new JButton("Chapter 2 : Force and motion");
+		btnChap2.setFont(new Font("Aharoni", Font.BOLD, 20));
+		btnChap3 = new JButton("Chapter 3 : Electricity & Magnetism");
+		btnChap3.setFont(new Font("Aharoni", Font.BOLD, 20));
 		
 		this.setLayout(null);
 		
@@ -50,9 +54,9 @@ public class Learning_SelectMenu extends JPanel implements ActionListener{
 		btnChap2.setBackground(Color.ORANGE);
 		btnChap3.setBackground(Color.ORANGE);
 		
-		btnChap1.setBounds(230, 120, 350, 60);
-		btnChap2.setBounds(230, 190, 350, 60);
-		btnChap3.setBounds(230, 260, 350, 60);
+		btnChap1.setBounds(230, 134, 370, 85);
+		btnChap2.setBounds(230, 265, 370, 85);
+		btnChap3.setBounds(230, 404, 370, 85);
 		
 		//return to previous panel
 		jButton_back = new JButton("Back");

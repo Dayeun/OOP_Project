@@ -46,7 +46,7 @@ public abstract class Learning extends JPanel implements ActionListener{
 		btnBack_pane = new JPanel();
 		choicePane = new JPanel();
 		next_pane = new JPanel();
-		next = new JButton("I GOT IT!");
+		//next = new JButton("I GOT IT!");
 		
 		this.setLayout(new BorderLayout());
 		
