@@ -19,7 +19,8 @@ public class Main extends JFrame implements ActionListener {
 	private MonoPolyTest monopoly;
 	private Learning_SelectMenu learning_Select;
 	private Learning chapter1;
-	private Learning_Im learning_Im;
+	private Learning chapter2;
+	private Learning chapter3;
 	
 	
 	static ArrayList<UserInformation> user = new ArrayList<UserInformation>();
@@ -49,7 +50,8 @@ public class Main extends JFrame implements ActionListener {
 		monopoly = new MonoPolyTest();
 		learning_Select = new Learning_SelectMenu();
 		chapter1=new LearningChapter1();
-		learning_Im = new Learning_Im();
+		chapter2=new LearningChapter2();
+		chapter3=new LearningChapter3();
 		
 		account_Login.getjButton_login().addActionListener(this);
 		account_Login.getjButton_signup().addActionListener(this);
@@ -66,7 +68,10 @@ public class Main extends JFrame implements ActionListener {
 		learning_Select.getjButton_back().addActionListener(this);
 		learning_Select.getBtnChap1().addActionListener(this);
 		learning_Select.getBtnChap2().addActionListener(this);
+		learning_Select.getBtnChap3().addActionListener(this);
 		chapter1.getjButton_back().addActionListener(this);
+		chapter2.getjButton_back().addActionListener(this);
+		chapter3.getjButton_back().addActionListener(this);
 		
 		this.add(account_Login);// add JPanel to the JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -154,8 +159,6 @@ public class Main extends JFrame implements ActionListener {
 					changeState(chapter1);
 				}
 				else if (button.getSource().equals(chapter1.getjButton_back())){
-					if(chapter1.getQuestion_num()>4)
-						return;
 					int result_gohome = JOptionPane.showConfirmDialog(null, "Return to Select Menu.", "Warning", JOptionPane.OK_CANCEL_OPTION);
 					if(result_gohome == 0)
 					{
@@ -165,8 +168,30 @@ public class Main extends JFrame implements ActionListener {
 					}
 				}
 				else if (button.getSource().equals(learning_Select.getBtnChap2())){
-					learning_Im.makeQuestions();
-					changeState(learning_Im);
+					//chapter1.setQuestion_num(0);
+					changeState(chapter2);
+				}
+				else if (button.getSource().equals(chapter2.getjButton_back())){
+					int result_gohome = JOptionPane.showConfirmDialog(null, "Return to Select Menu.", "Warning", JOptionPane.OK_CANCEL_OPTION);
+					if(result_gohome == 0)
+					{
+						changeState(learning_Select);
+						chapter2.setQuestion_num(0);
+						chapter2.next.doClick();
+					}
+				}
+				else if (button.getSource().equals(learning_Select.getBtnChap3())){
+					//chapter1.setQuestion_num(0);
+					changeState(chapter3);
+				}
+				else if (button.getSource().equals(chapter3.getjButton_back())){
+					int result_gohome = JOptionPane.showConfirmDialog(null, "Return to Select Menu.", "Warning", JOptionPane.OK_CANCEL_OPTION);
+					if(result_gohome == 0)
+					{
+						changeState(learning_Select);
+						chapter3.setQuestion_num(0);
+						chapter3.next.doClick();
+					}
 				}
 				
 		

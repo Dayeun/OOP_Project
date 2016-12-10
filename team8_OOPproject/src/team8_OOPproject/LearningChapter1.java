@@ -81,6 +81,9 @@ public class LearningChapter1 extends Learning {
 		next_pane.add(submit);
 		
 		submit.addActionListener(this);
+		
+		choicePane.setVisible(true);
+		question_pane.setVisible(true);
 	}
 
 	@Override
@@ -195,10 +198,11 @@ public class LearningChapter1 extends Learning {
 			
 			question_num++;
 			
-			/*if(correct_pane.isDisplayable())
-				correct_pane.removeAll();
-			else if(incorrect_pane.isDisplayable())
-				incorrect_pane.removeAll();*/
+			if(correct_pane.isVisible())
+				correct_pane.setVisible(false);
+			else if(incorrect_pane.isVisible())
+				incorrect_pane.setVisible(false);
+			
 			remember_pane.removeAll();
 			solve_pane.removeAll();
 			next_pane.removeAll();
@@ -209,7 +213,9 @@ public class LearningChapter1 extends Learning {
 @Override
 public void initialization(){
 	question_pane.removeAll();
+	question_pane.setVisible(false);
 	question_pane.setBorder(null);
+	choicePane.setVisible(false);
 	choicePane.removeAll();
 	next_pane.removeAll();
 	
