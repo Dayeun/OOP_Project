@@ -78,6 +78,7 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 				offY = e.getY() - bar_mg.getY() + e.getLocationOnScreen().y;
 			}
 			
+			
 			public void mouseReleased(MouseEvent e){
 				int m;
 				int x = sc.getX() /110;   // Main magnet x position
