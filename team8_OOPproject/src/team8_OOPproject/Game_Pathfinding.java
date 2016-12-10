@@ -74,8 +74,8 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 		bar_mg.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				offX = e.getX()- bar_mg.getX() +1180;   
-				offY = e.getY() - bar_mg.getY() + 350;
+				offX = e.getX()- bar_mg.getX() +e.getLocationOnScreen().x;   
+				offY = e.getY() - bar_mg.getY() + e.getLocationOnScreen().y;
 			}
 			
 			public void mouseReleased(MouseEvent e){
@@ -133,8 +133,16 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 		u_mg.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-		    	offX = e.getX() - u_mg.getX() +1180;   
-		    	offY = e.getY() - u_mg.getY() +420;
+				System.out.println("1 -"+e.getX());
+				System.out.println("2 -"+e.getY());
+				System.out.println("3 -"+u_mg.getX());
+				System.out.println("4 -"+u_mg.getY() );
+				System.out.println("5 -"+e.getLocationOnScreen().x);
+				System.out.println("6 -"+e.getLocationOnScreen().y);
+				System.out.println("7 -"+u_mg.getLocationOnScreen().x);
+				System.out.println("8 -"+u_mg.getLocationOnScreen().y);
+		    	offX = e.getX() - u_mg.getX() + e.getLocationOnScreen().x;   
+		    	offY = e.getY() - u_mg.getY() + e.getLocationOnScreen().y;
 		    }	
 			
 			public void mouseReleased(MouseEvent e){
