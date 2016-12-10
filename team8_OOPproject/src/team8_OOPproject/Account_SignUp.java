@@ -129,50 +129,29 @@ public class Account_SignUp extends JPanel implements ActionListener {
 
 		int flag = 0; // check flag (1=fail 0=success)
 		for (int i = 0; i < Main.user.size(); i++) {
-			if (Main.user.get(i).getId().equals(jText_id.getText())) { // id
-																						// already
-																						// exist
+			if (Main.user.get(i).getId().equals(jText_id.getText())) { 	// id already exist
 				flag = 1; // fail
 			}
 		}
 		if (flag == 1) { // duplicated id
-			JOptionPane.showMessageDialog(null, "id already exist ", "Message", JOptionPane.WARNING_MESSAGE); // show
-																												// dialog
+			JOptionPane.showMessageDialog(null, "id already exist ", "Message", JOptionPane.WARNING_MESSAGE); // show dialog
 			return false; // sign up fail
 		} else if (jText_id.getText().isEmpty() || jText_name.getText().isEmpty()
 				|| String.valueOf(jText_pw.getPassword()).isEmpty()
-				|| String.valueOf(jText_pw_check.getPassword()).isEmpty()) { // if
-																				// user
-																				// doesn't
-																				// fill
-																				// out
-																				// the
-																				// TextField
+				|| String.valueOf(jText_pw_check.getPassword()).isEmpty()) { // if user doesn't fill out the TextField
 			JOptionPane.showMessageDialog(null, "fill in all required entry fields", "Message",
 					JOptionPane.WARNING_MESSAGE); // show dialog
 			return false;// sign up fail
-		} else if (!String.valueOf(jText_pw.getPassword()).equals(String.valueOf(jText_pw_check.getPassword()))) { // if
-																													// password
-																													// is
-																													// not
-																													// correspond
-																													// to
-																													// the
-																													// password
-																													// check
-			JOptionPane.showMessageDialog(null, "passaword incorrect ", "Message", JOptionPane.WARNING_MESSAGE); // show
-																												// dialog
+		} else if (!String.valueOf(jText_pw.getPassword()).equals(String.valueOf(jText_pw_check.getPassword()))) { 
+			// if password is not correspond to the password check
+			JOptionPane.showMessageDialog(null, "passaword incorrect ", "Message", JOptionPane.WARNING_MESSAGE); // show dialog
 			return false;// sign up fail
 		} else { // sign up success
-			UserInformation user = new UserInformation(jText_id.getText(), String.valueOf(jText_pw.getPassword()), jText_name.getText(), 0); // score
-																														// initialize
-																														// to
-																														// zero
+			UserInformation user = new UserInformation(jText_id.getText(), String.valueOf(jText_pw.getPassword()), jText_name.getText(), 0); 
+			// score initialize to zero
 			PrintWriter user_info = new PrintWriter(new FileWriter("user_info.txt", true));
-			user_info.println(user.toString()); // record new user data to the
-												// txt file
-			Main.user.add(user); // add the user data to the
-												// ArrayList
+			user_info.println(user.toString()); // record new user data to the txt file
+			Main.user.add(user); // add the user data to the  ArrayList
 			user_info.close();// txt file close
 			return true;// sign up success
 
