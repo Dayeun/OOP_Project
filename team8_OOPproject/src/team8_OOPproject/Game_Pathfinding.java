@@ -74,6 +74,7 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 		bar_mg.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				u_mg.setBounds(620, 150, 50,50);
 				offX = e.getLocationOnScreen().x- bar_mg.getX();   
 				offY = e.getLocationOnScreen().y- bar_mg.getY() ;
 			}
@@ -133,6 +134,7 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 		u_mg.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				bar_mg.setBounds(620, 80, 60, 30);
 		    	offX = e.getLocationOnScreen().x- u_mg.getX();   
 		    	offY = e.getLocationOnScreen().y- u_mg.getY();
 		    }	
