@@ -28,7 +28,7 @@ public class MonoPolyTest extends JPanel implements ActionListener{
 	final int up = 3;
 	final int ledder = 4;
 	// goal -0 right -1 left -2 up -3
-	int[] map = {up,right,right,right,up,up,left,left,up,left,up,up,right,right,up};
+	int[] map = {up,right,right,right,up,up,left,left,up,left,up,up,right,right,goal};
 	
 	Game_Character character;
 	public MonoPolyTest(){		
