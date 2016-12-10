@@ -159,8 +159,11 @@ public class Main extends JFrame implements ActionListener {
 						return;
 					int result_gohome = JOptionPane.showConfirmDialog(null, "Return to Select Menu.\nThe data will not be saved.", "Warning", JOptionPane.OK_CANCEL_OPTION);
 					if(result_gohome == 0)
+					{
 						changeState(learning_Select);
-
+						//chapter1.setQuestion_num(0);
+					//	chapter1.answer=null;
+					}
 				}
 				else if (button.getSource().equals(learning_Select.getBtnChap2())){
 					learning_Im.makeQuestions();

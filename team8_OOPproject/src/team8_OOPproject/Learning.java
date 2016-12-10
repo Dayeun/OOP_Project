@@ -27,11 +27,12 @@ public abstract class Learning extends JPanel implements ActionListener{
 	
 	protected JPanel question_pane;
 	protected JPanel choicePane;
-	protected JPanel next_pane;
+	protected JPanel submit_pane;
 	protected JPanel btnBack_pane;
 	protected JButton jButton_back;
 	protected int question_num = 0;
-	private JButton next;
+	protected String answer;
+	protected JButton next;
 	protected Questions ch1 = new Questions();
 	
 	
@@ -44,7 +45,7 @@ public abstract class Learning extends JPanel implements ActionListener{
 		question_pane = new JPanel();
 		btnBack_pane = new JPanel();
 		choicePane = new JPanel();
-		next_pane = new JPanel();
+		submit_pane = new JPanel();
 		next = new JButton("I GOT IT!");
 		
 		this.setLayout(new BorderLayout());
@@ -57,7 +58,7 @@ public abstract class Learning extends JPanel implements ActionListener{
 		question_pane.setLayout(new BoxLayout(question_pane, BoxLayout.Y_AXIS));
 		
 		choicePane.setLayout(new FlowLayout(FlowLayout.LEFT));
-		next_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		submit_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		
 		
 		//return to previous panel
@@ -65,7 +66,7 @@ public abstract class Learning extends JPanel implements ActionListener{
 		jButton_back.addActionListener(this);
 		jButton_back.setBackground(Color.white);
 		jButton_back.setSize(80, 30);
-		next_pane.add(jButton_back);
+		submit_pane.add(jButton_back);
 		
 		/*btnBack_pane.setBackground(Color.RED);
 		question_pane.setBackground(Color.WHITE);
@@ -74,7 +75,7 @@ public abstract class Learning extends JPanel implements ActionListener{
 		
 		this.add(question_pane, BorderLayout.NORTH);
 		this.add(choicePane, BorderLayout.CENTER);
-		this.add(next_pane, BorderLayout.SOUTH);
+		this.add(submit_pane, BorderLayout.SOUTH);
 		this.setSize(800, 600);
 		this.setVisible(true);
 		
@@ -90,9 +91,15 @@ public abstract class Learning extends JPanel implements ActionListener{
 		return choicePane;
 	}
 	public JPanel getNextPanel() {
-		return next_pane;
+		return submit_pane;
 	}
 	
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
 	public void setQuestion_num(int question_num) {
 		this.question_num = question_num;
 	}

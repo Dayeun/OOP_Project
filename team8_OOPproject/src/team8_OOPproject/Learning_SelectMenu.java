@@ -1,9 +1,15 @@
 package team8_OOPproject;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -44,9 +50,9 @@ public class Learning_SelectMenu extends JPanel implements ActionListener{
 		btnChap2.setBackground(Color.ORANGE);
 		btnChap3.setBackground(Color.ORANGE);
 		
-		btnChap1.setBounds(230, 170, 350, 70);
-		btnChap2.setBounds(230, 280, 350, 70);
-		btnChap3.setBounds(230, 390, 350, 70);
+		btnChap1.setBounds(230, 120, 350, 60);
+		btnChap2.setBounds(230, 190, 350, 60);
+		btnChap3.setBounds(230, 260, 350, 60);
 		
 		//return to previous panel
 		jButton_back = new JButton("Back");
@@ -60,17 +66,19 @@ public class Learning_SelectMenu extends JPanel implements ActionListener{
 		this.jlabel_background.setIcon(background);
 		this.add(jlabel_background);
 		
-		
+		this.repaint();
 		title = new ImageIcon("learning_title.png");
 		this.jlabel_title.setLocation(210,10);
 		this.jlabel_title.setIcon(title);
 		this.add(jlabel_title);
-		this.repaint();
+		
+		
 		setVisible(true);
 				
 		
 		
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
@@ -92,5 +100,19 @@ public class Learning_SelectMenu extends JPanel implements ActionListener{
 	public JButton getjButton_back() {
 		return jButton_back;
 	}
+
+	public void setjButton_back(JButton jButton_back) {
+		this.jButton_back = jButton_back;
+	}
+
+	public JLabel getJlabel_background() {
+		return jlabel_background;
+	}
+
+	public void setJlabel_background(JLabel jlabel_background) {
+		this.jlabel_background = jlabel_background;
+	}
+	
+	
 
 }
