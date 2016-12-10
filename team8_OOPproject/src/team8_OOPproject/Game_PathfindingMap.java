@@ -32,7 +32,6 @@ public class Game_PathfindingMap {
 		return 0;
 	}
 	
-	
 	public int black_box(int y){
 		int x = -1;
 		for(int i =0; i<arr[y].length;i++){
