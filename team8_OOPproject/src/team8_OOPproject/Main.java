@@ -157,7 +157,7 @@ public class Main extends JFrame implements ActionListener {
 				else if (button.getSource().equals(chapter1.getjButton_back())){
 					if(chapter1.getQuestion_num()>4)
 						return;
-					int result_gohome = JOptionPane.showConfirmDialog(null, "Return to Select Menu.\nThe data will not be saved.", "Warning", JOptionPane.OK_CANCEL_OPTION);
+					int result_gohome = JOptionPane.showConfirmDialog(null, "Return to Select Menu.", "Warning", JOptionPane.OK_CANCEL_OPTION);
 					if(result_gohome == 0)
 					{
 						changeState(learning_Select);

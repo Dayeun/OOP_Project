@@ -44,7 +44,6 @@ public class LearningChapter1 extends Learning {
 	
 	JScrollPane remember;
 	JScrollPane solve;
-	private JPanel next_pane;
 
 	
 	
@@ -89,10 +88,11 @@ public class LearningChapter1 extends Learning {
 		submit.setForeground(Color.WHITE);
 		submit.setBackground(new Color(127, 255, 0));
 		submit.setFont(new Font("Arial Black", Font.PLAIN, 30));
-		submit_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		next_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		next_pane.setBackground(Color.WHITE);
 		submit.setFont(new Font(null, Font.BOLD, 18));
-		submit_pane.add(jButton_back);
-		submit_pane.add(submit);
+		next_pane.add(jButton_back);
+		next_pane.add(submit);
 		
 		submit.addActionListener(this);
 	}
@@ -115,16 +115,8 @@ public class LearningChapter1 extends Learning {
 		
 		showExplanation(correct_pane);
 		
-		//showNextBTN(correct_pane);
+		showNextBTN();
 		
-		next = new JButton("I GOT IT!");
-		next.setForeground(Color.WHITE);
-		next.setBackground(new Color(127, 255, 0));
-		next.setFont(new Font("Arial Black", Font.PLAIN, 20));
-		submit_pane.setLayout(new FlowLayout(FlowLayout.LEFT));
-		submit_pane.add(next);
-		submit_pane.add(jButton_back);
-		next.addActionListener(this);
 		
 		answer=null;			//clear previous answer.
 		this.add(correct_pane);
@@ -132,7 +124,7 @@ public class LearningChapter1 extends Learning {
 
 	public void incorrect(int question_num) {
 		// TODO Auto-generated method stub
-		JPanel incorrect_pane = new JPanel();
+		incorrect_pane = new JPanel();
 		incorrect_pane.setSize(800, 600);
 		incorrect_pane.setBackground(Color.WHITE);
 		initialization();
@@ -147,19 +139,7 @@ public class LearningChapter1 extends Learning {
 		
 		showExplanation(incorrect_pane);
 		
-		//showNextBTN(correct_pane);
-		
-		
-		next = new JButton("I GOT IT!");
-		next.setForeground(Color.WHITE);
-		next.setBackground(new Color(127, 255, 0));
-		next.setFont(new Font("Arial Black", Font.PLAIN, 20));
-		submit_pane.setLayout(new FlowLayout(FlowLayout.LEFT));
-		//explanation_pane.setBackground(Color.CYAN);
-		submit_pane.add(next);
-		submit_pane.add(jButton_back);
-		incorrect_pane.add(submit_pane, BorderLayout.SOUTH);
-		next.addActionListener(this);
+		showNextBTN();
 		
 		answer=null;			//clear previous answer.
 		this.add(incorrect_pane);
@@ -227,7 +207,14 @@ public class LearningChapter1 extends Learning {
 			}
 			
 			question_num++;
-			submit_pane.removeAll();
+			
+			if(correct_pane.isDisplayable())
+				correct_pane.removeAll();
+			else if(incorrect_pane.isDisplayable())
+				incorrect_pane.removeAll();
+			remember_pane.removeAll();
+			solve_pane.removeAll();
+			next_pane.removeAll();
 			quiz(question_num);
 		}
 	}
@@ -237,7 +224,7 @@ public void initialization(){
 	question_pane.removeAll();
 	question_pane.setBorder(null);
 	choicePane.removeAll();
-	submit_pane.removeAll();
+	next_pane.removeAll();
 	
 	answer_pane = new JPanel();
 	explanation_pane = new JPanel();
@@ -246,10 +233,13 @@ public void initialization(){
 	}
 	
 public void showAnswers(JPanel pane){
+	//display correct answer and your answer
 	answer_pane.setLayout(new FlowLayout(FlowLayout.LEFT));
-	JLabel correct_answer= new JLabel("<html>The correct answer is : <br>"+answer+"</html>");
+	answer_pane.setBackground(Color.WHITE);
+	JLabel correct_answer= new JLabel("<html>The correct answer is : <br>"+ch1.getChap1correct().get(question_num).getText()+"</html>");
 	JLabel your_answer= new JLabel("<html>Your answer is : <br>"+ answer+"</html>");
 	
+	//make blank
 	answer_pane.add(Box.createRigidArea(new Dimension(30,0)));		//I refer to tips on https://docs.oracle.com/javase/tutorial/uiswing/layout/box.html
 	answer_pane.add(correct_answer);
 	answer_pane.add(Box.createRigidArea(new Dimension(50,0)));
@@ -261,14 +251,18 @@ public void showAnswers(JPanel pane){
 public void showExplanation(JPanel pane){
 	explanation_pane.setLayout(new BoxLayout(explanation_pane, BoxLayout.Y_AXIS));
 	
+	//set remember(key-point) panel
 	remember_pane.setLayout(new BoxLayout(remember_pane, BoxLayout.Y_AXIS));
+	remember_pane.setBackground(Color.WHITE);
 	TitledBorder border1 = BorderFactory.createTitledBorder("Remember");
 	border1.setTitleFont(new Font(null, Font.BOLD, 24));
 	remember_pane.setBorder(border1);
 	remember_pane.add(ch1.getChap1remember().get(question_num));
 	explanation_pane.add(remember_pane);
 
+	//set solve panel
 	solve_pane.setLayout(new BoxLayout(solve_pane, BoxLayout.Y_AXIS));
+	solve_pane.setBackground(Color.WHITE);
 	TitledBorder border2 = BorderFactory.createTitledBorder("Solve");
 	border2.setTitleFont(new Font(null, Font.BOLD, 24));
 	solve_pane.setBorder(border2);
@@ -276,6 +270,19 @@ public void showExplanation(JPanel pane){
 	explanation_pane.add(solve_pane);
 	
 	pane.add(explanation_pane, BorderLayout.CENTER);
+}
+
+public void showNextBTN(){
+	
+	//set next button
+	next = new JButton("I GOT IT!");
+	next.setForeground(Color.WHITE);
+	next.setBackground(new Color(127, 255, 0));
+	next.setFont(new Font("Arial Black", Font.PLAIN, 20));
+	next_pane.setLayout(new FlowLayout(FlowLayout.LEFT));
+	next_pane.add(next);
+	next_pane.add(jButton_back);
+	next.addActionListener(this);
 }
 
 }
