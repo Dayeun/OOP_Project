@@ -114,6 +114,8 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 						}		
 					}
 				}
+				x = sc.getX() /110;   // Main magnet x position
+				y = sc.getY() /300;   // Main magnet y position
 				if(s.checkGoal(y, x) == 1){
 					JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE); // show
 				}
@@ -131,8 +133,8 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 		u_mg.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-		    	offX = e.getX() - u_mg.getX() +80;   
-		    	offY = e.getY() - u_mg.getY() +20;
+		    	offX = e.getX() - u_mg.getX() +1180;   
+		    	offY = e.getY() - u_mg.getY() +420;
 		    }	
 			
 			public void mouseReleased(MouseEvent e){
@@ -150,6 +152,8 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 					}	
 				}
 				
+				x = sc.getX() /110;   // Main magnet x position
+				y = sc.getY() /300;   // Main magnet y position
 				if(s.checkGoal(y, x) == 1){
 					JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE); // show
 				}
@@ -158,7 +162,7 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 		
 		u_mg.addMouseMotionListener(new MouseMotionAdapter() {
 			public void mouseDragged(MouseEvent e) {
-				u_mg.setLocation(e.getLocationOnScreen().x-offX-1100, e.getLocationOnScreen().y-offY-400);
+				u_mg.setLocation(e.getLocationOnScreen().x-offX, e.getLocationOnScreen().y-offY);
 			}
 		});
 		
