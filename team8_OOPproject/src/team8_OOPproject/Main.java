@@ -20,8 +20,6 @@ public class Main extends JFrame implements ActionListener {
 	private Learning_SelectMenu learning_Select;
 	private Learning chapter1;
 	private Learning_Im learning_Im;
-	
-	
 	static ArrayList<UserInformation> user = new ArrayList<UserInformation>();
 
 	public Main(){
