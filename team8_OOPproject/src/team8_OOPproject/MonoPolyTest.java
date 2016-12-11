@@ -22,6 +22,14 @@ public class MonoPolyTest extends JPanel implements ActionListener{
 	private ImageIcon background;
 	ImageIcon icon1 = new ImageIcon("die.PNG");
 	
+	final int goal = 0;
+	final int right = 1;
+	final int left = 2;
+	final int up = 3;
+	final int ledder = 4;
+	// goal -0 right -1 left -2 up -3
+	int[] map = {up,right,right,right,up,up,left,left,up,left,up,up,right,right,goal};
+	
 	Game_Character character;
 	
 	public MonoPolyTest(){		
@@ -104,16 +112,17 @@ public class MonoPolyTest extends JPanel implements ActionListener{
 
 	public void Character_move(int ran) 
 	{
+		
 		if(finish ==false){
-			for(int i = 0; i< ran ; i++){
-				if(moving == 0 || moving == 4 || moving == 5 || moving == 8 ||moving == 10 ||moving ==11 ||moving ==14){
+			for(int i = 0; i< ran && moving< map.length ; i++){
+				if(map[moving] ==  3){
 					character.moving_U(character.getX(),character.getY(),70);
-				}else if( moving ==1 || moving == 2 || moving == 3 || moving == 12 ||moving ==13  ){
+				}else if(map[moving] ==  1){
 					character.moving_R(character.getX(),character.getY(),100);
-				}else if(moving == 6 || moving == 7 || moving == 9){
+				}else if(map[moving] ==  2){
 					character.moving_L(character.getX(),character.getY(),100);
 				}
-				if(moving == 15){
+				if(map[moving] == 0){
 					character.setLocation(300, -50);
 					MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(ran);
 					
@@ -131,7 +140,8 @@ public class MonoPolyTest extends JPanel implements ActionListener{
 			    moving = 13;
 	    	}
 	    	MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(ran);
-		}else{
+		}
+		else{
 			JOptionPane.showMessageDialog(null, "Finished! put a reset button", "Message", JOptionPane.INFORMATION_MESSAGE);
 		}
 		

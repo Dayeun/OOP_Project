@@ -27,7 +27,7 @@ public abstract class Learning extends JPanel implements ActionListener{
 	
 	protected JPanel question_pane;
 	protected JPanel choicePane;
-	protected JPanel submit_pane;
+	protected JPanel next_pane;
 	protected JPanel btnBack_pane;
 	protected JButton jButton_back;
 	protected int question_num = 0;
@@ -45,7 +45,7 @@ public abstract class Learning extends JPanel implements ActionListener{
 		question_pane = new JPanel();
 		btnBack_pane = new JPanel();
 		choicePane = new JPanel();
-		submit_pane = new JPanel();
+		next_pane = new JPanel();
 		next = new JButton("I GOT IT!");
 		
 		this.setLayout(new BorderLayout());
@@ -56,17 +56,19 @@ public abstract class Learning extends JPanel implements ActionListener{
 		question_pane.setBorder(border);
 		
 		question_pane.setLayout(new BoxLayout(question_pane, BoxLayout.Y_AXIS));
-		
 		choicePane.setLayout(new FlowLayout(FlowLayout.LEFT));
-		submit_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		next_pane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		
+		question_pane.setBackground(Color.WHITE);
+		choicePane.setBackground(Color.WHITE);
+		next_pane.setBackground(Color.WHITE);
 		
 		//return to previous panel
 		jButton_back = new JButton("Home");
 		jButton_back.addActionListener(this);
 		jButton_back.setBackground(Color.white);
 		jButton_back.setSize(80, 30);
-		submit_pane.add(jButton_back);
+		next_pane.add(jButton_back);
 		
 		/*btnBack_pane.setBackground(Color.RED);
 		question_pane.setBackground(Color.WHITE);
@@ -75,7 +77,7 @@ public abstract class Learning extends JPanel implements ActionListener{
 		
 		this.add(question_pane, BorderLayout.NORTH);
 		this.add(choicePane, BorderLayout.CENTER);
-		this.add(submit_pane, BorderLayout.SOUTH);
+		this.add(next_pane, BorderLayout.SOUTH);
 		this.setSize(800, 600);
 		this.setVisible(true);
 		
@@ -91,7 +93,7 @@ public abstract class Learning extends JPanel implements ActionListener{
 		return choicePane;
 	}
 	public JPanel getNextPanel() {
-		return submit_pane;
+		return next_pane;
 	}
 	
 	public String getAnswer() {
