@@ -182,7 +182,7 @@ public class LearningChapter2 extends Learning {
 			// if chapter is end, you automatically go back ChapterSelect
 			// screen.
 			if (question_num >= ch1.getChap2question().size() - 1) {
-				JOptionPane.showMessageDialog(null, "Chapter 2 is END!");
+				JOptionPane.showMessageDialog(null, "Chapter 2 is END!","message",1);
 				jButton_back.doClick();
 				return;
 			}
