@@ -147,51 +147,22 @@ public class Main extends JFrame implements ActionListener {
 					changeState(game_Select);
 				} else if (button.getSource().equals(pathfinding.getjButton_back())){
 					changeState(game_Select);
-				}
-				else if (button.getSource().equals(select.getjButton_gotoLearning())){
+				}else if (button.getSource().equals(select.getjButton_gotoLearning())){
 					changeState(learning_Select);
-				}
-				else if (button.getSource().equals(learning_Select.getjButton_back())){
+				}else if (button.getSource().equals(learning_Select.getjButton_back())){
 					changeState(select);
-				}
-				else if (button.getSource().equals(learning_Select.getBtnChap1())){
-					//chapter1.setQuestion_num(0);
+				}else if (button.getSource().equals(learning_Select.getBtnChap1())){
 					changeState(chapter1);
-				}
-				else if (button.getSource().equals(chapter1.getjButton_back())){
-					int result_gohome = JOptionPane.showConfirmDialog(null, "Return to Select Menu.", 
-							"Warning", JOptionPane.OK_CANCEL_OPTION,2);
-					if(result_gohome == 0){
-						changeState(learning_Select);
-						chapter1.setQuestion_num(0);
-						chapter1.next.doClick();
-					}
-				}
-				else if (button.getSource().equals(learning_Select.getBtnChap2())){
-					//chapter1.setQuestion_num(0);
+				}else if (button.getSource().equals(chapter1.getjButton_back())){
+					getBacktoLearningSelect(chapter1);
+				}else if (button.getSource().equals(learning_Select.getBtnChap2())){
 					changeState(chapter2);
-				}
-				else if (button.getSource().equals(chapter2.getjButton_back())){
-					int result_gohome = JOptionPane.showConfirmDialog(null, "Return to Select Menu.", 
-							"Warning", JOptionPane.OK_CANCEL_OPTION,2);
-					if(result_gohome == 0){
-						changeState(learning_Select);
-						chapter2.setQuestion_num(0);
-						chapter2.next.doClick();
-					}
-				}
-				else if (button.getSource().equals(learning_Select.getBtnChap3())){
-					//chapter1.setQuestion_num(0);
+				}else if (button.getSource().equals(chapter2.getjButton_back())){
+					getBacktoLearningSelect(chapter2);
+				}else if (button.getSource().equals(learning_Select.getBtnChap3())){
 					changeState(chapter3);
-				}
-				else if (button.getSource().equals(chapter3.getjButton_back())){
-					int result_gohome = JOptionPane.showConfirmDialog(null, "Return to Select Menu.", 
-							"Warning", JOptionPane.OK_CANCEL_OPTION,2);
-					if(result_gohome == 0){
-						changeState(learning_Select);
-						chapter3.setQuestion_num(0);
-						chapter3.next.doClick();
-					}
+				}else if (button.getSource().equals(chapter3.getjButton_back())){
+					getBacktoLearningSelect(chapter1);
 				}
 	}
 	
@@ -200,6 +171,20 @@ public class Main extends JFrame implements ActionListener {
 		this.getContentPane().add(jpanel);
 		this.revalidate();
 		this.repaint();
+	}
+	
+	public void getBacktoLearningSelect(Learning chapter){
+		/*if(chapter.getQuestion_num()==0){
+			JOptionPane.showMessageDialog(null, "This is first Question..\nYou should pass this problem.","Warning",2);
+			return;
+		}*/
+		int result_gohome = JOptionPane.showConfirmDialog(null, "Return to Select Menu.", 
+				"Warning", JOptionPane.OK_CANCEL_OPTION,2);
+		if(result_gohome == 0){
+			changeState(learning_Select);
+			chapter.setQuestion_num(0);
+			chapter.next.doClick();
+		}
 	}
 	
 }

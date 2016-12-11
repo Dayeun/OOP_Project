@@ -50,6 +50,7 @@ public class LearningChapter3 extends Learning {
 		q_imageLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		question_pane.add(q_imageLabel);
 
+		choicePane.setLayout(new BoxLayout(choicePane, BoxLayout.Y_AXIS));
 		int choice_num = 0;
 		// place the choice button 'randomly'
 		ArrayList<Integer> random_num_array = new ArrayList<Integer>();
