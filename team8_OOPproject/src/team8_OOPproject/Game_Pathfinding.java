@@ -19,7 +19,6 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 	private JButton rotation2;
 	private JButton jButton_back;
 	private JButton jButton_reset;
-	private JButton jButton_next;
 
 	private JLabel back;
 
@@ -34,17 +33,15 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 	ImageIcon icon2_1= new ImageIcon("umagnetInv.PNG");
 	ImageIcon icon = new ImageIcon("rotation.PNG");
 	
-	boolean isDragged1 =false;
-	boolean isDragged2 =false;
 	int offX ,offY;
 
 	Game_Character sc;
-	Pathfinding_map s;
+	Game_PathfindingMap s;
 	
 	public Game_Pathfinding()
 	{
 		
-		s = new Pathfinding_map();
+		s = new Game_PathfindingMap();
 		int r_l = 98;
 		int u_d = 103;
 		sc =new Game_Character(105,290,"MainMagnet.PNG");
@@ -231,4 +228,3 @@ public class Game_Pathfinding extends JPanel implements ActionListener{
 
 
 }
-

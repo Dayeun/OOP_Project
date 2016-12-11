@@ -29,10 +29,9 @@ public class LearningChapter3 extends Learning {
 	private JPanel remember_pane;
 	private JPanel solve_pane;
 
+	private boolean correctvisible; // if correct_pane is visible: true // if incorrect_pane is visible: false
+	
 	public LearningChapter3() {
-		//super();
-		
-		
 		quiz(question_num);
 		
 	}
@@ -85,7 +84,6 @@ public class LearningChapter3 extends Learning {
 		correct_pane.setSize(800, 600);
 		correct_pane.setBackground(Color.WHITE);
 		initialization();
-		// next_pane=new JPanel();
 		correct_pane.setLayout(new BorderLayout());
 
 		JLabel correct = new JLabel("Correct!");
@@ -99,6 +97,7 @@ public class LearningChapter3 extends Learning {
 
 		settingNextBtn();
 
+		correctvisible=true;
 		answer = null; // clear previous answer.
 		this.add(correct_pane);
 	}
@@ -122,6 +121,7 @@ public class LearningChapter3 extends Learning {
 
 		settingNextBtn();
 
+		correctvisible=false;
 		answer = null; // clear previous answer.
 		this.add(incorrect_pane);
 	}
@@ -129,10 +129,7 @@ public class LearningChapter3 extends Learning {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource().equals(ch1.getChap3correct().get(question_num))) {
-			answer = ch1.getChap3correct().get(question_num).getText(); // save
-																		// your
-																		// answer(correct
-																		// answer)
+			answer = ch1.getChap3correct().get(question_num).getText(); // save your answer(correct answer)
 			for (int i = 0; i < ch1.getChap3choice()[question_num].length; i++) {
 				ch1.getChap3choice()[question_num][i].setForeground(Color.WHITE);
 				ch1.getChap3choice()[question_num][i].setBackground(new Color(127, 255, 0));
@@ -142,10 +139,7 @@ public class LearningChapter3 extends Learning {
 		} else {
 			for (int r = 1; r < ch1.getChap3choice()[question_num].length; r++)
 				if (e.getSource().equals(ch1.getChap3choice()[question_num][r])) {
-					answer = ch1.getChap3choice()[question_num][r].getText(); // save
-																				// your
-																				// answer(incorrect
-																				// answer)
+					answer = ch1.getChap3choice()[question_num][r].getText(); // save your answer(incorrect answer)
 					for (int w = 0; w < ch1.getChap3choice()[question_num].length; w++) {
 						ch1.getChap3choice()[question_num][w].setForeground(Color.WHITE);
 						ch1.getChap3choice()[question_num][w].setBackground(new Color(127, 255, 0));
@@ -196,11 +190,13 @@ public class LearningChapter3 extends Learning {
 
 			question_num++;
 
-			if(correct_pane.isVisible())
+			if(correctvisible==true)
 				correct_pane.setVisible(false);
-			else if(incorrect_pane.isVisible())
+			else if(correctvisible==false)
 				incorrect_pane.setVisible(false);
 			
+			question_pane.removeAll();
+			choicePane.removeAll();
 			remember_pane.removeAll();
 			solve_pane.removeAll();
 			next_pane.removeAll();
@@ -232,12 +228,9 @@ public class LearningChapter3 extends Learning {
 		JLabel your_answer = new JLabel("<html>Your answer is : <br>" + answer + "</html>");
 
 		// make blank
-		answer_pane.add(Box.createRigidArea(new Dimension(30, 0))); // I refer
-																	// to tips
-																	// on
-																	// https://docs.oracle.com/javase/tutorial/uiswing/layout/box.html
+		answer_pane.add(Box.createRigidArea(new Dimension(10, 0))); // I refer to tips on https://docs.oracle.com/javase/tutorial/uiswing/layout/box.html
 		answer_pane.add(correct_answer);
-		answer_pane.add(Box.createRigidArea(new Dimension(50, 0)));
+		answer_pane.add(Box.createRigidArea(new Dimension(20, 0)));
 		answer_pane.add(your_answer);
 
 		pane.add(answer_pane, BorderLayout.NORTH);

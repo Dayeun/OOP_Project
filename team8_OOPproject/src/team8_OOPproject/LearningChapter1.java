@@ -13,13 +13,10 @@ import java.util.Collections;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.border.TitledBorder;
 
 public class LearningChapter1 extends Learning {
@@ -31,13 +28,10 @@ public class LearningChapter1 extends Learning {
 	private JPanel remember_pane;
 	private JPanel solve_pane;
 	
-
+	private boolean correctvisible; // if correct_pane is visible: true // if incorrect_pane is visible: false
 	
 	
 	public LearningChapter1() {
-		//super();
-		
-		
 		quiz(question_num);
 		
 	}
@@ -93,7 +87,6 @@ public class LearningChapter1 extends Learning {
 		correct_pane.setSize(800, 600);
 		correct_pane.setBackground(Color.WHITE);
 		initialization();
-		//next_pane=new JPanel();
 		correct_pane.setLayout(new BorderLayout());
 		
 		JLabel correct = new JLabel("Correct!");
@@ -107,7 +100,7 @@ public class LearningChapter1 extends Learning {
 		
 		settingNextBtn();
 		
-		
+		correctvisible=true;
 		answer=null;			//clear previous answer.
 		this.add(correct_pane);
 	}
@@ -131,6 +124,7 @@ public class LearningChapter1 extends Learning {
 		
 		settingNextBtn();
 		
+		correctvisible=false;
 		answer=null;			//clear previous answer.
 		this.add(incorrect_pane);
 	}
@@ -198,11 +192,13 @@ public class LearningChapter1 extends Learning {
 			
 			question_num++;
 			
-			if(correct_pane.isVisible())
+			if(correctvisible==true)
 				correct_pane.setVisible(false);
-			else if(incorrect_pane.isVisible())
+			else if(correctvisible==false)
 				incorrect_pane.setVisible(false);
 			
+			question_pane.removeAll();
+			choicePane.removeAll();
 			remember_pane.removeAll();
 			solve_pane.removeAll();
 			next_pane.removeAll();

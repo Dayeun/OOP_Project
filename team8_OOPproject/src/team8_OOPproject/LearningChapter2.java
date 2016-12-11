@@ -27,10 +27,10 @@ public class LearningChapter2 extends Learning {
 	private JPanel explanation_pane;
 	private JPanel remember_pane;
 	private JPanel solve_pane;
+	
+	private boolean correctvisible; // if correct_pane is visible: true // if incorrect_pane is visible: false
 
 	public LearningChapter2() {
-		// super();
-
 		quiz(question_num);
 
 	}
@@ -83,7 +83,6 @@ public class LearningChapter2 extends Learning {
 		correct_pane.setSize(800, 600);
 		correct_pane.setBackground(Color.WHITE);
 		initialization();
-		// next_pane=new JPanel();
 		correct_pane.setLayout(new BorderLayout());
 
 		JLabel correct = new JLabel("Correct!");
@@ -97,6 +96,7 @@ public class LearningChapter2 extends Learning {
 
 		settingNextBtn();
 
+		correctvisible=true;
 		answer = null; // clear previous answer.
 		this.add(correct_pane);
 	}
@@ -120,6 +120,7 @@ public class LearningChapter2 extends Learning {
 
 		settingNextBtn();
 
+		correctvisible=false;
 		answer = null; // clear previous answer.
 		this.add(incorrect_pane);
 	}
@@ -188,11 +189,13 @@ public class LearningChapter2 extends Learning {
 
 			question_num++;
 
-			if(correct_pane.isVisible())
+			if(correctvisible==true)
 				correct_pane.setVisible(false);
-			else if(incorrect_pane.isVisible())
+			else if(correctvisible==false)
 				incorrect_pane.setVisible(false);
 			
+			question_pane.removeAll();
+			choicePane.removeAll();
 			remember_pane.removeAll();
 			solve_pane.removeAll();
 			next_pane.removeAll();

@@ -159,9 +159,9 @@ public class Main extends JFrame implements ActionListener {
 					changeState(chapter1);
 				}
 				else if (button.getSource().equals(chapter1.getjButton_back())){
-					int result_gohome = JOptionPane.showConfirmDialog(null, "Return to Select Menu.", "Warning", JOptionPane.OK_CANCEL_OPTION);
-					if(result_gohome == 0)
-					{
+					int result_gohome = JOptionPane.showConfirmDialog(null, "Return to Select Menu.", 
+							"Warning", JOptionPane.OK_CANCEL_OPTION,2);
+					if(result_gohome == 0){
 						changeState(learning_Select);
 						chapter1.setQuestion_num(0);
 						chapter1.next.doClick();
@@ -172,9 +172,9 @@ public class Main extends JFrame implements ActionListener {
 					changeState(chapter2);
 				}
 				else if (button.getSource().equals(chapter2.getjButton_back())){
-					int result_gohome = JOptionPane.showConfirmDialog(null, "Return to Select Menu.", "Warning", JOptionPane.OK_CANCEL_OPTION);
-					if(result_gohome == 0)
-					{
+					int result_gohome = JOptionPane.showConfirmDialog(null, "Return to Select Menu.", 
+							"Warning", JOptionPane.OK_CANCEL_OPTION,2);
+					if(result_gohome == 0){
 						changeState(learning_Select);
 						chapter2.setQuestion_num(0);
 						chapter2.next.doClick();
@@ -185,16 +185,14 @@ public class Main extends JFrame implements ActionListener {
 					changeState(chapter3);
 				}
 				else if (button.getSource().equals(chapter3.getjButton_back())){
-					int result_gohome = JOptionPane.showConfirmDialog(null, "Return to Select Menu.", "Warning", JOptionPane.OK_CANCEL_OPTION);
-					if(result_gohome == 0)
-					{
+					int result_gohome = JOptionPane.showConfirmDialog(null, "Return to Select Menu.", 
+							"Warning", JOptionPane.OK_CANCEL_OPTION,2);
+					if(result_gohome == 0){
 						changeState(learning_Select);
 						chapter3.setQuestion_num(0);
 						chapter3.next.doClick();
 					}
 				}
-				
-		
 	}
 	
 	public void changeState(JPanel jpanel) {

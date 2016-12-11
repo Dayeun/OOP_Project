@@ -1,7 +1,6 @@
 package team8_OOPproject;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,14 +9,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JTextArea;
-import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
 
 public class Questions {
 	// chapter1 (1. Materials)
@@ -42,8 +36,6 @@ public class Questions {
 	private ArrayList<JButton> chap3correct;
 	private JButton[][] chap3choice;
 
-	private JFrame frame;
-	private JPanel panel;
 
 	public Questions() {
 		chap1question = new ArrayList<JTextArea>();
@@ -189,7 +181,7 @@ public class Questions {
 		
 		chap2correct.add(new JButton("a box holding 48 pounds"));
 		chap2correct.add(new JButton("push"));
-		chap2correct.add(new JButton("away from the center of Earth"));
+		chap2correct.add(new JButton("toward the center of Earth"));
 		chap2correct.add(new JButton("4>2>1>3"));
 		chap2correct.add(new JButton("speckled, black, white, brown"));
 		chap2choice[0] = new JButton[2]; // The choices are 2.
@@ -202,7 +194,7 @@ public class Questions {
 		chap2choice[1][0] = chap2correct.get(1);
 		chap2choice[1][1] = new JButton("pull");
 		chap2choice[2][0] = chap2correct.get(2);
-		chap2choice[2][1] = new JButton("toward the center of Earth");
+		chap2choice[2][1] = new JButton("away from the center of Earth");
 		chap2choice[3][0] = chap2correct.get(3);
 		chap2choice[3][1] = new JButton("1>2>3>4");
 		chap2choice[3][2] = new JButton("3>1>2>4");
