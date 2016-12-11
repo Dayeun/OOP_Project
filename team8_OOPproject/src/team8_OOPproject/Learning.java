@@ -46,11 +46,10 @@ public abstract class Learning extends JPanel implements ActionListener{
 		btnBack_pane = new JPanel();
 		choicePane = new JPanel();
 		next_pane = new JPanel();
-		next = new JButton("I GOT IT!");
+		//next = new JButton("I GOT IT!");
 		
 		this.setLayout(new BorderLayout());
 		
-		this.add(question_pane);
 		TitledBorder border = BorderFactory.createTitledBorder("Question");
 		border.setTitleFont(new Font(null,Font.BOLD, 24));
 		question_pane.setBorder(border);
@@ -69,11 +68,6 @@ public abstract class Learning extends JPanel implements ActionListener{
 		jButton_back.setBackground(Color.white);
 		jButton_back.setSize(80, 30);
 		next_pane.add(jButton_back);
-		
-		/*btnBack_pane.setBackground(Color.RED);
-		question_pane.setBackground(Color.WHITE);
-		choicePane.setBackground(Color.BLUE);
-		next_pane.setBackground(Color.DARK_GRAY);*/
 		
 		this.add(question_pane, BorderLayout.NORTH);
 		this.add(choicePane, BorderLayout.CENTER);
