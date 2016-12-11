@@ -23,6 +23,7 @@ public class MonoPolyTest extends JPanel implements ActionListener{
 	ImageIcon icon1 = new ImageIcon("die.PNG");
 	
 	Game_Character character;
+	
 	public MonoPolyTest(){		
 		character =new Game_Character(80,430,"character.PNG");
 		jlabel_background = new JLabel();
