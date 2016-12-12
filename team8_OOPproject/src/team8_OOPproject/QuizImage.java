@@ -1,4 +1,5 @@
 package team8_OOPproject;
+
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -20,8 +21,7 @@ public class QuizImage extends JPanel{
 	protected void paintComponent(Graphics g) {
 		
 		super.paintComponent(g);
-		image= new ImageIcon("chapter1q1").getImage();
+		image= new ImageIcon(fileName).getImage();
 		g.drawImage(image, 100, 100, this);
-		repaint();
 	}
 }

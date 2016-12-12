@@ -1,23 +1,19 @@
 package team8_OOPproject;
-import java.awt.EventQueue;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileReader;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.ImageIcon;
-import javax.swing.border.LineBorder;
 
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JPanel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.border.LineBorder;
 
 public class MonoPolyQuiz extends JFrame implements ActionListener{
 
@@ -73,7 +69,7 @@ public class MonoPolyQuiz extends JFrame implements ActionListener{
 	 */
 	public MonoPolyQuiz() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 300);
+		setBounds(100, 100, 485, 335);
 		contentPane = new JPanel();
 		contentPane.setBorder(new LineBorder(Color.ORANGE));
 		setContentPane(contentPane);
@@ -99,20 +95,27 @@ public class MonoPolyQuiz extends JFrame implements ActionListener{
 		
 		System.out.println(quiz.loadImage(quiz.getImage()));
 		System.out.println(quiz.getImage());
-		JLabel lblNewLabel = new JLabel(new ImageIcon(quiz.getImage()));
 		
 		
+		QuizImage qi= new QuizImage(quiz.getImage());
+		qi.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		qi.setBackground(Color.GREEN);
+		qi.repaint();
+		getContentPane().add(qi);
+		
+		ImageIcon ic= new ImageIcon(quiz.loadImage(quiz.getImage()));
+		
+		JLabel lblNewLabel = new JLabel(ic);
+		
+		lblNewLabel.setIcon(ic);
 		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-							.addGap(20)
-							.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_contentPane.createSequentialGroup()
@@ -121,8 +124,11 @@ public class MonoPolyQuiz extends JFrame implements ActionListener{
 									.addComponent(btnanswer2)
 									.addGap(26)
 									.addComponent(btnanswer3))
-								.addComponent(question))))
-					.addContainerGap(35, Short.MAX_VALUE))
+								.addComponent(question)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(20)
+							.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)))
+					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -130,7 +136,7 @@ public class MonoPolyQuiz extends JFrame implements ActionListener{
 					.addGap(24)
 					.addComponent(question)
 					.addGap(18)
-					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnanswer1)
