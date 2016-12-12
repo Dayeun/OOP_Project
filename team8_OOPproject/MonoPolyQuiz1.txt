@@ -1,0 +1,29 @@
+chapter 1. Materials;Quiz1;
+Which property matches this object?;
+"chapter1q1";
+soft;bumpy;
+bumpy;
+
+chapter 1. Materials;Quiz2;
+Select the better answer.;
+"chapter1q2";
+bouncy;yellow;
+bouncy;
+
+chapter 1. Materials;Quiz3;
+Select the best answer.;
+chapter1q3;
+slippery;translucent;salty;
+salty;
+
+chapter 1. Materials;Quiz4;
+Which is smoother?;
+"chapter1q4";
+nylon track suit;bark;
+nylon track suit;
+
+chapter 1. Materials;Quiz5;
+Which property do these four objects have in common? Select the best answer.;
+"chapter1q5";
+sticky;translucent;sweet;
+translucent;

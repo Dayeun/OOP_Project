@@ -29,7 +29,7 @@ public class MonoPolyQuiz extends JFrame implements ActionListener{
 	/**
 	 * Launch the application.
 	 */
-	
+	/**
 	public static void main(String[] args) {
 		
 		EventQueue.invokeLater(new Runnable() {
@@ -44,7 +44,7 @@ public class MonoPolyQuiz extends JFrame implements ActionListener{
 			}
 		});
 	}
-	
+	*/
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	
@@ -70,6 +70,7 @@ public class MonoPolyQuiz extends JFrame implements ActionListener{
 	public MonoPolyQuiz() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 485, 335);
+		setVisible(true);
 		contentPane = new JPanel();
 		contentPane.setBorder(new LineBorder(Color.ORANGE));
 		setContentPane(contentPane);

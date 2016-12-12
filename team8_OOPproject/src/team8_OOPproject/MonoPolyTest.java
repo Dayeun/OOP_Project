@@ -124,11 +124,12 @@ public class MonoPolyTest extends JPanel implements ActionListener{
 				}
 				if(map[moving] == 0){
 					character.setLocation(300, -50);
-					MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(ran);
+					MonoPolyQuiz mq= new MonoPolyQuiz();
+					
 					
 					//if user correct it, show success message. If not, go back to starting point
 					
-					JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE);
+					//JOptionPane.showMessageDialog(null, "Success!", "Message", JOptionPane.INFORMATION_MESSAGE);
 					finish =true;
 					break;
 				}
@@ -139,10 +140,10 @@ public class MonoPolyTest extends JPanel implements ActionListener{
 			    character.moving_U(character.getX(),character.getY(),70);
 			    moving = 13;
 	    	}
-	    	MonoPoly_Quiz quizDialog = new MonoPoly_Quiz(ran);
+	    	MonoPolyQuiz mq= new MonoPolyQuiz();
 		}
 		else{
-			JOptionPane.showMessageDialog(null, "Finished! put a reset button", "Message", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Finished! If you want to play game again, please put a reset button", "Message", JOptionPane.INFORMATION_MESSAGE);
 		}
 		
 	
