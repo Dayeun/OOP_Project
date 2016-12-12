@@ -77,9 +77,8 @@ public abstract class Learning extends JPanel implements ActionListener{
 		
 	}
 	
-	public void initialization(){
-		
-	}
+	public abstract void initialization();
+	
 	public JPanel getQuestion() {
 		return question_pane;
 	}
