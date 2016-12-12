@@ -54,10 +54,11 @@ public class MonoPolyQuiz extends JFrame implements ActionListener{
 	
 		if(btn.getText().equals(quiz.getAnswer())){
 			JOptionPane.showMessageDialog(MonoPolyQuiz.this, "Correct!! Very Good:)");
+			setVisible(false);
 		
 		} else{  
 			JOptionPane.showMessageDialog(MonoPolyQuiz.this, "Wrong Answer! You can find stuff in" +quiz.getRefernce());
-		
+			setVisible(false);
 		}
 		
 	}
