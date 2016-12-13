@@ -2,7 +2,10 @@ package team8_OOPproject;
 
 public class Game_PathfindingMap {
 	//Path finding map  1 - 'able' 0 -'not able'  2-'goal'
-	int arr[][] = new int[][]{{1, 0, 1, 1 ,1}, {1, 1, 1, 0, 2}};
+	final int not_able = 0;
+	final int able = 1;
+	final int goal = 2;
+	int arr[][] = new int[][]{{able,not_able, able, able ,able}, {able, able, able, not_able, goal}};
 	public int moveR_Magnet(int x, int y)
 	{
 		int k =0;
