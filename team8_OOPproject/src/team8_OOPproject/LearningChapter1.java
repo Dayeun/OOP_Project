@@ -76,6 +76,7 @@ public class LearningChapter1 extends Learning {
 		
 		submit.addActionListener(this);
 		
+		// if correct_pane is visible: true
 		choicePane.setVisible(true);
 		question_pane.setVisible(true);
 	}
@@ -100,6 +101,7 @@ public class LearningChapter1 extends Learning {
 		
 		settingNextBtn();
 		
+		// if correct_pane is visible: true
 		correctvisible=true;
 		answer=null;			//clear previous answer.
 		this.add(correct_pane);
@@ -124,6 +126,7 @@ public class LearningChapter1 extends Learning {
 		
 		settingNextBtn();
 		
+		// if incorrect_pane is visible: false
 		correctvisible=false;
 		answer=null;			//clear previous answer.
 		this.add(incorrect_pane);

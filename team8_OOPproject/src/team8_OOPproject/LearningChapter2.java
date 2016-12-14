@@ -188,7 +188,7 @@ public class LearningChapter2 extends Learning {
 			}
 
 			question_num++;
-
+			
 			if(correctvisible==true)
 				correct_pane.setVisible(false);
 			else if(correctvisible==false)
